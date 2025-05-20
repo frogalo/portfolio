@@ -18,40 +18,40 @@ export default function ThemeSwitcher({
             {/* Light Mode Button */}
             <button
                 onClick={() => onThemeChangeAction("light")}
-                className={`p-3 rounded-full border-2 ${
+                className={`p-2 sm:p-3 rounded-full border-2 ${
                     currentTheme === "light"
                         ? "bg-primary text-accent border-primary"
                         : "border-secondary text-primary"
                 }`}
                 aria-label="Switch to Light Mode"
             >
-                <Sun size={14} />
+                <Sun size={12} className="sm:size-4" /> {/* Smaller icon on mobile */}
             </button>
 
             {/* Dark Mode Button */}
             <button
                 onClick={() => onThemeChangeAction("dark")}
-                className={`p-3 rounded-full border-2 ${
+                className={`p-2 sm:p-3 rounded-full border-2 ${
                     currentTheme === "dark"
                         ? "bg-primary text-accent border-primary"
                         : "border-secondary text-primary"
                 }`}
                 aria-label="Switch to Dark Mode"
             >
-                <Moon size={14} />
+                <Moon size={12} className="sm:size-4" /> {/* Smaller icon on mobile */}
             </button>
 
             {/* System Mode Button */}
             <button
                 onClick={() => onThemeChangeAction("system")}
-                className={`p-3 rounded-full border-2 ${
+                className={`p-2 sm:p-3 rounded-full border-2 ${
                     currentTheme === "system"
                         ? "bg-primary text-accent border-primary"
                         : "border-secondary text-primary"
                 }`}
                 aria-label="Switch to System Mode"
             >
-                <Monitor size={14} />
+                <Monitor size={12} className="sm:size-4" /> {/* Smaller icon on mobile */}
             </button>
         </div>
     );

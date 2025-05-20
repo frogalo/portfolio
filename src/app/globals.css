@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
     --font-heading: 'Kodchasan', sans-serif;
     --font-body: 'Kodchasan', sans-serif;
@@ -45,44 +44,49 @@ html {
     font-size: var(--font-size-base);
 }
 
-
 body {
     background: var(--background);
     color: var(--text);
     font-family: var(--font-body), serif;
     font-weight: var(--font-weight-normal);
     animation: fade-in 1s ease-in-out;
+    transition: background-color 1s ease, color 1s ease; /* Smooth transitions for theme changes */
 }
-
 
 .bg-primary {
     background-color: var(--background);
+    transition: background-color 1s ease; /* Enable smooth transitions */
 }
 
 .text-primary {
     color: var(--text);
+    transition: color 1s ease; /* Enable smooth transitions */
 }
 
 .bg-accent {
     background-color: var(--accent);
+    transition: background-color 1s ease; /* Enable smooth transitions */
 }
 
 .text-accent {
     color: var(--accent);
+    transition: color 1s ease; /* Enable smooth transitions */
 }
 
 .bg-secondary {
     background-color: var(--secondary);
+    transition: background-color 1s ease; /* Enable smooth transitions */
 }
 
 .text-secondary {
     color: var(--secondary);
+    transition: color 1s ease; /* Enable smooth transitions */
 }
 
 .text-primary {
     color: var(--primary);
+    transition: color 1s ease; /* Enable smooth transitions */
 }
-
 
 @keyframes fade-in {
     from {
@@ -91,4 +95,20 @@ body {
     to {
         opacity: 1;
     }
+}
+@keyframes fade-in-letter {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Slide in from below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter {
+    display: inline-block; /* Ensure each letter is treated individually */
+    opacity: 0; /* Start with invisible letters */
+    animation: fade-in-letter 0.5s ease forwards; /* Fade in each letter */
 }

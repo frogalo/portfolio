@@ -13,7 +13,7 @@ const kodchasan = Kodchasan({
 });
 
 export const metadata: Metadata = {
-    title: "Portfolio",
+    title: "Jakub Urbański",
     description: "My personal portfolio website",
     icons: {
         icon: "/favicon.ico",
