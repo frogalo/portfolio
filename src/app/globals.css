@@ -14,6 +14,12 @@
     --font-size-3xl: 2.369rem; /* 37.9px */
     --font-size-4xl: 3.158rem; /* 50.53px */
     --font-size-5xl: 4.210rem; /* 67.36px */
+
+    --text: #e1eef4;
+    --background: #071013;
+    --primary: #98cde2;
+    --secondary: #216a87;
+    --accent: #36aad9;
 }
 
 /* Light Theme */
@@ -45,7 +51,7 @@ body {
     color: var(--text);
     font-family: var(--font-body), serif;
     font-weight: var(--font-weight-normal);
-    animation: fade-in 0.5s ease-in-out;
+    animation: fade-in 1s ease-in-out;
 }
 
 
@@ -77,9 +83,6 @@ body {
     color: var(--primary);
 }
 
-.fade-in {
-    animation: fade-in 0.5s ease-in-out;
-}
 
 @keyframes fade-in {
     from {

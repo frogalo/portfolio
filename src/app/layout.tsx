@@ -1,7 +1,9 @@
 import "./globals.css";
 import { Metadata } from "next";
 import { Kodchasan } from "next/font/google";
-import ThemeProvider from "../components/layout/ThemeProvider";
+import ThemeProvider from "@/components/layout/ThemeProvider";
+import LanguageSwitcher from "@/components/icons/LanguageSwitcher";
+import I18nProvider from "@/components/layout/I18nProvider";
 import React from "react";
 
 const kodchasan = Kodchasan({
@@ -26,7 +28,10 @@ export default function RootLayout({
     return (
         <html lang="en" className={kodchasan.variable}>
         <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <I18nProvider>
+            <LanguageSwitcher />
+            <ThemeProvider>{children}</ThemeProvider>
+        </I18nProvider>
         </body>
         </html>
     );
