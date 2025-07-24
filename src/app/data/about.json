@@ -1,0 +1,28 @@
+{
+  "title": "about",
+  "content": {
+    "description1": "IT Administrator experienced in managing networks and systems (AD, Proxmox), enhancing security, automating tasks (PowerShell), and building web applications. Currently pursuing a Master's degree in Computer Science at Politechnika Warszawska.",
+    "description2": "Passionate about creating efficient IT solutions and intuitive web applications. Specialized in system administration, virtualization, and full-stack development with a focus on practical, user-centered solutions.",
+    "contact": {
+      "title": "contact",
+      "items": [
+        {
+          "label": "Location:",
+          "value": "Warsaw, Poland"
+        },
+        {
+          "label": "Phone:",
+          "value": "+48 504 977 011"
+        },
+        {
+          "label": "Email:",
+          "value": "ivo.urbanski@gmail.com"
+        },
+        {
+          "label": "GitHub:",
+          "value": "github.com/frogalo"
+        }
+      ]
+    }
+  }
+}

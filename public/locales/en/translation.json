@@ -1,0 +1,47 @@
+{
+  "heroDescription": "System administration specialist with full-stack development skills, creating efficient IT solutions and intuitive web applications",
+
+
+  "about": "About",
+  "aboutText1": "IT Administrator experienced in managing networks and systems (AD, Proxmox), enhancing security, automating tasks (PowerShell), and building web applications. Currently pursuing a Master's degree in Computer Science at Politechnika Warszawska.",
+  "aboutText2": "Passionate about creating efficient IT solutions and intuitive web applications. Specialized in system administration, virtualization, and full-stack development with a focus on practical, user-centered solutions.",
+  "contact": "Contact Information",
+
+
+  "skills": "Skills",
+  "System Administration": "System Administration",
+  "Active Directory": "Active Directory",
+  "Proxmox Virtualization": "Proxmox Virtualization",
+  "Linux/Windows Servers": "Linux/Windows Servers",
+  "Networking (TCP/IP, DNS, DHCP)": "Networking (TCP/IP, DNS, DHCP)",
+  "PowerShell Automation": "PowerShell Automation",
+  "Web Development": "Web Development",
+  "Google Workspace/M365": "Google Workspace/M365",
+  "Endpoint Management": "Endpoint Management",
+  "Docker": "Docker",
+  "Security": "Security",
+  "API Integration": "API Integration",
+
+
+  "projects": "Projects",
+  "IT Dashboard": "IT Dashboard",
+  "IT Dashboard description": "Admin dashboard with Google and ADFS login displaying users and statuses from multiple sources (AD, Google, Slack, Miro) for centralized management",
+  "TableMate": "TableMate",
+  "TableMate description": "Unified platform for company resource management (desks, rooms, parking) and ordering services",
+  "Gramatyk": "Gramatyk",
+  "Gramatyk description": "Web app fetching Polish word declensions from external source via serverless proxy API",
+  "ScholarHub": "ScholarHub",
+  "ScholarHub description": "University platform supporting recruitment, online meetings, chat, and grading system",
+
+
+  "experience": "Experience",
+  "IT Administrator": "IT Administrator",
+  "IT Administrator at Reikon Games description": "Administer server infrastructure (Windows/Linux, Proxmox VE), automate tasks with PowerShell, manage endpoint lifecycle, develop internal monitoring dashboards, administer SaaS platforms",
+  "IT Support and Project Coordinator": "IT Support and Project Coordinator",
+  "IT Support and Project Coordinator description": "Delivered IT support services, managed Microsoft 365 and Google services, organized international events with technical support for 500+ attendees",
+  "CEX Team Analyst": "CEX Team Analyst",
+  "CEX Team Analyst at Orange Poland description": "Conducted competitor analysis resulting in 15% market share increase, tested mobile applications uncovering 100+ bugs, developed employee gamification strategy",
+
+
+  "allRightsReserved": "All rights reserved"
+}

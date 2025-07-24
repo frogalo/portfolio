@@ -1,8 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ReactNode } from "react";
-import ThemeSwitcher from "@/components/icons/ThemeSwitcher";
+import { useState, useEffect, createContext, ReactNode } from "react";
+
+interface ThemeContextType {
+    theme: "light" | "dark" | "system";
+    setTheme: (theme: "light" | "dark" | "system") => void;
+}
+
+export const ThemeContext = createContext<ThemeContextType>({
+    theme: "system",
+    setTheme: () => {},
+});
 
 interface ThemeProviderProps {
     children: ReactNode;
@@ -50,9 +58,8 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
     };
 
     return (
-        <div>
-            <ThemeSwitcher currentTheme={theme} onThemeChangeAction={handleThemeChange} />
+        <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
             {children}
-        </div>
+        </ThemeContext.Provider>
     );
 }

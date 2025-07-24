@@ -107,8 +107,18 @@ body {
     }
 }
 
+
+
+
 .letter {
-    display: inline-block; /* Ensure each letter is treated individually */
-    opacity: 0; /* Start with invisible letters */
-    animation: fade-in-letter 0.5s ease forwards; /* Fade in each letter */
+    display: inline-block;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    opacity: 0;
 }
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+

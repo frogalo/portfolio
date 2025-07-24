@@ -1,0 +1,20 @@
+[
+  {
+    "role": "IT Administrator",
+    "company": "Reikon Games",
+    "period": "01.2023 – currently",
+    "description": "Administer server infrastructure (Windows/Linux, Proxmox VE), automate tasks with PowerShell, manage endpoint lifecycle, develop internal monitoring dashboards, administer SaaS platforms"
+  },
+  {
+    "role": "IT Support and Project Coordinator",
+    "company": "Center for Innovative Education",
+    "period": "01.2017 – 12.2017 & 07.2020 – 10.2022",
+    "description": "Delivered IT support services, managed Microsoft 365 and Google services, organized international events with technical support for 500+ attendees"
+  },
+  {
+    "role": "CEX Team Analyst",
+    "company": "Orange Poland",
+    "period": "01.2020 – 06.2020",
+    "description": "Conducted competitor analysis resulting in 15% market share increase, tested mobile applications uncovering 100+ bugs, developed employee gamification strategy"
+  }
+]

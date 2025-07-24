@@ -1,130 +1,69 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useState, useContext, useEffect } from "react"; // Import useEffect
+import Header from "@/components/layout/Header";
+import { ThemeContext } from "@/components/layout/ThemeProvider";
+import AboutSection from "@/components/sections/AboutSection";
+import SkillsSection from "@/components/sections/SkillsSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
 
 export default function HomePage() {
     const { t } = useTranslation();
-    const name = "Jakub Urbański";
+    // Initialize state from localStorage or default to "about"
+    const [activeSection, setActiveSection] = useState<string>(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('activeSection') || 'about';
+        }
+        return 'about'; // Default for SSR or when window is not available
+    });
+    const { theme, setTheme } = useContext(ThemeContext);
 
-    const [showWelcome, setShowWelcome] = useState(true);
-    const [showContent, setShowContent] = useState(false);
-
-
-    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 0;
-    const screenHeight = typeof window !== "undefined" ? window.innerHeight : 0;
-
+    // Update localStorage whenever activeSection changes
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setShowWelcome(false);
-            setShowContent(true);
-        }, 4000);
-
-        return () => clearTimeout(timeout);
-    }, []);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('activeSection', activeSection);
+        }
+    }, [activeSection]); // Dependency array ensures this runs only when activeSection changes
 
     return (
-        <>
-            <main className="min-h-screen bg-primary flex items-center justify-center">
-                {/* Welcome Text */}
-                <AnimatePresence>
-                    {showWelcome && (
-                        <motion.h1
-                            className="text-4xl font-bold text-primary absolute"
-                            initial={{ opacity: 0, y: 0 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -screenHeight * 0.1 }}
-                            transition={{ duration: 1 }}
-                        >
-                            {t("welcome")}
-                        </motion.h1>
-                    )}
-                </AnimatePresence>
+        <div className="min-h-screen bg-background text-text">
+            <Header
+                activeSection={activeSection}
+                setActiveSection={setActiveSection}
+                currentTheme={theme}
+                onThemeChange={setTheme}
+            />
 
-                {/* Name */}
-                <motion.p
-                    className="text-xl font-medium text-primary absolute"
-                    initial={{ opacity: 0, y: screenHeight * -0.1 }}
-                    animate={{
-                        opacity: 1,
-                        y: showWelcome ? screenHeight * 0.03 : screenHeight * -0.470,
-                        x: showWelcome ? -screenWidth * -0.1 : -screenWidth * 0.3,
-                    }}
-                    transition={{ duration: 1 }}
-                >
-                    {name.split("").map((letter, index) => (
-                        <span
-                            key={index}
-                            className="letter"
-                            style={{ animationDelay: `${index * 0.2}s` }}
-                        >
-                            {letter === " " ? "\u00A0" : letter}
-                        </span>
-                    ))}
-                </motion.p>
-
-                {/* Projects and Experience */}
-                {showContent && (
+            <main className="container mx-auto px-4 pt-24 pb-16">
+                {/* Hero Section */}
+                <section className="py-16 flex flex-col items-center text-center">
                     <motion.div
-                        className="p-4 text-primary absolute top-1/3 left-10"
-                        initial="hidden"
-                        animate="visible"
-                        variants={{
-                            hidden: { opacity: 0, y: screenHeight * 0.1 },
-                            visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.5 } },
-                        }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
                     >
-                        {/* Projects Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 1 }}
-                        >
-                            <h2 className="text-3xl font-bold mb-4">Projects</h2>
-                            <motion.ul className="list-disc pl-5">
-                                {["Project 1: Description", "Project 2: Description", "Project 3: Description"].map(
-                                    (project, index) => (
-                                        <motion.li
-                                            key={index}
-                                            variants={{
-                                                hidden: { opacity: 0, y: 50 },
-                                                visible: { opacity: 1, y: 0 },
-                                            }}
-                                        >
-                                            {project}
-                                        </motion.li>
-                                    )
-                                )}
-                            </motion.ul>
-                        </motion.div>
-
-                        {/* Experience Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1.5, delay: 2 }} // Delay the appearance of experience
-                        >
-                            <h2 className="text-3xl font-bold mt-8 mb-4">Experience</h2>
-                            <motion.ul className="list-disc pl-5">
-                                {["Experience 1: Description", "Experience 2: Description", "Experience 3: Description"].map(
-                                    (experience, index) => (
-                                        <motion.li
-                                            key={index}
-                                            variants={{
-                                                hidden: { opacity: 0, y: 50 },
-                                                visible: { opacity: 1, y: 0 },
-                                            }}
-                                        >
-                                            {experience}
-                                        </motion.li>
-                                    )
-                                )}
-                            </motion.ul>
-                        </motion.div>
+                        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
+                            {t("heroTitle")}
+                        </h1>
+                        <p className="text-xl text-primary max-w-2xl">
+                            {t("heroDescription")}
+                        </p>
                     </motion.div>
-                )}
+                </section>
+
+                {/* Dynamic Sections */}
+                {activeSection === "about" && <AboutSection />}
+                {activeSection === "skills" && <SkillsSection />}
+                {activeSection === "projects" && <ProjectsSection />}
+                {activeSection === "experience" && <ExperienceSection />}
             </main>
-        </>
+
+            <footer className="py-8 text-center text-primary border-t border-primary">
+                <p>© {new Date().getFullYear()} Jakub Urbański. {t("allRightsReserved")}</p>
+            </footer>
+        </div>
     );
 }

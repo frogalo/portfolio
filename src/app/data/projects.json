@@ -1,0 +1,22 @@
+[
+  {
+    "title": "IT Dashboard",
+    "description": "Admin dashboard with Google and ADFS login displaying users and statuses from multiple sources (AD, Google, Slack, Miro) for centralized management",
+    "tech": ["React", "Node.js", "ADFS", "Google APIs"]
+  },
+  {
+    "title": "TableMate",
+    "description": "Unified platform for company resource management (desks, rooms, parking) and ordering services",
+    "tech": ["Next.js", "REST API"]
+  },
+  {
+    "title": "Gramatyk",
+    "description": "Web app fetching Polish word declensions from external source via serverless proxy API",
+    "tech": ["Next.js", "Serverless API"]
+  },
+  {
+    "title": "ScholarHub",
+    "description": "University platform supporting recruitment, online meetings, chat, and grading system",
+    "tech": ["React", "MongoDB", "Java Spring Boot"]
+  }
+]

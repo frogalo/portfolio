@@ -1,0 +1,14 @@
+[
+  { "name": "System Administration", "level": 95 },
+  { "name": "Active Directory", "level": 90 },
+  { "name": "Proxmox Virtualization", "level": 85 },
+  { "name": "Linux/Windows Servers", "level": 85 },
+  { "name": "Networking (TCP/IP, DNS, DHCP)", "level": 80 },
+  { "name": "PowerShell Automation", "level": 80 },
+  { "name": "Web Development", "level": 75 },
+  { "name": "Google Workspace/M365", "level": 75 },
+  { "name": "Endpoint Management", "level": 70 },
+  { "name": "Docker", "level": 65 },
+  { "name": "Security", "level": 65 },
+  { "name": "API Integration", "level": 60 }
+]
