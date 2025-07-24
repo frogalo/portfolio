@@ -1,14 +1,62 @@
 [
-  { "name": "System Administration", "level": 95 },
-  { "name": "Active Directory", "level": 90 },
-  { "name": "Proxmox Virtualization", "level": 85 },
-  { "name": "Linux/Windows Servers", "level": 85 },
-  { "name": "Networking (TCP/IP, DNS, DHCP)", "level": 80 },
-  { "name": "PowerShell Automation", "level": 80 },
-  { "name": "Web Development", "level": 75 },
-  { "name": "Google Workspace/M365", "level": 75 },
-  { "name": "Endpoint Management", "level": 70 },
-  { "name": "Docker", "level": 65 },
-  { "name": "Security", "level": 65 },
-  { "name": "API Integration", "level": 60 }
+  {
+    "name": "System Administration",
+    "level": 95,
+    "iconSlug": "computer"
+  },
+  {
+    "name": "API Integration",
+    "level": 90,
+    "iconSlug": "api"
+  },
+  {
+    "name": "Proxmox Virtualization",
+    "level": 85,
+    "iconSlug": "proxmox"
+  },
+  {
+    "name": "PowerShell Automation",
+    "level": 85,
+    "iconSlug": "microsoft"
+  },
+  {
+    "name": "Google Workspace/M365",
+    "level": 85,
+    "iconSlug": "google"
+  },
+  {
+    "name": "Linux/Windows Servers",
+    "level": 85,
+    "iconSlug": "linux"
+  },
+  {
+    "name": "Web Development",
+    "level": 80,
+    "iconSlug": "web"
+  },
+  {
+    "name": "Active Directory",
+    "level": 80,
+    "iconSlug": "ad"
+  },
+  {
+    "name": "Networking (TCP/IP, DNS, DHCP)",
+    "level": 80,
+    "iconSlug": "dns"
+  },
+  {
+    "name": "Endpoint Management",
+    "level": 70,
+    "iconSlug": "endpoint"
+  },
+  {
+    "name": "Docker",
+    "level": 65,
+    "iconSlug": "docker"
+  },
+  {
+    "name": "Security",
+    "level": 70,
+    "iconSlug": "security"
+  }
 ]
