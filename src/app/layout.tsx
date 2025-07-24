@@ -1,6 +1,6 @@
 import "./globals.css";
-import { Metadata } from "next";
-import { Kodchasan } from "next/font/google";
+import {Metadata} from "next";
+import {Kodchasan} from "next/font/google";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import I18nProvider from "@/components/layout/I18nProvider";
 import React from "react";
@@ -26,11 +26,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className={kodchasan.variable}>
-        <body>
+        <body> {/* No inline script in head anymore */}
         <I18nProvider>
-            <ThemeProvider>
-                {children}
-            </ThemeProvider>
+            {/* ThemeProvider will manage the data-theme attribute */}
+            <ThemeProvider>{children}</ThemeProvider>
         </I18nProvider>
         </body>
         </html>

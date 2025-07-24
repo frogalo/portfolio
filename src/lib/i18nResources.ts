@@ -26,6 +26,7 @@ const resources = {
             contactEmailValue: "ivo.urbanski@gmail.com",
             contactGithubLabel: "GitHub:",
             contactGithubValue: "github.com/frogalo",
+            downloadCV: "Download CV",
 
             // --- Skills Section ---
             skills: "Skills",
@@ -89,6 +90,7 @@ const resources = {
             contactEmailValue: "ivo.urbanski@gmail.com",
             contactGithubLabel: "GitHub:",
             contactGithubValue: "github.com/frogalo",
+            downloadCV: "Pobierz CV",
 
             // --- Sekcja Umiejętności ---
             skills: "Umiejętności",

@@ -14,11 +14,15 @@
     --font-size-4xl: 3.158rem; /* 50.53px */
     --font-size-5xl: 4.210rem; /* 67.36px */
 
+
+    /* Default (Dark) Theme */
     --text: #e1eef4;
     --background: #071013;
-    --primary: #98cde2;
-    --secondary: #216a87;
-    --accent: #36aad9;
+    --primary: #98cde2; /* Existing Blue-ish text/borders */
+    --secondary: #216a87; /* Existing Dark Blue */
+    --accent: #36aad9; /* Existing Light Blue */
+    --cyan-accent: #77D4D4; /* A nice teal */
+    --gold-accent: #E2A55F; /* A soft, muted gold */
 }
 
 /* Light Theme */
@@ -28,15 +32,23 @@
     --primary: #1d5267;
     --secondary: #78c1de;
     --accent: #269bc9;
+    --header-bg: #548fa6;
+    --header-txt: #ecf5f8;
+    --purple-accent: #995af1;
+    --gold-accent: #af2393;
 }
 
-/* Dark Theme */
+
 :root[data-theme="dark"] {
     --text: #e1eef4;
     --background: #071013;
     --primary: #98cde2;
     --secondary: #216a87;
+    --header-bg: #143544;
+    --header-txt: #ecf5f8;
     --accent: #36aad9;
+    --purple-accent: #4d0ea4;
+    --gold-accent: #dd51c1;
 }
 
 html {
@@ -68,6 +80,11 @@ body {
     transition: background-color 1s ease; /* Enable smooth transitions */
 }
 
+.bg-purple-accent {
+    background-color: var(--purple-accent);
+    transition: background-color 1s ease; /* Enable smooth transitions */
+}
+
 .text-accent {
     color: var(--accent);
     transition: color 1s ease; /* Enable smooth transitions */
@@ -96,6 +113,7 @@ body {
         opacity: 1;
     }
 }
+
 @keyframes fade-in-letter {
     from {
         opacity: 0;
@@ -106,8 +124,6 @@ body {
         transform: translateY(0);
     }
 }
-
-
 
 
 .letter {
@@ -122,3 +138,47 @@ body {
     }
 }
 
+/* Add specific styles for dark mode toggle buttons if needed */
+.dark-mode-toggle-btn {
+    transition: all 0.3s ease;
+    border-width: 2px; /* Ensure border width is consistent */
+}
+
+.dark-mode-toggle-btn.active {
+    background-color: var(--accent);
+    color: var(--primary); /* Or --text depending on desired contrast */
+    border-color: var(--accent);
+}
+
+.dark-mode-toggle-btn:not(.active) {
+    background-color: transparent;
+    color: var(--primary);
+    border-color: var(--secondary);
+}
+
+.dark-mode-toggle-btn:not(.active):hover {
+    border-color: var(--accent);
+}
+
+/* Specific styles for language switcher buttons */
+.lang-btn {
+    transition: all 0.3s ease;
+    border-width: 2px;
+}
+
+.lang-btn.active {
+    background-color: var(--accent);
+    color: var(--primary); /* Or --text */
+    border-color: var(--accent);
+}
+
+.lang-btn:not(.active) {
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-color: var(--secondary);
+}
+
+.lang-btn:not(.active):hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}

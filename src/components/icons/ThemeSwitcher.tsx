@@ -13,45 +13,47 @@ export default function ThemeSwitcher({
                                           currentTheme,
                                           onThemeChangeAction,
                                       }: ThemeSwitcherProps) {
+
+    // Helper to get Tailwind classes + CSS variable classes
+    const getButtonClasses = (themeType: Theme) => {
+        const baseClasses = `p-2 sm:p-3 rounded-full border-2 transition-colors duration-200 cursor-pointer flex items-center justify-center`;
+        const activeClasses = `bg-[var(--purple-accent)] text-[var(--text)] border-[var(--purple-accent)]`; // Using --cyan-accent for active
+        const inactiveClasses = `border-[var(--secondary)] text-[var(--secondary)] hover:border-[var(--purple-accent)] hover:bg-transparent`; // Using --gold-accent for hover
+
+        if (currentTheme === themeType) {
+            return `${baseClasses} ${activeClasses}`;
+        } else {
+            return `${baseClasses} ${inactiveClasses}`;
+        }
+    };
+
     return (
-        <div className="fixed top-4 right-4 flex items-center space-x-2">
+        <div className="flex items-center space-x-2">
             {/* Light Mode Button */}
             <button
                 onClick={() => onThemeChangeAction("light")}
-                className={`p-2 sm:p-3 rounded-full border-2 ${
-                    currentTheme === "light"
-                        ? "bg-primary text-accent border-primary"
-                        : "border-secondary text-primary"
-                }`}
+                className={getButtonClasses("light")}
                 aria-label="Switch to Light Mode"
             >
-                <Sun size={12} className="sm:size-4" /> {/* Smaller icon on mobile */}
+                <Sun size={16} />
             </button>
 
             {/* Dark Mode Button */}
             <button
                 onClick={() => onThemeChangeAction("dark")}
-                className={`p-2 sm:p-3 rounded-full border-2 ${
-                    currentTheme === "dark"
-                        ? "bg-primary text-accent border-primary"
-                        : "border-secondary text-primary"
-                }`}
+                className={getButtonClasses("dark")}
                 aria-label="Switch to Dark Mode"
             >
-                <Moon size={12} className="sm:size-4" /> {/* Smaller icon on mobile */}
+                <Moon size={16} />
             </button>
 
             {/* System Mode Button */}
             <button
                 onClick={() => onThemeChangeAction("system")}
-                className={`p-2 sm:p-3 rounded-full border-2 ${
-                    currentTheme === "system"
-                        ? "bg-primary text-accent border-primary"
-                        : "border-secondary text-primary"
-                }`}
+                className={getButtonClasses("system")}
                 aria-label="Switch to System Mode"
             >
-                <Monitor size={12} className="sm:size-4" /> {/* Smaller icon on mobile */}
+                <Monitor size={16} />
             </button>
         </div>
     );
