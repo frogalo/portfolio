@@ -2,8 +2,8 @@
 
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import ThemeSwitcher from "@/components/icons/ThemeSwitcher";
-import LanguageSwitcher from "@/components/icons/LanguageSwitcher";
+import ThemeSwitcher from "../../components/icons/ThemeSwitcher";
+import LanguageSwitcher from "../../components/icons/LanguageSwitcher";
 
 interface HeaderProps {
     activeSection: string;

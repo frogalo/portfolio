@@ -1,8 +1,8 @@
 import "./globals.css";
 import {Metadata} from "next";
 import {Kodchasan} from "next/font/google";
-import ThemeProvider from "@/components/layout/ThemeProvider";
-import I18nProvider from "@/components/layout/I18nProvider";
+import ThemeProvider from "../components/layout/ThemeProvider";
+import I18nProvider from "../components/layout/I18nProvider";
 import React from "react";
 
 const kodchasan = Kodchasan({

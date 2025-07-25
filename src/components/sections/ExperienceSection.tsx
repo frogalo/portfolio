@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Briefcase } from 'lucide-react'; // GraduationCap might be useful for education
 import Image from 'next/image';
-import experienceData from "@/app/data/experience.json"; // Import the new JSON file
+import experienceData from "../../app/data/experience.json"; // Import the new JSON file
 
 // Define interfaces for better type safety
 interface Role {

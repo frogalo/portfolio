@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useState, useEffect} from "react";
-import {initI18next} from "@/lib/i18n";
+import {initI18next} from "../../lib/i18n";
 
 export default function I18nProvider({children}: { children: React.ReactNode }) {
     const [isInitialized, setIsInitialized] = useState(false);
