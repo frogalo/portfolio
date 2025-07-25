@@ -3,7 +3,7 @@
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import skillsData from "@/app/data/skills.json";
+import skillsData from "../../app/data/skills.json";
 import Image from "next/image";
 
 interface Skill {

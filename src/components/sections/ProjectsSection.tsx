@@ -3,8 +3,8 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import projectsData from "@/app/data/projects.json";
-import ProjectModal from "@/components/ui/ProjectModal";
+import projectsData from "../../app/data/projects.json";
+import ProjectModal from "../../components/ui/ProjectModal";
 import Image from 'next/image';
 
 interface TechItem {
