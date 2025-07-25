@@ -1,22 +1,287 @@
 [
   {
+    "id": "portfolio",
+    "title": "Portfolio Website",
+    "description": "Portfolio Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": false
+      },
+      {
+        "name": "Translations",
+        "isNew": true
+      },
+      {
+        "name": "Themes",
+        "isNew": false
+      }
+    ],
+    "details": "Portfolio Details",
+    "images": [
+      "/images/projects/portfolio-1.png",
+      "/images/projects/portfolio-2.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "steam-reviews",
+    "title": "Steam Reviews",
+    "description": "Steam Reviews Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": false
+      },
+      {
+        "name": "Steam API",
+        "isNew": true
+      },
+      {
+        "name": "Slack API",
+        "isNew": false
+      },
+      {
+        "name": "Diagrams",
+        "isNew": true
+      },
+      {
+        "name": "Auto-translations",
+        "isNew": true
+      }
+    ],
+    "details": "Steam Reviews Details",
+    "images": [
+      "/images/projects/steam-reviews-1.png",
+      "/images/projects/steam-reviews-2.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "server-migration",
+    "title": "Server Room Relocation",
+    "description": "Server Room Description",
+    "category": "infrastructure",
+    "tech": [
+      {
+        "name": "Networking",
+        "isNew": false
+      },
+      {
+        "name": "Proxmox",
+        "isNew": false
+      },
+      {
+        "name": "Project Management",
+        "isNew": true
+      }
+    ],
+    "details": "Server Room Details",
+    "images": [
+      "/images/projects/server-migration-1.png",
+      "/images/projects/server-migration-2.png",
+      "/images/projects/server-migration-3.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "slack-automation",
+    "title": "Slack Process Automation",
+    "description": "Slack Process Description",
+    "category": "automation",
+    "tech": [
+      {
+        "name": "Node.js",
+        "isNew": true
+      },
+      {
+        "name": "Slack API",
+        "isNew": false
+      }
+    ],
+    "details": "Slack Process Details",
+    "images": [
+      "/images/projects/slack-automation-1.png",
+      "/images/projects/slack-automation-2.png",
+      "/images/projects/slack-automation-3.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "it-dashboard",
     "title": "IT Dashboard",
-    "description": "Admin dashboard with Google and ADFS login displaying users and statuses from multiple sources (AD, Google, Slack, Miro) for centralized management",
-    "tech": ["React", "Node.js", "ADFS", "Google APIs"]
+    "description": "IT Dashboard Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "React",
+        "isNew": true
+      },
+      {
+        "name": "Node.js",
+        "isNew": true
+      },
+      {
+        "name": "ADFS",
+        "isNew": true
+      },
+      {
+        "name": "Google API",
+        "isNew": true
+      },
+      {
+        "name": "Slack API",
+        "isNew": true
+      },
+      {
+        "name": "PostgreSQL",
+        "isNew": true
+      }
+    ],
+    "details": "IT Dashboard Details",
+    "images": [
+      "/images/projects/it-dashboard-1.png"
+    ],
+    "websiteUrl": null
   },
   {
+    "id": "vlan-configuration",
+    "title": "VLAN Configuration",
+    "description": "VLAN Description",
+    "category": "infrastructure",
+    "tech": [
+      {
+        "name": "Networking",
+        "isNew": false
+      },
+      {
+        "name": "VLAN",
+        "isNew": true
+      },
+      {
+        "name": "Project Management",
+        "isNew": false
+      }
+    ],
+    "details": "VLAN Details",
+    "images": [
+      "/images/projects/vlan-1.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "tablemate",
     "title": "TableMate",
-    "description": "Unified platform for company resource management (desks, rooms, parking) and ordering services",
-    "tech": ["Next.js", "REST API"]
+    "description": "TableMate description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": true
+      },
+      {
+        "name": "REST API",
+        "isNew": true
+      },
+      {
+        "name": "Themes",
+        "isNew": false
+      },
+      {
+        "name": "NeonDB",
+        "isNew": false
+      }
+    ],
+    "details": "TableMate Details",
+    "images": [
+      "/images/projects/tablemate-1.png",
+      "/images/projects/tablemate-2.png",
+      "/images/projects/tablemate-3.png",
+      "/images/projects/tablemate-4.png",
+      "/images/projects/tablemate-5.png",
+      "/images/projects/tablemate-6.png",
+      "/images/projects/tablemate-7.png",
+      "/images/projects/tablemate-8.png"
+    ],
+    "websiteUrl": "https://tablemate-gules.vercel.app/"
   },
   {
+    "id": "gramatyk",
     "title": "Gramatyk",
-    "description": "Web app fetching Polish word declensions from external source via serverless proxy API",
-    "tech": ["Next.js", "Serverless API"]
+    "description": "Gramatyk Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": true
+      },
+      {
+        "name": "Serverless API",
+        "isNew": false
+      }
+    ],
+    "details": "Gramatyk Details",
+    "images": [
+      "/images/projects/gramatyk-1.png",
+      "/images/projects/gramatyk-2.png"
+    ],
+    "websiteUrl": "https://gramatyk.vercel.app/"
   },
   {
+    "id": "discord-bot",
+    "title": "Discord Integration Bot",
+    "description": "Discord Integration Description",
+    "category": "automation",
+    "tech": [
+      {
+        "name": "Node.js",
+        "isNew": true
+      },
+      {
+        "name": "Discord.js",
+        "isNew": true
+      },
+      {
+        "name": "MongoDB",
+        "isNew": false
+      }
+    ],
+    "details": "Discord Integration Details",
+    "images": [
+      "/images/projects/discord-bot-1.png",
+      "/images/projects/discord-bot-2.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "scholarhub",
     "title": "ScholarHub",
-    "description": "University platform supporting recruitment, online meetings, chat, and grading system",
-    "tech": ["React", "MongoDB", "Java Spring Boot"]
+    "description": "ScholarHub Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "React",
+        "isNew": false
+      },
+      {
+        "name": "MongoDB",
+        "isNew": false
+      },
+      {
+        "name": "Java Spring Boot",
+        "isNew": false
+      }
+    ],
+    "details": "ScholarHub Details",
+    "images": [
+      "/images/projects/scholarhub-1.png",
+      "/images/projects/scholarhub-2.png",
+      "/images/projects/scholarhub-3.png",
+      "/images/projects/scholarhub-4.png",
+      "/images/projects/scholarhub-5.png"
+    ],
+    "websiteUrl": null
   }
 ]

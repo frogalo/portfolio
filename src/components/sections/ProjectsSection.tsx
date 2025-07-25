@@ -2,32 +2,47 @@
 
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import projectsData from "@/app/data/projects.json";
+import ProjectModal from "@/components/ui/ProjectModal";
+import Image from 'next/image'; // Make sure this is imported
+
+interface TechItem {
+    name: string;
+    isNew?: boolean;
+}
+
+interface Project {
+    id: string;
+    title: string;
+    description: string;
+    category: string;
+    tech: TechItem[];
+    details: string;
+    images: string[];
+    websiteUrl: string | null;
+}
 
 export default function ProjectsSection() {
     const { t } = useTranslation();
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [activeCategory, setActiveCategory] = useState<string>("all");
 
-    const projects = [
-        {
-            title: "IT Dashboard",
-            description: "IT Dashboard description",
-            tech: ["React", "Node.js", "ADFS", "Google APIs"]
-        },
-        {
-            title: "TableMate",
-            description: "TableMate description",
-            tech: ["Next.js", "REST API"]
-        },
-        {
-            title: "Gramatyk",
-            description: "Gramatyk description",
-            tech: ["Next.js", "Serverless API"]
-        },
-        {
-            title: "ScholarHub",
-            description: "ScholarHub description",
-            tech: ["React", "MongoDB", "Java Spring Boot"]
-        }
-    ];
+    // Get unique categories
+    const categories = ["all", ...new Set(projectsData.map(project => project.category))];
+
+    // Filter projects based on active category
+    const filteredProjects = activeCategory === "all"
+        ? projectsData
+        : projectsData.filter(project => project.category === activeCategory);
+
+    const handleProjectClick = (project: Project) => {
+        setSelectedProject(project);
+    };
+
+    const closeModal = () => {
+        setSelectedProject(null);
+    };
 
     return (
         <motion.section
@@ -36,39 +51,82 @@ export default function ProjectsSection() {
             transition={{ duration: 0.3 }}
             className="py-8"
         >
-            <h2 className="text-3xl font-bold mb-6 border-b border-primary pb-2 text-primary">
+            <h2 className="text-4xl font-bold mb-8 border-b-2 border-primary pb-3 text-primary text-center">
                 {t("projects")}
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project, index) => (
-                    <motion.div
-                        key={index}
-                        className="bg-background rounded-xl shadow-md overflow-hidden border border-primary"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
+
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+                {categories.map((category) => (
+                    <button
+                        key={category}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+                            activeCategory === category
+                                ? "bg-purple-accent text-background"
+                                : "bg-secondary text-text hover:bg-primary/20"
+                        }`}
+                        onClick={() => setActiveCategory(category)}
                     >
-                        <div className="p-6">
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </button>
+                ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((project) => (
+                    <div
+                        key={project.id}
+                        className="bg-background rounded-xl shadow-lg border border-primary overflow-hidden flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300"
+                        onClick={() => handleProjectClick(project)}
+                    >
+                        <div className="relative h-48 overflow-hidden">
+                            {project.images && project.images.length > 0 && (
+                                <Image
+                                    src={project.images[0]}
+                                    alt={`${project.title} thumbnail`}
+                                    fill // <-- Changed this to 'fill'
+                                    className="object-cover" // <-- Kept object-cover
+                                    // Removed width and height when using 'fill'
+                                />
+                            )}
+                            <div className="absolute top-2 right-2 bg-purple-accent text-[var(--header-txt)] text-xs font-bold px-2 py-1 rounded-full">
+                                {project.category}
+                            </div>
+                        </div>
+
+                        <div className="p-6 flex-grow">
                             <h3 className="text-xl font-bold mb-2 text-primary">
                                 {t(project.title)}
                             </h3>
-                            <p className="text-primary mb-4">
+                            <p className="text-primary mb-4 text-sm text-gray-300 dark:text-gray-400">
                                 {t(project.description)}
                             </p>
-                            <div className="flex flex-wrap gap-2">
-                                {project.tech.map((tech, i) => (
+                            <div className="flex flex-wrap gap-2 mt-4">
+                                {project.tech.slice(0, 5).map((techItem, i) => (
                                     <span
                                         key={i}
-                                        className="px-3 py-1 bg-secondary text-text text-sm rounded-full"
+                                        className="px-3 py-1 bg-secondary text-text text-xs rounded-full flex items-center gap-1"
                                     >
-                                        {tech}
+                                        <span>{techItem.name}</span>
+                                        {techItem.isNew && (
+                                            <span className="bg-purple-accent text-[var(--header-txt)] text-xs font-bold px-1 py-0 rounded-full">
+                                                New
+                                            </span>
+                                        )}
                                     </span>
                                 ))}
+                                {project.tech.length > 5 && (
+                                    <span className="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">
+                                        +{project.tech.length - 5} more
+                                    </span>
+                                )}
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
+
+            <ProjectModal project={selectedProject} onClose={closeModal} />
         </motion.section>
     );
 }
