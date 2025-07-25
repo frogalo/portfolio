@@ -1,0 +1,11 @@
+node_modules
+.git
+.DS_Store
+.env
+.env.development
+# Other environment files if you only want .env.production specifically
+build
+dist
+out
+# If your Next.js build output is not just .next, but other folders
+# e.g., if you run `next export` and have an `out` folder.
