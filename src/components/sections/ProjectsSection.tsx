@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import projectsData from "@/app/data/projects.json";
 import ProjectModal from "@/components/ui/ProjectModal";
-import Image from 'next/image'; // Make sure this is imported
+import Image from 'next/image';
 
 interface TechItem {
     name: string;
@@ -67,7 +67,7 @@ export default function ProjectsSection() {
                         }`}
                         onClick={() => setActiveCategory(category)}
                     >
-                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                        {t(category)} {/* <-- FIXED: Apply t() directly to the category string */}
                     </button>
                 ))}
             </div>
@@ -83,14 +83,13 @@ export default function ProjectsSection() {
                             {project.images && project.images.length > 0 && (
                                 <Image
                                     src={project.images[0]}
-                                    alt={`${project.title} thumbnail`}
-                                    fill // <-- Changed this to 'fill'
-                                    className="object-cover" // <-- Kept object-cover
-                                    // Removed width and height when using 'fill'
+                                    alt={`${t(project.title)} thumbnail`}
+                                    fill
+                                    className="object-cover"
                                 />
                             )}
                             <div className="absolute top-2 right-2 bg-purple-accent text-[var(--header-txt)] text-xs font-bold px-2 py-1 rounded-full">
-                                {project.category}
+                                {t(project.category)} {/* <-- FIXED: Apply t() directly to the category string */}
                             </div>
                         </div>
 
@@ -107,17 +106,17 @@ export default function ProjectsSection() {
                                         key={i}
                                         className="px-3 py-1 bg-secondary text-text text-xs rounded-full flex items-center gap-1"
                                     >
-                                        <span>{techItem.name}</span>
+                                        <span>{techItem.name}</span> {/* Assuming tech.name is consistent or translated via a separate t() call */}
                                         {techItem.isNew && (
                                             <span className="bg-purple-accent text-[var(--header-txt)] text-xs font-bold px-1 py-0 rounded-full">
-                                                New
+                                                {t("New")} {/* Translating "New" as well */}
                                             </span>
                                         )}
                                     </span>
                                 ))}
                                 {project.tech.length > 5 && (
                                     <span className="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">
-                                        +{project.tech.length - 5} more
+                                        {t("+{{count}} more", { count: project.tech.length - 5 })} {/* Translating "+X more" */}
                                     </span>
                                 )}
                             </div>

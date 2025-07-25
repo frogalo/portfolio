@@ -26,6 +26,7 @@ const resources = {
             downloadCV: "Download CV",
 
             // --- Skills Section ---
+            "expertise_areas": "Expertise Areas",
             skills: "Skills",
             "System Administration": "System Administration",
             "Active Directory": "Active Directory",
@@ -39,9 +40,118 @@ const resources = {
             "Docker": "Docker",
             "Security": "Security",
             "API Integration": "API Integration",
+            "Database Management": "Database Management",
+
+            // Sub-skills translations
+            "Windows Server Management": "Windows Server Management",
+            "Linux System Administration": "Linux System Administration",
+            "User Account Management": "User Account Management",
+            "System Monitoring & Performance": "System Monitoring & Performance",
+            "Backup & Recovery Solutions": "Backup & Recovery Solutions",
+            "Hardware Troubleshooting": "Hardware Troubleshooting",
+            "System Updates & Patching": "System Updates & Patching",
+
+            "RESTful API Development": "RESTful API Development",
+            "Google APIs": "Google APIs",
+            "Slack APIs": "Slack APIs",
+            "Steam APIs": "Steam APIs",
+            "OAuth & Authentication": "OAuth & Authentication",
+            "API Documentation": "API Documentation",
+            "Rate Limiting & Throttling": "Rate Limiting & Throttling",
+            "Webhook Integration": "Webhook Integration",
+            "API Testing & Monitoring": "API Testing & Monitoring",
+
+            "VM Creation & Management": "VM Creation & Management",
+            "Container Deployment (LXC)": "Container Deployment (LXC)",
+            "Storage Configuration": "Storage Configuration",
+            "Network Configuration": "Network Configuration",
+            "Backup & Restore": "Backup & Restore",
+            "Cluster Management": "Cluster Management",
+            "Performance Optimization": "Performance Optimization",
+
+            "Script Development": "Script Development",
+            "Module Creation": "Module Creation",
+            "Task Automation": "Task Automation",
+            "Active Directory Management": "Active Directory Management",
+            "Exchange Administration": "Exchange Administration",
+            "Azure PowerShell": "Azure PowerShell",
+            "Error Handling & Logging": "Error Handling & Logging",
+            "Scheduled Task Management": "Scheduled Task Management",
+
+            "User & Group Management": "User & Group Management",
+            "Email Configuration": "Email Configuration",
+            "SharePoint Administration": "SharePoint Administration",
+            "Teams Management": "Teams Management",
+            "Security & Compliance": "Security & Compliance",
+            "License Management": "License Management",
+            "Migration Services": "Migration Services",
+
+            "Ubuntu/CentOS Administration": "Ubuntu/CentOS Administration",
+            "Windows Server 2019/2022": "Windows Server 2019/2022",
+            "Service Configuration": "Service Configuration",
+            "File System Management": "File System Management",
+            "Performance Tuning": "Performance Tuning",
+            "Log Analysis": "Log Analysis",
+            "Security Hardening": "Security Hardening",
+
+            "React": "React",
+            "Next.js": "Next.js",
+            "Node.js": "Node.js",
+            "HTML/CSS/JavaScript": "HTML/CSS/JavaScript",
+            "Responsive Design": "Responsive Design",
+            "Database Integration": "Database Integration",
+            "Version Control (Git)": "Version Control (Git)",
+            "Testing & Debugging": "Testing & Debugging",
+
+            "Domain Controller Management": "Domain Controller Management",
+            "Group Policy Configuration": "Group Policy Configuration",
+            "DNS & DHCP Integration": "DNS & DHCP Integration",
+            "Certificate Services": "Certificate Services",
+            "Federation Services": "Federation Services",
+            "Security Groups Management": "Security Groups Management",
+            "Organizational Unit Design": "Organizational Unit Design",
+
+            "Subnetting & VLANS": "Subnetting & VLANs",
+            "DNS Configuration": "DNS Configuration",
+            "DHCP Management": "DHCP Management",
+            "Firewall Configuration": "Firewall Configuration",
+            "Network Troubleshooting": "Network Troubleshooting",
+            "Switch & Router Configuration": "Switch & Router Configuration",
+
+            "SCCM/Intune Management": "SCCM/Intune Management",
+            "Software Deployment": "Software Deployment",
+            "Device Compliance": "Device Compliance",
+            "Mobile Device Management": "Mobile Device Management",
+            "Patch Management": "Patch Management",
+            "Remote Support Tools": "Remote Support Tools",
+
+            "MongoDB": "MongoDB",
+            "PosgreSQL": "PostgreSQL",
+            "MariaDB": "MariaDB",
+            "MySQL": "MySQL",
+            "NEON": "NEON",
+
+            "Container Creation": "Container Creation",
+            "Docker Compose": "Docker Compose",
+            "Image Management": "Image Management",
+            "Volume & Network Configuration": "Volume & Network Configuration",
+            "Container Orchestration": "Container Orchestration",
+
+            "Network Security": "Network Security",
+            "Access Control": "Access Control",
+            "Vulnerability Assessment": "Vulnerability Assessment",
+            "Incident Response": "Incident Response",
+            "Security Auditing": "Security Auditing",
+            "Encryption Implementation": "Encryption Implementation",
+            "Security Policy Development": "Security Policy Development",
 
             // --- Projects Section ---
             projects: "Projects",
+            "all": "All",
+            "web": "Web",
+            "infrastructure": "Infrastructure",
+            "automation": "Automation",
+
             "Portfolio Website": "Portfolio Website",
             "Portfolio Description": "A portfolio website showcasing my skills and projects.",
             "Portfolio Details": "This website serves as my personal portfolio, built with Next.js. It features internationalization (i18n) for multiple languages, dynamic theme switching (light/dark mode), and a responsive design to showcase my projects and skills effectively.",
@@ -82,8 +192,30 @@ const resources = {
             "ScholarHub Description": "University platform supporting recruitment, online meetings, chat, and grading system.",
             "ScholarHub Details": "ScholarHub is a React-based university platform designed to enhance the student experience. It supports recruitment processes, facilitates online meetings, provides a chat function for communication, and includes a comprehensive grading system for higher education institutions. The backend is powered by Java Spring Boot with MongoDB as the database.",
 
+            "Minecraft Server": "Modded Minecraft Server Hosting",
+            "Minecraft Server Description": "Self-hosted and maintained a modded Minecraft server for 2+ years, ensuring high performance and an engaging player experience.",
+            "Minecraft Server Details": "Managed and maintained a self-hosted modded Minecraft server for over two years, providing a stable and enhanced gaming environment. My responsibilities include regular server and modpack updates, moderate discord server (guild), meticulous performance tuning, and optimization of server settings (e.g., JVM arguments, Spigot/Paper configs) to minimize lag and ensure smooth gameplay even with a large number of mods and concurrent players. I proactively implement backup strategies and monitor server health to guarantee data integrity and high availability. This ongoing project showcases my practical skills in Linux server administration, network management, performance optimization, and commitment to delivering a reliable and enjoyable service to a dedicated player community.",
+
+            "Uber Analytics": "Uber Analytics",
+            "Uber Analytics Description":
+                "Analyzes costs of Uber rides and Uber Eats orders, shown on graphs.",
+            "Uber Analytics Details":
+                "This project analyzes the costs associated with Uber rides and Uber Eats orders. It processes data from uploaded files, visualizing spending patterns and trends through interactive graphs. Users can gain insights into their transportation and food delivery expenses, helping them make informed decisions.",
+
+            "Money Tracker": "Money Tracker",
+            "Money Tracker Description":
+                "Lets you add costs for analysis, shows what you spent most on, and your investments.",
+            "Money Tracker Details":
+                "Money Tracker is a personal finance application that allows users to track their expenses and investments. It provides detailed analysis of spending habits, highlighting areas where money is spent the most and showing investment performance. The application helps users understand their financial situation and make informed decisions to optimize their spending and investments.",
+
+            "Habit Rythm": "Habit Rythm",
+            "Habit Rythm Description":
+                "A modern, full-stack habit tracker built with Next.js 15, MongoDB, and NextAuth.",
+            "Habit Rythm Details":
+                "Habit Rythm is a modern, full-stack habit tracker built with Next.js 15, MongoDB, and NextAuth. Track your habits with a beautiful dot calendar, color customization, and secure authentication. Features include: Dot calendar, habit management, color customization, toast notifications.",
+
             // --- Experience Section ---
-            "Experience": "Experience", // Ensure this is defined
+            "Experience": "Experience",
             "Reikon Games": "Reikon Games",
             "IT Manager": "IT Manager",
             "Spearheading the development and maintenance of network infrastructure": "Spearheading the development and maintenance of network infrastructure",
@@ -115,14 +247,14 @@ const resources = {
             "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management",
 
             "CIE Center for Innovative Education": "CIE Center for Innovative Education",
-            "Dział planowania i analizy kosztów": "Planning and Cost Analysis Department", // English translation
+            "Dział planowania i analizy kosztów": "Planning and Cost Analysis Department",
             "Analyzing planning and cost data to identify areas for efficiency improvement.": "Analyzing planning and cost data to identify areas for efficiency improvement.",
             "Assisting with budget preparation and financial reporting.": "Assisting with budget preparation and financial reporting.",
             "Developing tools for data visualization and performance tracking.": "Developing tools for data visualization and performance tracking.",
             "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management": "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management",
 
             "Orange Polska": "Orange Poland",
-            "Praktykant": "Intern",
+            "Praktykant": "CEX Team Intern",
             "Participating in projects related to customer experience (CEX) analysis.": "Participating in projects related to customer experience (CEX) analysis.",
             "Assisting with user research and UX design processes.": "Assisting with user research and UX design processes.",
             "Contributing to mobile application testing and bug reporting.": "Contributing to mobile application testing and bug reporting.",
@@ -138,13 +270,13 @@ const resources = {
 
 
             // --- Education Section Additions ---
-            "Education": "Education", // New title for Education section
+            "Education": "Education",
             "Warsaw University of Technology": "Warsaw University of Technology",
             "Master's degree, Computer Science": "Master's degree, Computer Science",
             "Debugging, User Experience (UX), Algorithms, LAN-WAN, Agile Development, GitHub, REST APIs, Databases, Programming, Jira, Troubleshooting, Application Servers, Networking, Node.js, Operating Systems, Problem Solving, Software Development, HTML5, Scriptwriting, Windows, Network Security": "Debugging, User Experience (UX), Algorithms, LAN-WAN, Agile Development, GitHub, REST APIs, Databases, Programming, Jira, Troubleshooting, Application Servers, Networking, Node.js, Operating Systems, Problem Solving, Software Development, HTML5, Scriptwriting, Windows, Network Security",
 
             "Polish-Japanese Academy of Information Technology": "Polish-Japanese Academy of Information Technology",
-            "Informatyka": "Computer Science", // Translated degree
+            "Informatyka": "Engineer's degree, Computer Science",
             "Debugging, User Experience (UX), Adobe Premiere Pro, Algorithms, LAN-WAN, Agile Development, Web Development, Java, Dashboards, GitHub, REST APIs, Databases, React.js, Programming, Web Design, C#, Jira, Project Management, Java Spring Boot, Troubleshooting, Application Servers, Web Services, Networking, Node.js, Operating Systems, Cascading Style Sheets (CSS), Problem Solving, Software Development, MongoDB, Content Management Systems (CMS), Microsoft Office, HTML5, Adobe Photoshop, Computer Repair, JavaScript, Network Troubleshooting, Scriptwriting, Web Applications, Windows, HTML, Network Security": "Debugging, User Experience (UX), Adobe Premiere Pro, Algorithms, LAN-WAN, Agile Development, Web Development, Java, Dashboards, GitHub, REST APIs, Databases, React.js, Programming, Web Design, C#, Jira, Project Management, Java Spring Boot, Troubleshooting, Application Servers, Web Services, Networking, Node.js, Operating Systems, Cascading Style Sheets (CSS), Problem Solving, Software Development, MongoDB, Content Management Systems (CMS), Microsoft Office, HTML5, Adobe Photoshop, Computer Repair, JavaScript, Network Troubleshooting, Scriptwriting, Web Applications, Windows, HTML, Network Security",
 
             "University of Warsaw": "University of Warsaw",
@@ -179,6 +311,7 @@ const resources = {
             downloadCV: "Pobierz CV",
 
             // --- Sekcja Umiejętności ---
+            "expertise_areas": "Szczegóły",
             skills: "Umiejętności",
             "System Administration": "Administracja systemami",
             "Active Directory": "Active Directory",
@@ -192,8 +325,117 @@ const resources = {
             "Docker": "Docker",
             "Security": "Bezpieczeństwo",
             "API Integration": "Integracja API",
+            "Database Management": "Zarządzanie bazami danych",
+
+            // Tłumaczenia podumiejętności
+            "Windows Server Management": "Zarządzanie Windows Server",
+            "Linux System Administration": "Administracja systemami Linux",
+            "User Account Management": "Zarządzanie kontami użytkowników",
+            "System Monitoring & Performance": "Monitorowanie i wydajność systemów",
+            "Backup & Recovery Solutions": "Rozwiązania kopii zapasowych",
+            "Hardware Troubleshooting": "Rozwiązywanie problemów sprzętowych",
+            "System Updates & Patching": "Aktualizacje i łatki systemowe",
+
+            "RESTful API Development": "Tworzenie API RESTful",
+            "Google APIs": "API Google",
+            "Slack APIs": "API Slack",
+            "Steam APIs": "API Steam",
+            "OAuth & Authentication": "OAuth i uwierzytelnianie",
+            "API Documentation": "Dokumentacja API",
+            "Rate Limiting & Throttling": "Ograniczenia i dławienie API",
+            "Webhook Integration": "Integracja webhooków",
+            "API Testing & Monitoring": "Testowanie i monitorowanie API",
+
+            "VM Creation & Management": "Tworzenie i zarządzanie VM",
+            "Container Deployment (LXC)": "Wdrażanie kontenerów (LXC)",
+            "Storage Configuration": "Konfiguracja pamięci masowej",
+            "Network Configuration": "Konfiguracja sieci",
+            "Backup & Restore": "Kopia zapasowa i przywracanie",
+            "Cluster Management": "Zarządzanie klastrem",
+            "Performance Optimization": "Optymalizacja wydajności",
+
+            "Script Development": "Tworzenie skryptów",
+            "Module Creation": "Tworzenie modułów",
+            "Task Automation": "Automatyzacja zadań",
+            "Active Directory Management": "Zarządzanie Active Directory",
+            "Exchange Administration": "Administracja Exchange",
+            "Azure PowerShell": "Azure PowerShell",
+            "Error Handling & Logging": "Obsługa błędów i logowanie",
+            "Scheduled Task Management": "Zarządzanie zadaniami zaplanowanymi",
+
+            "User & Group Management": "Zarządzanie użytkownikami i grupami",
+            "Email Configuration": "Konfiguracja poczty elektronicznej",
+            "SharePoint Administration": "Administracja SharePoint",
+            "Teams Management": "Zarządzanie Teams",
+            "Security & Compliance": "Bezpieczeństwo i zgodność",
+            "License Management": "Zarządzanie licencjami",
+            "Migration Services": "Usługi migracji",
+
+            "Ubuntu/CentOS Administration": "Administracja Ubuntu/CentOS",
+            "Windows Server 2019/2022": "Windows Server 2019/2022",
+            "Service Configuration": "Konfiguracja usług",
+            "File System Management": "Zarządzanie systemem plików",
+            "Performance Tuning": "Optymalizacja wydajności",
+            "Log Analysis": "Analiza logów",
+            "Security Hardening": "Wzmocnienie bezpieczeństwa",
+
+            "React": "React",
+            "Next.js": "Next.js",
+            "Node.js": "Node.js",
+            "HTML/CSS/JavaScript": "HTML/CSS/JavaScript",
+            "Responsive Design": "Projektowanie responsywne",
+            "Database Integration": "Integracja z bazami danych",
+            "Version Control (Git)": "Kontrola wersji (Git)",
+            "Testing & Debugging": "Testowanie i debugowanie",
+
+            "Domain Controller Management": "Zarządzanie kontrolerem domeny",
+            "Group Policy Configuration": "Konfiguracja zasad grupowych",
+            "DNS & DHCP Integration": "Integracja DNS i DHCP",
+            "Certificate Services": "Usługi certyfikatów",
+            "Federation Services": "Usługi federacji",
+            "Security Groups Management": "Zarządzanie grupami bezpieczeństwa",
+            "Organizational Unit Design": "Projektowanie jednostek organizacyjnych",
+
+            "Subnetting & VLANS": "Podsieci i VLAN-y",
+            "DNS Configuration": "Konfiguracja DNS",
+            "DHCP Management": "Zarządzanie DHCP",
+            "Firewall Configuration": "Konfiguracja zapory ogniowej",
+            "Network Troubleshooting": "Rozwiązywanie problemów sieciowych",
+            "Switch & Router Configuration": "Konfiguracja przełączników i routerów",
+
+            "SCCM/Intune Management": "Zarządzanie SCCM/Intune",
+            "Software Deployment": "Wdrażanie oprogramowania",
+            "Device Compliance": "Zgodność urządzeń",
+            "Mobile Device Management": "Zarządzanie urządzeniami mobilnymi",
+            "Patch Management": "Zarządzanie łatkami",
+            "Remote Support Tools": "Narzędzia zdalnego wsparcia",
+
+            "MongoDB": "MongoDB",
+            "PosgreSQL": "PostgreSQL",
+            "MariaDB": "MariaDB",
+            "MySQL": "MySQL",
+            "NEON": "NEON",
+
+            "Container Creation": "Tworzenie kontenerów",
+            "Docker Compose": "Docker Compose",
+            "Image Management": "Zarządzanie obrazami",
+            "Volume & Network Configuration": "Konfiguracja wolumenów i sieci",
+            "Container Orchestration": "Orkiestracja kontenerów",
+
+            "Network Security": "Bezpieczeństwo sieci",
+            "Access Control": "Kontrola dostępu",
+            "Vulnerability Assessment": "Ocena podatności",
+            "Incident Response": "Reagowanie na incydenty",
+            "Security Auditing": "Audyt bezpieczeństwa",
+            "Encryption Implementation": "Implementacja szyfrowania",
+            "Security Policy Development": "Tworzenie polityk bezpieczeństwa",
 
             // --- Sekcja Projekty ---
+            "all": "Wszystkie",
+            "web": "Web",
+            "infrastructure": "Infrastruktura",
+            "automation": "Automatyzacja",
+
             projects: "Projekty",
             "Portfolio Website": "Strona Portfolio",
             "Portfolio Description": "Strona portfolio prezentująca moje umiejętności i projekty.",
@@ -227,7 +469,6 @@ const resources = {
             "Discord Integration Description": "Bot Discord do automatyzacji zarządzania serwerem i integracji.",
             "Discord Integration Details": "Opracowałem niestandardowego bota Discord do automatyzacji zadań zarządzania serwerem, w tym przypisywania ról, moderacji i niestandardowych komend. Zintegrowany z MongoDB dla trwałego przechowywania danych i zaimplementowano komendy slash dla lepszego doświadczenia użytkownika. Ten bot usprawnia różne zadania administracyjne i zwiększa zaangażowanie społeczności.",
 
-
             "Slack Process Automation": "Automatyzacja Onboardingu/Offboardingu IT",
             "Slack Process Description": "Zautomatyzowane procesy onboardingu i offboardingu IT, w tym zarządzanie kontami użytkowników i dostępami.",
             "Slack Process Details": "Opracowałem system automatyzacji procesów onboardingu i offboardingu IT. To rozwiązanie zapewnia efektywne zarządzanie cyklem życia użytkowników, obejmujące tworzenie kont, nadawanie dostępu (np. Google, Jira, Slack, Active Directory) i konfigurację systemów dla nowych pracowników. W przypadku offboardingu automatyzuje cofanie dostępu, archiwizację danych i powiadomienia o zwrocie sprzętu. System drastycznie redukuje zadania manualne, poprawia bezpieczeństwo i zapewnia spójną zgodność w całej infrastrukturze IT.",
@@ -236,8 +477,31 @@ const resources = {
             "ScholarHub Description": "Platforma uniwersytecka wspierająca rekrutację, spotkania online, czat i system oceniania.",
             "ScholarHub Details": "ScholarHub to platforma uniwersytecka oparta na React, zaprojektowana w celu poprawy doświadczenia studentów. Obsługuje procesy rekrutacyjne, ułatwia spotkania online, zapewnia funkcję czatu do komunikacji oraz zawiera kompleksowy system oceniania dla szkół wyższych. Backend jest zasilany przez Java Spring Boot z MongoDB jako bazą danych.",
 
+            "Minecraft Server": "Hosting Serwera Minecraft",
+            "Minecraft Server Description": "Samodzielne hostowanie i utrzymywanie modowanego serwera Minecraft przez ponad 2 lata, zapewniając wysoką wydajność i angażujące doświadczenie dla graczy.",
+            "Minecraft Server Details": "Zarządzałem i utrzymywałem samodzielnie hostowany, modowany serwer Minecraft przez ponad dwa lata, zapewniając stabilne i ulepszone środowisko gry. Do moich obowiązków należy regularna aktualizacja serwera i paczki modów, moderacja serwera discord, skrupulatne strojenie wydajności oraz optymalizacja ustawień serwera (np. argumenty JVM, konfiguracje Spigot/Paper) w celu minimalizacji lagów i zapewnienia płynnej rozgrywki, nawet przy dużej liczbie modów i jednoczesnych graczy. Proaktywne wdrażam strategie tworzenia kopii zapasowych i monitoruję stan serwera, aby zagwarantować integralność danych i wysoką dostępność. Ten bieżący projekt prezentuje moje praktyczne umiejętności w administracji serwerami Linux, zarządzaniu siecią, optymalizacji wydajności oraz zaangażowanie w dostarczanie niezawodnej i przyjemnej usługi dedykowanej społeczności graczy.",
+
+            "Uber Analytics": "Uber Analytics",
+            "Uber Analytics Description":
+                "Analizuje koszty przejazdów Uberem i zamówień Uber Eats, prezentowane na wykresach.",
+            "Uber Analytics Details":
+                "Ten projekt analizuje koszty związane z przejazdami Uberem i zamówieniami Uber Eats. Przetwarza dane z przesłanych plików, wizualizując wzorce wydatków i trendy za pomocą interaktywnych wykresów. Użytkownicy mogą uzyskać wgląd w swoje wydatki na transport i dostawę jedzenia, co pomaga im podejmować świadome decyzje.",
+
+            "Money Tracker": "Money Tracker",
+            "Money Tracker Description":
+                "Umożliwia dodawanie kosztów do analizy, pokazuje, na co wydajesz najwięcej i Twoje inwestycje.",
+            "Money Tracker Details":
+                "Money Tracker to aplikacja do zarządzania finansami osobistymi, która umożliwia użytkownikom śledzenie swoich wydatków i inwestycji. Zapewnia szczegółową analizę nawyków wydatkowych, podkreślając obszary, w których wydawane są największe kwoty, i pokazując wyniki inwestycji. Aplikacja pomaga użytkownikom zrozumieć swoją sytuację finansową i podejmować świadome decyzje w celu optymalizacji swoich wydatków i inwestycji.",
+
+            "Habit Rythm": "Habit Rythm",
+            "Habit Rythm Description":
+                "Nowoczesny, pełnostosowy tracker nawyków zbudowany za pomocą Next.js 15, MongoDB i NextAuth.",
+            "Habit Rythm Details":
+                "Habit Rythm to nowoczesny, pełnostosowy tracker nawyków zbudowany za pomocą Next.js 15, MongoDB i NextAuth. Śledź swoje nawyki za pomocą pięknego kalendarza kropkowego, personalizacji kolorów i bezpiecznego uwierzytelniania. Funkcje obejmują: Kalendarz kropkowy, zarządzanie nawykami, personalizację kolorów, powiadomienia toast.",
+
             // --- Experience Section ---
-            "Experience": "Doświadczenie", // Ensure this is defined
+
+            "Experience": "Doświadczenie",
             "Reikon Games": "Reikon Games",
             "IT Manager": "Menedżer IT",
             "Spearheading the development and maintenance of network infrastructure": "Prowadzenie rozwoju i utrzymania infrastruktury sieciowej",
@@ -276,7 +540,7 @@ const resources = {
             "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management": "Adobe Photoshop, Adobe Premiere Pro, Analiza Danych, Zarządzanie Kosztami",
 
             "Orange Polska": "Orange Polska",
-            "Praktykant": "Praktykant",
+            "Praktykant": "Praktykant w dziale CEX",
             "Participating in projects related to customer experience (CEX) analysis.": "Udział w projektach związanych z analizą doświadczeń klienta (CEX).",
             "Assisting with user research and UX design processes.": "Wsparcie w badaniach użytkowników i procesach projektowania UX.",
             "Contributing to mobile application testing and bug reporting.": "Współudział w testowaniu aplikacji mobilnych i raportowaniu błędów.",
@@ -291,13 +555,13 @@ const resources = {
             "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support": "Adobe Photoshop, Adobe Premiere Pro, Badania, Wsparcie Administracyjne",
 
             // --- Education Section Additions ---
-            "Education": "Edukacja", // New title for Education section
+            "Education": "Edukacja",
             "Warsaw University of Technology": "Politechnika Warszawska",
             "Master's degree, Computer Science": "Magister inżynier, Informatyka",
             "Debugging, User Experience (UX), Algorithms, LAN-WAN, Agile Development, GitHub, REST APIs, Databases, Programming, Jira, Troubleshooting, Application Servers, Networking, Node.js, Operating Systems, Problem Solving, Software Development, HTML5, Scriptwriting, Windows, Network Security": "Debugowanie, Doświadczenie Użytkownika (UX), Algorytmy, Sieci LAN-WAN, Rozwój Agile, GitHub, API REST, Bazy Danych, Programowanie, Jira, Rozwiązywanie Problemów, Serwery Aplikacji, Sieci, Node.js, Systemy Operacyjne, Rozwiązywanie Problemów, Rozwój Oprogramowania, HTML5, Pisanie Skryptów, Windows, Bezpieczeństwo Sieci",
 
             "Polish-Japanese Academy of Information Technology": "Polsko-Japońska Akademia Technik Komputerowych",
-            "Informatyka": "Informatyka", // Degree name
+            "Informatyka": "Inżynier, Informatyka",
             "Debugging, User Experience (UX), Adobe Premiere Pro, Algorithms, LAN-WAN, Agile Development, Web Development, Java, Dashboards, GitHub, REST APIs, Databases, React.js, Programming, Web Design, C#, Jira, Project Management, Java Spring Boot, Troubleshooting, Application Servers, Web Services, Networking, Node.js, Operating Systems, Cascading Style Sheets (CSS), Problem Solving, Software Development, MongoDB, Content Management Systems (CMS), Microsoft Office, HTML5, Adobe Photoshop, Computer Repair, JavaScript, Network Troubleshooting, Scriptwriting, Web Applications, Windows, HTML, Network Security": "Debugowanie, Doświadczenie Użytkownika (UX), Adobe Premiere Pro, Algorytmy, Sieci LAN-WAN, Rozwój Agile, Tworzenie Aplikacji Webowych, Java, Pulpity Nawigacyjne, GitHub, API REST, Bazy Danych, React.js, Programowanie, Projektowanie Stron Internetowych, C#, Jira, Zarządzanie Projektami, Java Spring Boot, Rozwiązywanie Problemów, Serwery Aplikacji, Usługi Webowe, Sieci, Node.js, Systemy Operacyjne, Kaskadowe Arkusze Stylów (CSS), Rozwiązywanie Problemów, Rozwój Oprogramowania, MongoDB, Systemy Zarządzania Treścią (CMS), Microsoft Office, HTML5, Adobe Photoshop, Naprawa Komputerów, JavaScript, Rozwiązywanie Problemów Sieciowych, Pisanie Skryptów, Aplikacje Webowe, Windows, HTML, Bezpieczeństwo Sieci",
 
             "University of Warsaw": "Uniwersytet Warszawski",

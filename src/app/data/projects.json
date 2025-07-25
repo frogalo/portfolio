@@ -110,6 +110,60 @@
     "websiteUrl": null
   },
   {
+    "id": "habit-rythm",
+    "title": "Habit Rythm",
+    "description": "Habit Rythm Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": false
+      },
+      {
+        "name": "Translations",
+        "isNew": true
+      },
+      {
+        "name": "Themes",
+        "isNew": false
+      }
+    ],
+    "details": "Habit Rythm Details",
+    "images": [
+      "/images/projects/habit-1.png",
+      "/images/projects/habit-2.png",
+      "/images/projects/habit-3.png"
+    ],
+    "websiteUrl": "https://habit-rythm.jakub-urbanski.me"
+  },
+  {
+    "id": "money-tracker",
+    "title": "Money Tracker",
+    "description": "Money Tracker Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": false
+      },
+      {
+        "name": "Translations",
+        "isNew": true
+      },
+      {
+        "name": "Themes",
+        "isNew": false
+      }
+    ],
+    "details": "Money Tracker Details",
+    "images": [
+      "/images/projects/money-1.png",
+      "/images/projects/money-2.png",
+      "/images/projects/money-3.png"
+    ],
+    "websiteUrl": "https://money-tracker.jakub-urbanski.me"
+  },
+  {
     "id": "it-dashboard",
     "title": "IT Dashboard",
     "description": "IT Dashboard Description",
@@ -250,8 +304,7 @@
     ],
     "details": "Discord Integration Details",
     "images": [
-      "/images/projects/discord-bot-1.png",
-      "/images/projects/discord-bot-2.png"
+      "/images/projects/discord-bot-1.png"
     ],
     "websiteUrl": null
   },
@@ -281,6 +334,65 @@
       "/images/projects/scholarhub-3.png",
       "/images/projects/scholarhub-4.png",
       "/images/projects/scholarhub-5.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "minecraft-server",
+    "title": "Minecraft Server",
+    "description": "Minecraft Server Description",
+    "category": "infrastructure",
+    "tech": [
+      {
+        "name": "Networking",
+        "isNew": false
+      },
+      {
+        "name": "Ubuntu",
+        "isNew": false
+      },
+      {
+        "name": "Performance Tuning",
+        "isNew": true
+      },
+      {
+        "name": "Backup Solutions",
+        "isNew": true
+      },
+      {
+        "name": "Bash Scripting",
+        "isNew": false
+      }
+    ],
+    "details": "Minecraft Server Details",
+    "images": [
+      "/images/projects/minecraft-1.png"
+    ],
+    "websiteUrl": null
+  },
+  {
+    "id": "uber-analytics",
+    "title": "Uber Analytics",
+    "description": "Uber Analytics Description",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js",
+        "isNew": false
+      },
+      {
+        "name": "File upload",
+        "isNew": true
+      },
+      {
+        "name": "Graphs",
+        "isNew": false
+      }
+    ],
+    "details": "Uber Analytics Details",
+    "images": [
+      "/images/projects/uber-1.png",
+      "/images/projects/uber-2.png"
     ],
     "websiteUrl": null
   }

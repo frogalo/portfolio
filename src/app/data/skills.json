@@ -2,61 +2,181 @@
   {
     "name": "System Administration",
     "level": 95,
-    "iconSlug": "computer"
+    "iconSlug": "computer",
+    "subSkills": [
+      "Windows Server Management",
+      "Linux System Administration",
+      "User Account Management",
+      "System Monitoring & Performance",
+      "Backup & Recovery Solutions",
+      "Hardware Troubleshooting",
+      "System Updates & Patching"
+    ]
   },
   {
     "name": "API Integration",
     "level": 90,
-    "iconSlug": "api"
+    "iconSlug": "api",
+    "subSkills": [
+      "RESTful API Development",
+      "Google APIs",
+      "Slack APIs",
+      "Steam APIs",
+      "OAuth & Authentication",
+      "API Documentation",
+      "Rate Limiting & Throttling",
+      "Webhook Integration",
+      "API Testing & Monitoring"
+    ]
   },
   {
     "name": "Proxmox Virtualization",
     "level": 85,
-    "iconSlug": "proxmox"
+    "iconSlug": "proxmox",
+    "subSkills": [
+      "VM Creation & Management",
+      "Container Deployment (LXC)",
+      "Storage Configuration",
+      "Network Configuration",
+      "Backup & Restore",
+      "Cluster Management",
+      "Performance Optimization"
+    ]
   },
   {
     "name": "PowerShell Automation",
     "level": 85,
-    "iconSlug": "microsoft"
+    "iconSlug": "microsoft",
+    "subSkills": [
+      "Script Development",
+      "Module Creation",
+      "Task Automation",
+      "Active Directory Management",
+      "Exchange Administration",
+      "Azure PowerShell",
+      "Error Handling & Logging",
+      "Scheduled Task Management"
+    ]
   },
   {
     "name": "Google Workspace/M365",
     "level": 85,
-    "iconSlug": "google"
+    "iconSlug": "google",
+    "subSkills": [
+      "User & Group Management",
+      "Email Configuration",
+      "SharePoint Administration",
+      "Teams Management",
+      "Security & Compliance",
+      "License Management",
+      "Migration Services"
+    ]
   },
   {
     "name": "Linux/Windows Servers",
     "level": 85,
-    "iconSlug": "linux"
+    "iconSlug": "linux",
+    "subSkills": [
+      "Ubuntu/CentOS Administration",
+      "Windows Server 2019/2022",
+      "Service Configuration",
+      "File System Management",
+      "Performance Tuning",
+      "Log Analysis",
+      "Security Hardening"
+    ]
   },
   {
     "name": "Web Development",
     "level": 80,
-    "iconSlug": "web"
+    "iconSlug": "web",
+    "subSkills": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "HTML/CSS/JavaScript",
+      "Responsive Design",
+      "Database Integration",
+      "Version Control (Git)",
+      "Testing & Debugging"
+    ]
   },
   {
     "name": "Active Directory",
     "level": 80,
-    "iconSlug": "ad"
+    "iconSlug": "ad",
+    "subSkills": [
+      "Domain Controller Management",
+      "Group Policy Configuration",
+      "DNS & DHCP Integration",
+      "Certificate Services",
+      "Federation Services",
+      "Security Groups Management",
+      "Organizational Unit Design"
+    ]
   },
   {
     "name": "Networking (TCP/IP, DNS, DHCP)",
     "level": 80,
-    "iconSlug": "dns"
+    "iconSlug": "dns",
+    "subSkills": [
+      "Subnetting & VLANS",
+      "DNS Configuration",
+      "DHCP Management",
+      "Firewall Configuration",
+      "Network Troubleshooting",
+      "Switch & Router Configuration"
+    ]
   },
   {
     "name": "Endpoint Management",
     "level": 70,
-    "iconSlug": "endpoint"
+    "iconSlug": "endpoint",
+    "subSkills": [
+      "SCCM/Intune Management",
+      "Software Deployment",
+      "Device Compliance",
+      "Mobile Device Management",
+      "Patch Management",
+      "Remote Support Tools"
+    ]
+  },
+  {
+    "name": "Database Management",
+    "level": 70,
+    "iconSlug": "database",
+    "subSkills": [
+      "MongoDB",
+      "PosgreSQL",
+      "MariaDB",
+      "MySQL",
+      "NEON"
+    ]
   },
   {
     "name": "Docker",
     "level": 65,
-    "iconSlug": "docker"
+    "iconSlug": "docker",
+    "subSkills": [
+      "Container Creation",
+      "Docker Compose",
+      "Image Management",
+      "Volume & Network Configuration",
+      "Container Orchestration"
+    ]
   },
   {
     "name": "Security",
     "level": 70,
-    "iconSlug": "security"
+    "iconSlug": "security",
+    "subSkills": [
+      "Network Security",
+      "Access Control",
+      "Vulnerability Assessment",
+      "Incident Response",
+      "Security Auditing",
+      "Encryption Implementation",
+      "Security Policy Development"
+    ]
   }
 ]
