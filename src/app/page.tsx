@@ -33,9 +33,9 @@ export default function HomePage() {
         <div className="flex flex-col min-h-screen bg-background text-text">
             <Header
                 activeSection={activeSection}
-                setActiveSection={setActiveSection}
+                setActiveSectionAction={setActiveSection}
                 currentTheme={theme}
-                onThemeChange={setTheme}
+                onThemeChangeAction={setTheme}
             />
 
             {/* Main content area that grows to fill available space */}

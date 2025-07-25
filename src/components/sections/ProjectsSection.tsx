@@ -125,7 +125,7 @@ export default function ProjectsSection() {
                 ))}
             </div>
 
-            <ProjectModal project={selectedProject} onClose={closeModal} />
+            <ProjectModal project={selectedProject} onCloseAction={closeModal} />
         </motion.section>
     );
 }

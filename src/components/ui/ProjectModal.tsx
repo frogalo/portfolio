@@ -15,17 +15,16 @@ interface ProjectModalProps {
     project: {
         id: string;
         title: string;
-        description: string; // The short description shown on the card
+        description: string;
         tech: TechItem[];
-        details: string; // The long details shown in the modal
+        details: string;
         images: string[];
         websiteUrl: string | null;
     } | null;
-    onClose: () => void;
+    onCloseAction: () => void;
 }
 
-export default function ProjectModal({ project, onClose }: ProjectModalProps) {
-    // All hooks MUST be called unconditionally at the top level
+export default function ProjectModal({ project, onCloseAction }: ProjectModalProps) {
     const { t } = useTranslation();
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
@@ -41,13 +40,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         exit: { opacity: 0, transition: { duration: 0.15 } },
     };
 
-    // Handle closing image preview
     const closeImagePreview = () => {
         setPreviewImage(null);
     };
 
-    // Now, conditionally render the modal content.
-    // The hooks have already been called.
     if (!project) return null;
 
     return (
@@ -56,8 +52,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm"
-                onClick={onClose}
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md"
+                onClick={onCloseAction}
             >
                 <motion.div
                     variants={modalVariants}
@@ -68,7 +64,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button
-                        onClick={onClose}
+                        onClick={onCloseAction}
                         className="absolute top-4 right-4 text-[var(--primary)]/70 hover:text-[var(--primary)] transition-colors duration-200 z-10"
                         aria-label="Close modal"
                     >
@@ -95,8 +91,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                                         />
                                     </div>
-                                    <div
-                                        className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <ImageIcon className="w-8 h-8 text-white" />
                                     </div>
                                 </div>
@@ -121,8 +116,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                                     >
                                         <span>{techItem.name}</span>
                                         {techItem.isNew && (
-                                            <span
-                                                className="bg-purple-accent text-[var(--header-txt)] text-xs font-bold px-1 py-0 rounded-full">
+                                            <span className="bg-purple-accent text-[var(--header-txt)] text-xs font-bold px-1 py-0 rounded-full">
                                                 New
                                             </span>
                                         )}
@@ -146,14 +140,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     )}
                 </motion.div>
 
-                {/* Image Preview Modal */}
                 <AnimatePresence>
                     {previewImage && (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-60 flex items-center justify-center backdrop-blur-lg bg-black bg-opacity-30 p-4"
+                            className="fixed inset-0 z-60 flex items-center justify-center bg-black/30 backdrop-blur-md p-4"
                             onClick={closeImagePreview}
                         >
                             <motion.div

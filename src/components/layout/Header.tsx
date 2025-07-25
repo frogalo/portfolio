@@ -7,16 +7,16 @@ import LanguageSwitcher from "@/components/icons/LanguageSwitcher";
 
 interface HeaderProps {
     activeSection: string;
-    setActiveSection: (section: string) => void;
+    setActiveSectionAction: (section: string) => void;
     currentTheme: "light" | "dark" | "system";
-    onThemeChange: (theme: "light" | "dark" | "system") => void;
+    onThemeChangeAction: (theme: "light" | "dark" | "system") => void;
 }
 
 export default function Header({
                                    activeSection,
-                                   setActiveSection,
+                                   setActiveSectionAction,
                                    currentTheme,
-                                   onThemeChange,
+                                   onThemeChangeAction,
                                }: HeaderProps) {
     const { t } = useTranslation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,15 +25,17 @@ export default function Header({
 
     // Function to handle navigation clicks
     const handleNavClick = (section: string) => {
-        setActiveSection(section);
+        setActiveSectionAction(section);
         setIsMenuOpen(false); // Close mobile menu if open
     };
 
     // Helper to generate dynamic classes for navigation buttons
     const getNavItemClasses = (item: string) => {
-        const baseClasses = "capitalize transition-colors duration-200 cursor-pointer py-2 px-3 rounded-md";
+        const baseClasses =
+            "capitalize transition-colors duration-200 cursor-pointer py-2 px-3 rounded-md";
         const activeClasses = "font-bold text-[var(--text)]"; // Using --accent for active text
-        const inactiveClasses = "text-[var(--header-txt)] hover:text-[var(--primary)]"; // Using --header-txt and --primary for inactive/hover
+        const inactiveClasses =
+            "text-[var(--header-txt)] hover:text-[var(--primary)]"; // Using --header-txt and --primary for inactive/hover
 
         if (activeSection === item) {
             return `${baseClasses} ${activeClasses}`;
@@ -75,7 +77,7 @@ export default function Header({
                         <LanguageSwitcher />
                         <ThemeSwitcher
                             currentTheme={currentTheme}
-                            onThemeChangeAction={onThemeChange}
+                            onThemeChangeAction={onThemeChangeAction}
                         />
                     </div>
 
@@ -85,8 +87,19 @@ export default function Header({
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle mobile menu"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
                         </svg>
                     </button>
                 </div>
@@ -94,7 +107,9 @@ export default function Header({
 
             {/* Mobile Navigation Menu (appears when isMenuOpen is true) */}
             {isMenuOpen && (
-                <div className="md:hidden bg-[var(--header-bg)] text-[var(--header-txt)] border-t border-primary"> {/* Use header vars here too */}
+                <div className="md:hidden bg-[var(--header-bg)] text-[var(--header-txt)] border-t border-primary">
+                    {" "}
+                    {/* Use header vars here too */}
                     <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
                         {/* Mobile Navigation Items */}
                         {navItems.map((item) => (
@@ -112,11 +127,13 @@ export default function Header({
                         ))}
                     </div>
                     {/* Switchers moved inside the mobile menu */}
-                    <div className="container mx-auto px-4 py-3 border-t border-[var(--primary)] flex justify-center items-center space-x-4"> {/* Use primary for border */}
+                    <div className="container mx-auto px-4 py-3 border-t border-[var(--primary)] flex justify-center items-center space-x-4">
+                        {" "}
+                        {/* Use primary for border */}
                         <LanguageSwitcher />
                         <ThemeSwitcher
                             currentTheme={currentTheme}
-                            onThemeChangeAction={onThemeChange}
+                            onThemeChangeAction={onThemeChangeAction}
                         />
                     </div>
                 </div>
