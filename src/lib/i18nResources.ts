@@ -18,7 +18,7 @@ const resources = {
             contactLocationLabel: "Location:",
             contactLocationValue: "Warsaw, Poland",
             contactPhoneLabel: "Phone:",
-            contactPhoneValue: "+48 504 977 011",
+            contactPhoneValue: "+48 000 000 000",
             contactEmailLabel: "Email:",
             contactEmailValue: "ivo.urbanski@gmail.com",
             contactGithubLabel: "GitHub:",
@@ -83,13 +83,73 @@ const resources = {
             "ScholarHub Details": "ScholarHub is a React-based university platform designed to enhance the student experience. It supports recruitment processes, facilitates online meetings, provides a chat function for communication, and includes a comprehensive grading system for higher education institutions. The backend is powered by Java Spring Boot with MongoDB as the database.",
 
             // --- Experience Section ---
-            experience: "Experience",
-            "IT Administrator": "IT Administrator",
-            "IT Administrator at Reikon Games description": "Administrowanie infrastrukturą serwerową (Windows/Linux, Proxmox VE), automatyzacja zadań przy użyciu PowerShell, zarządzanie cyklem życia urządzeń końcowych, tworzenie wewnętrznych paneli monitorujących, administrowanie platformami SaaS",
-            "IT Support and Project Coordinator": "IT Support and Project Coordinator",
-            "IT Support and Project Coordinator description": "Świadczenie usług wsparcia IT, zarządzanie usługami Microsoft 365 i Google, organizacja międzynarodowych wydarzeń ze wsparciem technicznym dla ponad 500 uczestników",
-            "CEX Team Analyst": "CEX Team Analyst",
-            "CEX Team Analyst at Orange Poland description": "Przeprowadzanie analiz konkurencji zwiększające udział w rynku o 15%, testowanie aplikacji mobilnych odkrywające ponad 100 błędów, opracowanie strategii gamifikacji dla pracowników",
+            "Experience": "Experience", // Ensure this is defined
+            "Reikon Games": "Reikon Games",
+            "IT Manager": "IT Manager",
+            "Spearheading the development and maintenance of network infrastructure": "Spearheading the development and maintenance of network infrastructure",
+            "Leading the modernization and expansion of server infrastructure": "Leading the modernization and expansion of server infrastructure",
+            "Managing asset logistics, including the organization of equipment deliveries": "Managing asset logistics, including the organization of equipment deliveries",
+            "Overseeing the monitoring and performance of the overall IT infrastructure": "Overseeing the monitoring and performance of the overall IT infrastructure",
+            "Supervising user account and access management (AD, Google, Slack, Access Control System)": "Supervising user account and access management (AD, Google, Slack, Access Control System)",
+            "Directing the administration of various SaaS platforms": "Directing the administration of various SaaS platforms",
+            "Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022": "Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022",
+            "Providing and managing second-line technical support (L2)": "Providing and managing second-line technical support (L2)",
+            "Ensuring the maintenance of comprehensive technical documentation": "Ensuring the maintenance of comprehensive technical documentation",
+            "Collaborating in the creation and enforcement of IT policies and procedures": "Collaborating in the creation and enforcement of IT policies and procedures",
+            "Training and mentoring team members and users for enhanced operational efficiency": "Training and mentoring team members and users for enhanced operational efficiency",
+            "Managing licenses and subscriptions": "Managing licenses and subscriptions",
+            "Agile Development, IT Project & Program Management, Linux, Windows Server, Networking, Cybersecurity, Cloud Computing, SaaS Management": "Agile Development, IT Project & Program Management, Linux, Windows Server, Networking, Cybersecurity, Cloud Computing, SaaS Management",
+
+            "IT Assistant": "IT Assistant",
+            "Organizing asset delivery and equipment preparation": "Organizing asset delivery and equipment preparation",
+            "Overseeing IT infrastructure monitoring": "Overseeing IT infrastructure monitoring",
+            "Providing first-line technical support (L1)": "Providing first-line technical support (L1)",
+            "Managing user accounts and access (AD, Google, Slack, Access Control System)": "Managing user accounts and access (AD, Google, Slack, Access Control System)",
+            "Administering SaaS platforms": "Administering SaaS platforms",
+            "Handling server administration on Linux (Debian, Ubuntu) and Windows Server 2022": "Handling server administration on Linux (Debian, Ubuntu) and Windows Server 2022",
+            "Maintaining technical documentation": "Maintaining technical documentation",
+            "Assisting with IT policy and procedure development": "Assisting with IT policy and procedure development",
+            "Contributing to server infrastructure setup": "Contributing to server infrastructure setup",
+            "Managed assets system": "Managed assets system",
+            "Conducting technical onboarding for users": "Conducting technical onboarding for users",
+            "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management",
+
+            "CIE Center for Innovative Education": "CIE Center for Innovative Education",
+            "Dział planowania i analizy kosztów": "Planning and Cost Analysis Department", // English translation
+            "Analyzing planning and cost data to identify areas for efficiency improvement.": "Analyzing planning and cost data to identify areas for efficiency improvement.",
+            "Assisting with budget preparation and financial reporting.": "Assisting with budget preparation and financial reporting.",
+            "Developing tools for data visualization and performance tracking.": "Developing tools for data visualization and performance tracking.",
+            "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management": "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management",
+
+            "Orange Polska": "Orange Poland",
+            "Praktykant": "Intern",
+            "Participating in projects related to customer experience (CEX) analysis.": "Participating in projects related to customer experience (CEX) analysis.",
+            "Assisting with user research and UX design processes.": "Assisting with user research and UX design processes.",
+            "Contributing to mobile application testing and bug reporting.": "Contributing to mobile application testing and bug reporting.",
+            "Adobe Photoshop, User Experience (UX), Mobile Application Testing, Customer Experience": "Adobe Photoshop, User Experience (UX), Mobile Application Testing, Customer Experience",
+
+            "European Parliament": "European Parliament",
+            "Intern in the Warsaw office of Danuta Hübner": "Intern in the Warsaw office of Danuta Hübner",
+            "Warsaw, Mazowieckie, Poland": "Warsaw, Mazowieckie, Poland",
+            "Assisting with research on European studies and civilization topics.": "Assisting with research on European studies and civilization topics.",
+            "Preparing reports and presentations for internal use.": "Preparing reports and presentations for internal use.",
+            "Supporting general office administration tasks.": "Supporting general office administration tasks.",
+            "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support": "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support",
+
+
+            // --- Education Section Additions ---
+            "Education": "Education", // New title for Education section
+            "Warsaw University of Technology": "Warsaw University of Technology",
+            "Master's degree, Computer Science": "Master's degree, Computer Science",
+            "Debugging, User Experience (UX), Algorithms, LAN-WAN, Agile Development, GitHub, REST APIs, Databases, Programming, Jira, Troubleshooting, Application Servers, Networking, Node.js, Operating Systems, Problem Solving, Software Development, HTML5, Scriptwriting, Windows, Network Security": "Debugging, User Experience (UX), Algorithms, LAN-WAN, Agile Development, GitHub, REST APIs, Databases, Programming, Jira, Troubleshooting, Application Servers, Networking, Node.js, Operating Systems, Problem Solving, Software Development, HTML5, Scriptwriting, Windows, Network Security",
+
+            "Polish-Japanese Academy of Information Technology": "Polish-Japanese Academy of Information Technology",
+            "Informatyka": "Computer Science", // Translated degree
+            "Debugging, User Experience (UX), Adobe Premiere Pro, Algorithms, LAN-WAN, Agile Development, Web Development, Java, Dashboards, GitHub, REST APIs, Databases, React.js, Programming, Web Design, C#, Jira, Project Management, Java Spring Boot, Troubleshooting, Application Servers, Web Services, Networking, Node.js, Operating Systems, Cascading Style Sheets (CSS), Problem Solving, Software Development, MongoDB, Content Management Systems (CMS), Microsoft Office, HTML5, Adobe Photoshop, Computer Repair, JavaScript, Network Troubleshooting, Scriptwriting, Web Applications, Windows, HTML, Network Security": "Debugging, User Experience (UX), Adobe Premiere Pro, Algorithms, LAN-WAN, Agile Development, Web Development, Java, Dashboards, GitHub, REST APIs, Databases, React.js, Programming, Web Design, C#, Jira, Project Management, Java Spring Boot, Troubleshooting, Application Servers, Web Services, Networking, Node.js, Operating Systems, Cascading Style Sheets (CSS), Problem Solving, Software Development, MongoDB, Content Management Systems (CMS), Microsoft Office, HTML5, Adobe Photoshop, Computer Repair, JavaScript, Network Troubleshooting, Scriptwriting, Web Applications, Windows, HTML, Network Security",
+
+            "University of Warsaw": "University of Warsaw",
+            "European Studies/Civilization": "European Studies",
+            "Microsoft Office": "Microsoft Office, Basic Economic, Basic Law"
         }
     },
     pl: {
@@ -111,7 +171,7 @@ const resources = {
             contactLocationLabel: "Lokalizacja:",
             contactLocationValue: "Warszawa, Polska",
             contactPhoneLabel: "Telefon:",
-            contactPhoneValue: "+48 504 977 011",
+            contactPhoneValue: "+48 000 000 000",
             contactEmailLabel: "Email:",
             contactEmailValue: "ivo.urbanski@gmail.com",
             contactGithubLabel: "GitHub:",
@@ -177,13 +237,72 @@ const resources = {
             "ScholarHub Details": "ScholarHub to platforma uniwersytecka oparta na React, zaprojektowana w celu poprawy doświadczenia studentów. Obsługuje procesy rekrutacyjne, ułatwia spotkania online, zapewnia funkcję czatu do komunikacji oraz zawiera kompleksowy system oceniania dla szkół wyższych. Backend jest zasilany przez Java Spring Boot z MongoDB jako bazą danych.",
 
             // --- Experience Section ---
-            experience: "Doświadczenie",
-            "IT Administrator": "Administrator IT",
-            "IT Administrator at Reikon Games description": "Administrowanie infrastrukturą serwerową (Windows/Linux, Proxmox VE), automatyzacja zadań przy użyciu PowerShell, zarządzanie cyklem życia urządzeń końcowych, tworzenie wewnętrznych paneli monitorujących, administrowanie platformami SaaS",
-            "IT Support and Project Coordinator": "Wsparcie IT i Koordynator Projektów",
-            "IT Support and Project Coordinator description": "Świadczenie usług wsparcia IT, zarządzanie usługami Microsoft 365 i Google, organizacja międzynarodowych wydarzeń ze wsparciem technicznym dla ponad 500 uczestników",
-            "CEX Team Analyst": "Analityk Zespołu CEX",
-            "CEX Team Analyst at Orange Poland description": "Przeprowadzanie analiz konkurencji zwiększające udział w rynku o 15%, testowanie aplikacji mobilnych odkrywające ponad 100 błędów, opracowanie strategii gamifikacji dla pracowników",
+            "Experience": "Doświadczenie", // Ensure this is defined
+            "Reikon Games": "Reikon Games",
+            "IT Manager": "Menedżer IT",
+            "Spearheading the development and maintenance of network infrastructure": "Prowadzenie rozwoju i utrzymania infrastruktury sieciowej",
+            "Leading the modernization and expansion of server infrastructure": "Kierowanie modernizacją i rozbudową infrastruktury serwerowej",
+            "Managing asset logistics, including the organization of equipment deliveries": "Zarządzanie logistyką aktywów, w tym organizacja dostaw sprzętu",
+            "Overseeing the monitoring and performance of the overall IT infrastructure": "Nadzorowanie monitorowania i wydajności całej infrastruktury IT",
+            "Supervising user account and access management (AD, Google, Slack, Access Control System)": "Nadzorowanie zarządzania kontami użytkowników i dostępami (AD, Google, Slack, system kontroli dostępu)",
+            "Directing the administration of various SaaS platforms": "Kierowanie administracją różnych platform SaaS",
+            "Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022": "Nadzorowanie administracji serwerami Linux (Debian, Ubuntu) i Windows Server 2022",
+            "Providing and managing second-line technical support (L2)": "Świadczenie i zarządzanie wsparciem technicznym drugiego poziomu (L2)",
+            "Ensuring the maintenance of comprehensive technical documentation": "Zapewnienie utrzymania kompleksowej dokumentacji technicznej",
+            "Collaborating in the creation and enforcement of IT policies and procedures": "Współpraca przy tworzeniu i egzekwowaniu zasad i procedur IT",
+            "Training and mentoring team members and users for enhanced operational efficiency": "Szkolenie i mentoring członków zespołu oraz użytkowników w celu zwiększenia efektywności operacyjnej",
+            "Managing licenses and subscriptions": "Zarządzanie licencjami i subskrypcjami",
+            "Agile Development, IT Project & Program Management, Linux, Windows Server, Networking, Cybersecurity, Cloud Computing, SaaS Management": "Rozwój Agile, Zarządzanie Projektami i Programami IT, Linux, Serwery Windows, Sieci, Cyberbezpieczeństwo, Chmura Obliczeniowa, Zarządzanie SaaS",
+
+            "IT Assistant": "Asystent IT",
+            "Organizing asset delivery and equipment preparation": "Organizacja dostaw aktywów i przygotowania sprzętu",
+            "Overseeing IT infrastructure monitoring": "Nadzorowanie monitorowania infrastruktury IT",
+            "Providing first-line technical support (L1)": "Świadczenie wsparcia technicznego pierwszego poziomu (L1)",
+            "Managing user accounts and access (AD, Google, Slack, Access Control System)": "Zarządzanie kontami użytkowników i dostępami (AD, Google, Slack, system kontroli dostępu)",
+            "Administering SaaS platforms": "Administrowanie platformami SaaS",
+            "Handling server administration on Linux (Debian, Ubuntu) and Windows Server 2022": "Obsługa administracji serwerami Linux (Debian, Ubuntu) i Windows Server 2022",
+            "Maintaining technical documentation": "Utrzymywanie dokumentacji technicznej",
+            "Assisting with IT policy and procedure development": "Wsparcie w rozwoju zasad i procedur IT",
+            "Contributing to server infrastructure setup": "Wkład w konfigurację infrastruktury serwerowej",
+            "Managed assets system": "System zarządzania aktywami",
+            "Conducting technical onboarding for users": "Przeprowadzanie technicznego onboardingu dla użytkowników",
+            "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Serwer Windows, Sieci, Wsparcie IT, Help Desk, Active Directory, Google Workspace, Slack, Jira, Zarządzanie Aktywami",
+
+            "CIE Center for Innovative Education": "CIE Centrum Innowacyjnej Edukacji",
+            "Dział planowania i analizy kosztów": "Dział planowania i analizy kosztów",
+            "Analyzing planning and cost data to identify areas for efficiency improvement.": "Analiza danych planowania i kosztów w celu identyfikacji obszarów do poprawy efektywności.",
+            "Assisting with budget preparation and financial reporting.": "Wsparcie w przygotowaniu budżetu i raportowaniu finansowym.",
+            "Developing tools for data visualization and performance tracking.": "Rozwój narzędzi do wizualizacji danych i śledzenia wydajności.",
+            "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management": "Adobe Photoshop, Adobe Premiere Pro, Analiza Danych, Zarządzanie Kosztami",
+
+            "Orange Polska": "Orange Polska",
+            "Praktykant": "Praktykant",
+            "Participating in projects related to customer experience (CEX) analysis.": "Udział w projektach związanych z analizą doświadczeń klienta (CEX).",
+            "Assisting with user research and UX design processes.": "Wsparcie w badaniach użytkowników i procesach projektowania UX.",
+            "Contributing to mobile application testing and bug reporting.": "Współudział w testowaniu aplikacji mobilnych i raportowaniu błędów.",
+            "Adobe Photoshop, User Experience (UX), Mobile Application Testing, Customer Experience": "Adobe Photoshop, Doświadczenie Użytkownika (UX), Testowanie Aplikacji Mobilnych, Doświadczenie Klienta",
+
+            "European Parliament": "Parlament Europejski",
+            "Intern in the Warsaw office of Danuta Hübner": "Staże w biurze Danuty Hübner w Warszawie",
+            "Warsaw, Mazowieckie, Poland": "Warszawa, Mazowieckie, Polska",
+            "Assisting with research on European studies and civilization topics.": "Pomoc w badaniach nad zagadnieniami studiów europejskich i cywilizacji.",
+            "Preparing reports and presentations for internal use.": "Przygotowywanie raportów i prezentacji do użytku wewnętrznego.",
+            "Supporting general office administration tasks.": "Wspieranie ogólnych zadań administracji biurowej.",
+            "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support": "Adobe Photoshop, Adobe Premiere Pro, Badania, Wsparcie Administracyjne",
+
+            // --- Education Section Additions ---
+            "Education": "Edukacja", // New title for Education section
+            "Warsaw University of Technology": "Politechnika Warszawska",
+            "Master's degree, Computer Science": "Magister inżynier, Informatyka",
+            "Debugging, User Experience (UX), Algorithms, LAN-WAN, Agile Development, GitHub, REST APIs, Databases, Programming, Jira, Troubleshooting, Application Servers, Networking, Node.js, Operating Systems, Problem Solving, Software Development, HTML5, Scriptwriting, Windows, Network Security": "Debugowanie, Doświadczenie Użytkownika (UX), Algorytmy, Sieci LAN-WAN, Rozwój Agile, GitHub, API REST, Bazy Danych, Programowanie, Jira, Rozwiązywanie Problemów, Serwery Aplikacji, Sieci, Node.js, Systemy Operacyjne, Rozwiązywanie Problemów, Rozwój Oprogramowania, HTML5, Pisanie Skryptów, Windows, Bezpieczeństwo Sieci",
+
+            "Polish-Japanese Academy of Information Technology": "Polsko-Japońska Akademia Technik Komputerowych",
+            "Informatyka": "Informatyka", // Degree name
+            "Debugging, User Experience (UX), Adobe Premiere Pro, Algorithms, LAN-WAN, Agile Development, Web Development, Java, Dashboards, GitHub, REST APIs, Databases, React.js, Programming, Web Design, C#, Jira, Project Management, Java Spring Boot, Troubleshooting, Application Servers, Web Services, Networking, Node.js, Operating Systems, Cascading Style Sheets (CSS), Problem Solving, Software Development, MongoDB, Content Management Systems (CMS), Microsoft Office, HTML5, Adobe Photoshop, Computer Repair, JavaScript, Network Troubleshooting, Scriptwriting, Web Applications, Windows, HTML, Network Security": "Debugowanie, Doświadczenie Użytkownika (UX), Adobe Premiere Pro, Algorytmy, Sieci LAN-WAN, Rozwój Agile, Tworzenie Aplikacji Webowych, Java, Pulpity Nawigacyjne, GitHub, API REST, Bazy Danych, React.js, Programowanie, Projektowanie Stron Internetowych, C#, Jira, Zarządzanie Projektami, Java Spring Boot, Rozwiązywanie Problemów, Serwery Aplikacji, Usługi Webowe, Sieci, Node.js, Systemy Operacyjne, Kaskadowe Arkusze Stylów (CSS), Rozwiązywanie Problemów, Rozwój Oprogramowania, MongoDB, Systemy Zarządzania Treścią (CMS), Microsoft Office, HTML5, Adobe Photoshop, Naprawa Komputerów, JavaScript, Rozwiązywanie Problemów Sieciowych, Pisanie Skryptów, Aplikacje Webowe, Windows, HTML, Bezpieczeństwo Sieci",
+
+            "University of Warsaw": "Uniwersytet Warszawski",
+            "European Studies/Civilization": "Studia Europejskie",
+            "Microsoft Office": "Microsoft Office, Podstawy Prawa, Podstawy Ekonomii"
         }
     }
 };
