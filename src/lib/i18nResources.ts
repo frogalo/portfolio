@@ -25,6 +25,20 @@ const resources = {
             contactGithubValue: "github.com/frogalo",
             downloadCV: "Download CV",
 
+            sendMeMessage: "Send me a message",
+            name: "Name",
+            yourName: "Your name",
+            email: "Email",
+            yourEmail: "Your email",
+            subject: "Subject",
+            messageSubject: "Message subject",
+            message: "Message",
+            yourMessage: "Your message",
+            sendMessage: "Send Message",
+            sending: "Sending...",
+            messageSent: "Message sent successfully!",
+            sendMessageError: "Failed to send message. Please try again.",
+
             // --- Skills Section ---
             "expertise_areas": "Expertise Areas",
             skills: "Skills",
@@ -310,6 +324,20 @@ const resources = {
             contactGithubValue: "github.com/frogalo",
             downloadCV: "Pobierz CV",
 
+            sendMeMessage: "Wyślij wiadomość",
+            name: "Imię",
+            yourName: "Twoje imię",
+            email: "Email",
+            yourEmail: "Twój email",
+            subject: "Temat",
+            messageSubject: "Temat wiadomości",
+            message: "Wiadomość",
+            yourMessage: "Twoja wiadomość",
+            sendMessage: "Wyślij wiadomość",
+            sending: "Wysyłanie...",
+            messageSent: "Wiadomość została wysłana pomyślnie!",
+            sendMessageError: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+
             // --- Sekcja Umiejętności ---
             "expertise_areas": "Szczegóły",
             skills: "Umiejętności",
@@ -502,6 +530,7 @@ const resources = {
             // --- Experience Section ---
 
             "Experience": "Doświadczenie",
+            "experience": "Doświadczenie",
             "Reikon Games": "Reikon Games",
             "IT Manager": "Menedżer IT",
             "Spearheading the development and maintenance of network infrastructure": "Prowadzenie rozwoju i utrzymania infrastruktury sieciowej",
