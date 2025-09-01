@@ -12,7 +12,7 @@ const resources = {
 
             // --- About Section ---
             about: "About",
-            aboutText1: "I am an IT Administrator with experience in managing networks and systems (AD, Proxmox), enhancing security, automating tasks (PowerShell), and building web applications. I am currently pursuing a Master's degree in Computer Science at Politechnika Warszawska.",
+            aboutText1: "I am an IT Administrator with experience in managing networks and systems (AD, Proxmox), enhancing security, automating tasks, and building web applications. I am currently pursuing a Master's degree in Computer Science at Politechnika Warszawska.",
             aboutText2: "I am passionate about creating efficient IT solutions and intuitive web applications. I specialize in system administration, virtualization, and full-stack development with a focus on practical, user-centered solutions.",
             contact: "Contact Information",
             contactLocationLabel: "Location:",
@@ -228,6 +228,11 @@ const resources = {
             "Habit Rythm Details":
                 "Habit Rythm is a modern, full-stack habit tracker built with Next.js 15, MongoDB, and NextAuth. Track your habits with a beautiful dot calendar, color customization, and secure authentication. Features include: Dot calendar, habit management, color customization, toast notifications.",
 
+            "Leaf Logger": "Leaf Logger",
+            "Leaf Logger Description": "A customizable logger with colorful output and emoji icons for Node.js applications.",
+            "Leaf Logger Details": "A lightweight, customizable logger with colorful output and emoji icons for Node.js applications. Features include colorful log messages, emoji icons, timestamp support, multiple log levels, configurable debug mode, object logging, Promise handling and zero dependencies.",
+
+
             // --- Experience Section ---
             "Experience": "Experience",
             "Reikon Games": "Reikon Games",
@@ -311,7 +316,7 @@ const resources = {
 
             // --- Sekcja O mnie ---
             about: "O mnie",
-            aboutText1: "Jestem Administratorem IT z doświadczeniem w zarządzaniu sieciami i systemami (AD, Proxmox), zwiększaniu bezpieczeństwa, automatyzacji zadań (PowerShell) i tworzeniu aplikacji webowych. Obecnie studiuję na Politechnice Warszawskiej na kierunku Informatyka.",
+            aboutText1: "Jestem Administratorem IT z doświadczeniem w zarządzaniu sieciami i systemami (AD, Proxmox), zwiększaniu bezpieczeństwa, automatyzacji zadań i tworzeniu aplikacji webowych. Obecnie studiuję na Politechnice Warszawskiej na kierunku Informatyka.",
             aboutText2: "Pasjonuję się tworzeniem efektywnych rozwiązań IT i intuitywnych aplikacji webowych. Specjalizuję się w administracji systemami, wirtualizacji i full-stack developmencie z naciskiem na praktyczne, skoncentrowane na użytkowniku rozwiązania.",
             contact: "Dane kontaktowe",
             contactLocationLabel: "Lokalizacja:",
@@ -470,8 +475,8 @@ const resources = {
             "Portfolio Details": "Ta strona jest moim osobistym portfolio, zbudowanym przy użyciu Next.js. Wykorzystuje internacjonalizację (i18n) dla wielu języków, dynamiczną zmianę motywów (jasny/ciemny) oraz responsywny design, aby skutecznie prezentować moje projekty i umiejętności.",
 
             "Steam Reviews": "Recenzje Steam",
-            "Steam Reviews Description": "Aplikacja webowa do wyświetlania najnowszych recenzji gier Steam i wysyłania automatycznych powiadomień na Slacka.",
-            "Steam Reviews Details": "Ten projekt integruje się z API Steam, aby pobierać i wyświetlać najnowsze recenzje dla konkretnych gier. Zawiera również mechanizm do automatycznego tłumaczenia recenzji i wysyłania powiadomień na kanał Slack, zapewniając deweloperom gier lub menedżerom społeczności bieżące informacje zwrotne.",
+            "Steam Reviews Description": "Aplikacja webowa do wyświetlania najnowszych recenzji gier Steam i wysyłania automatycznych powiadomień na Slacka. Wykorzystuje własny model LLM do analizy sentymentu recenzji.",
+            "Steam Reviews Details": "Ten projekt integruje się z API Steam, aby pobierać i wyświetlać najnowsze recenzje dla konkretnych gier. Zawiera również mechanizm do automatycznego tłumaczenia recenzji, przeprowadzania analizy sentymentu przy użyciu własnego modelu LLM oraz wysyłania powiadomień na kanał Slack, zapewniając deweloperom gier lub menedżerom społeczności bieżące i szczegółowe informacje zwrotne.",
 
             "Server Room Relocation": "Migracja Serwerowni",
             "Server Room Description": "Kompletny projekt migracji serwerowni z naciskiem na brak przestojów.",
@@ -527,6 +532,11 @@ const resources = {
             "Habit Rythm Details":
                 "Habit Rythm to nowoczesny, pełnostosowy tracker nawyków zbudowany za pomocą Next.js 15, MongoDB i NextAuth. Śledź swoje nawyki za pomocą pięknego kalendarza kropkowego, personalizacji kolorów i bezpiecznego uwierzytelniania. Funkcje obejmują: Kalendarz kropkowy, zarządzanie nawykami, personalizację kolorów, powiadomienia toast.",
 
+            "Leaf Logger": "Leaf Logger",
+            "Leaf Logger Description": "Konfigurowalny logger z kolorowym wyjściem i ikonami emoji dla aplikacji Node.js.",
+            "Leaf Logger Details": "Lekki, konfigurowalny logger z kolorowym wyjściem i ikonami emoji dla aplikacji Node.js. Zawiera kolorowe wiadomości logów, ikony emoji, obsługę znaczników czasu, wiele poziomów logowania, konfigurowalny tryb debugowania, logowanie obiektów, obsługę Promise i brak zależności.",
+
+
             // --- Experience Section ---
 
             "Experience": "Doświadczenie",
@@ -557,9 +567,9 @@ const resources = {
             "Maintaining technical documentation": "Utrzymywanie dokumentacji technicznej",
             "Assisting with IT policy and procedure development": "Wsparcie w rozwoju zasad i procedur IT",
             "Contributing to server infrastructure setup": "Wkład w konfigurację infrastruktury serwerowej",
-            "Managed assets system": "System zarządzania aktywami",
+            "Managed assets system": "System zarządzania sprzętem",
             "Conducting technical onboarding for users": "Przeprowadzanie technicznego onboardingu dla użytkowników",
-            "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Serwer Windows, Sieci, Wsparcie IT, Help Desk, Active Directory, Google Workspace, Slack, Jira, Zarządzanie Aktywami",
+            "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Serwer Windows, Sieci, Wsparcie IT, Help Desk, Active Directory, Google Workspace, Slack, Jira, Zarządzanie Sprzętem i Licencjami",
 
             "CIE Center for Innovative Education": "CIE Centrum Innowacyjnej Edukacji",
             "Dział planowania i analizy kosztów": "Dział planowania i analizy kosztów",

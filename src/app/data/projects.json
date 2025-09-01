@@ -55,7 +55,8 @@
     "details": "Steam Reviews Details",
     "images": [
       "/images/projects/steam-reviews-1.png",
-      "/images/projects/steam-reviews-2.png"
+      "/images/projects/steam-reviews-2.png",
+      "/images/projects/steam-reviews-3.png"
     ],
     "websiteUrl": null
   },
@@ -75,6 +76,10 @@
       },
       {
         "name": "Project Management",
+        "isNew": true
+      },
+      {
+        "name": "AI Implementation",
         "isNew": true
       }
     ],
@@ -108,6 +113,29 @@
       "/images/projects/slack-automation-3.png"
     ],
     "websiteUrl": null
+  },
+  {
+    "id": "leaf-logger",
+    "title": "Leaf Logger",
+    "description": "Leaf Logger Description",
+    "category": "automation",
+    "tech": [
+      {
+        "name": "npm Package",
+        "isNew": true
+      },
+      {
+        "name": "Colorful Logging",
+        "isNew": true
+      },
+      {
+        "name": "Emoji Icons",
+        "isNew": true
+      }
+    ],
+    "details": "Leaf Logger Details",
+    "images": ["/images/projects/logger-1.png"],
+    "websiteUrl": "https://www.npmjs.com/package/leaf-logger"
   },
   {
     "id": "habit-rythm",
