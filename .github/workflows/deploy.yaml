@@ -38,32 +38,24 @@ jobs:
 
       - name: Setup Kubeconfig
         run: |
-            mkdir -p ~/.kube
-            echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > ~/.kube/config
-            chmod 600 ~/.kube/config
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
 
       - name: Deploy to Kubernetes
-        uses: steebchen/kubectl@v1.4.0 # ZMIENIONO TUTAJ!
-        env:
-        KUBECONFIG: ~/.kube/config
-        with:
-        args: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
+        uses: steebchen/kubectl@v1.4.0
+        env: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
+          KUBECONFIG: ~/.kube/config
+        with: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
+          args: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
 
       - name: Verify Deployment (Optional)
-        uses: steebchen/kubectl@v1.4.0 # I TUTAJ!
-        env:
-        KUBECONFIG: ~/.kube/config
-        with:
-        args: rollout status deployment/portfolio-app-deployment
+        uses: steebchen/kubectl@v1.4.0
+        env: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
+          KUBECONFIG: ~/.kube/config
+        with: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
+          args: rollout status deployment/portfolio-app-deployment
           # `set image` to polecenie, które aktualizuje obraz kontenera w istniejącym deploymentcie.
           # `deployment/portfolio-app-deployment` to typ i nazwa Twojego deploymentu.
           # `portfolio-app` to nazwa kontenera w deploymentcie (z deployment.yaml).
           # `${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }}` to nowy tag obrazu.
-
-      - name: Verify Deployment (Optional)
-        uses: dwayne/kubectl-action@v2
-        env:
-          KUBECONFIG: ~/.kube/config
-        with:
-          args: rollout status deployment/portfolio-app-deployment
-          # Czeka, aż nowy deployment zostanie pomyślnie uruchomiony
