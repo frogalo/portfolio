@@ -38,16 +38,23 @@ jobs:
 
       - name: Setup Kubeconfig
         run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > ~/.kube/config
-          chmod 600 ~/.kube/config
+            mkdir -p ~/.kube
+            echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > ~/.kube/config
+            chmod 600 ~/.kube/config
 
       - name: Deploy to Kubernetes
-        uses: dwayne/kubectl-action@v2
+        uses: steebchen/kubectl@v1.4.0 # ZMIENIONO TUTAJ!
         env:
-          KUBECONFIG: ~/.kube/config
+        KUBECONFIG: ~/.kube/config
         with:
-          args: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
+        args: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
+
+      - name: Verify Deployment (Optional)
+        uses: steebchen/kubectl@v1.4.0 # I TUTAJ!
+        env:
+        KUBECONFIG: ~/.kube/config
+        with:
+        args: rollout status deployment/portfolio-app-deployment
           # `set image` to polecenie, które aktualizuje obraz kontenera w istniejącym deploymentcie.
           # `deployment/portfolio-app-deployment` to typ i nazwa Twojego deploymentu.
           # `portfolio-app` to nazwa kontenera w deploymentcie (z deployment.yaml).
