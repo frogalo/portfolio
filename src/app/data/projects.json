@@ -16,6 +16,14 @@
       {
         "name": "Themes",
         "isNew": false
+      },
+      {
+        "name": "Kubernetes",
+        "isNew": true
+      },
+      {
+        "name": "GitHub Actions",
+        "isNew": true
       }
     ],
     "details": "Portfolio Details",
