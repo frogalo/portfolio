@@ -36,26 +36,14 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Setup Kubeconfig
-        run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > ~/.kube/config
-          chmod 600 ~/.kube/config
-
       - name: Deploy to Kubernetes
-        uses: steebchen/kubectl@v1.4.0
-        env: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
-          KUBECONFIG: ~/.kube/config
-        with: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
-          args: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
+        uses: steebchen/kubectl@v2.0.0
+        with:
+          config: ${{ secrets.KUBE_CONFIG_DATA }}
+          command: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
 
       - name: Verify Deployment (Optional)
-        uses: steebchen/kubectl@v1.4.0
-        env: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
-          KUBECONFIG: ~/.kube/config
-        with: # Ta linia musi być wcięta o 2 spacje w stosunku do 'uses:'
-          args: rollout status deployment/portfolio-app-deployment
-          # `set image` to polecenie, które aktualizuje obraz kontenera w istniejącym deploymentcie.
-          # `deployment/portfolio-app-deployment` to typ i nazwa Twojego deploymentu.
-          # `portfolio-app` to nazwa kontenera w deploymentcie (z deployment.yaml).
-          # `${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }}` to nowy tag obrazu.
+        uses: steebchen/kubectl@v2.0.0
+        with:
+          config: ${{ secrets.KUBE_CONFIG_DATA }}
+          command: rollout status deployment/portfolio-app-deployment
