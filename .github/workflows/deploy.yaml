@@ -1,0 +1,62 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and Push Docker image
+        id: docker_build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Setup Kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
+
+      - name: Deploy to Kubernetes
+        uses: dwayne/kubectl-action@v2
+        env:
+          KUBECONFIG: ~/.kube/config
+        with:
+          args: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
+          # `set image` to polecenie, które aktualizuje obraz kontenera w istniejącym deploymentcie.
+          # `deployment/portfolio-app-deployment` to typ i nazwa Twojego deploymentu.
+          # `portfolio-app` to nazwa kontenera w deploymentcie (z deployment.yaml).
+          # `${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }}` to nowy tag obrazu.
+
+      - name: Verify Deployment (Optional)
+        uses: dwayne/kubectl-action@v2
+        env:
+          KUBECONFIG: ~/.kube/config
+        with:
+          args: rollout status deployment/portfolio-app-deployment
+          # Czeka, aż nowy deployment zostanie pomyślnie uruchomiony
