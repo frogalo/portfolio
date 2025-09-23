@@ -1,12 +1,12 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { Mail, MapPin, Github } from "lucide-react";
-import { useState } from "react";
+import {useTranslation} from "react-i18next";
+import {motion} from "framer-motion";
+import {Mail, MapPin, Github} from "lucide-react";
+import {useState} from "react";
 
 export default function AboutSection() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitMessage, setSubmitMessage] = useState<{ type: string; text: string } | null>(null);
     const [formData, setFormData] = useState({
@@ -17,17 +17,21 @@ export default function AboutSection() {
     });
 
     const contactItems = [
-        { icon: MapPin, label: "contactLocationLabel", value: "contactLocationValue", link: null },
-        { icon: Mail, label: "contactEmailLabel", value: "contactEmailValue", link: "mailto:ivo.urbanski@gmail.com" },
-        { icon: Github, label: "contactGithubLabel", value: "contactGithubValue", link: "https://github.com/frogalo" },
+        {icon: MapPin, label: "contactLocationLabel", value: "contactLocationValue", link: null},
+        {icon: Mail, label: "contactEmailLabel", value: "contactEmailValue", link: "mailto:ivo.urbanski@gmail.com"},
+        {icon: Github, label: "contactGithubLabel", value: "contactGithubValue", link: "https://github.com/frogalo"},
     ];
 
-    const cvFileName = "Jakub_Urbański_CV.pdf";
-    const cvPath = `/files/${cvFileName}`;
+    const IT_cvFileName = "CV_Jakub_Urbanski_IT_Admin.pdf";
+    const DevOps_cvFileName = "CV_Jakub_Urbanski_DevOps.pdf";
+    const WebDev_cvFileName = "CV_Jakub_Urbanski_Web_Dev.pdf";
+    const IT_cvPath = `/files/${IT_cvFileName}`;
+    const DevOps_cvPath = `/files/${DevOps_cvFileName}`;
+    const WebDev_cvPath = `/files/${WebDev_cvFileName}`;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        const {name, value} = e.target;
+        setFormData(prev => ({...prev, [name]: value}));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -38,20 +42,20 @@ export default function AboutSection() {
         try {
             const response = await fetch("/api/contact", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(formData)
             });
 
             const result = await response.json();
             if (response.ok) {
-                setSubmitMessage({ type: "success", text: t("messageSent") });
-                setFormData({ name: "", email: "", subject: "", message: "" });
+                setSubmitMessage({type: "success", text: t("messageSent")});
+                setFormData({name: "", email: "", subject: "", message: ""});
             } else {
-                setSubmitMessage({ type: "error", text: result.error || t("sendMessageError") });
+                setSubmitMessage({type: "error", text: result.error || t("sendMessageError")});
             }
         } catch (err) {
             console.error("Form submission error:", err);
-            setSubmitMessage({ type: "error", text: t("sendMessageError") });
+            setSubmitMessage({type: "error", text: t("sendMessageError")});
         } finally {
             setIsSubmitting(false);
         }
@@ -59,9 +63,9 @@ export default function AboutSection() {
 
     return (
         <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{duration: 0.3}}
             className="py-12"
         >
             <h2 className="text-4xl font-bold mb-8 border-b-2 border-primary pb-3 text-primary text-center">
@@ -78,11 +82,29 @@ export default function AboutSection() {
 
                     <div className="mt-8">
                         <a
-                            href={cvPath}
-                            download={cvFileName}
+                            href={IT_cvPath}
+                            download={IT_cvFileName}
                             className="inline-block bg-secondary text-primary py-3 px-7 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-secondary cursor-pointer text-lg font-semibold"
                         >
-                            {t("downloadCV")}
+                            {t("downloadCV_IT")}
+                        </a>
+                    </div>
+                    <div className="mt-8">
+                        <a
+                            href={DevOps_cvPath}
+                            download={DevOps_cvFileName}
+                            className="inline-block bg-secondary text-primary py-3 px-7 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-secondary cursor-pointer text-lg font-semibold"
+                        >
+                            {t("downloadCV_DevOps")}
+                        </a>
+                    </div>
+                    <div className="mt-8">
+                        <a
+                            href={WebDev_cvPath}
+                            download={WebDev_cvFileName}
+                            className="inline-block bg-secondary text-primary py-3 px-7 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-secondary cursor-pointer text-lg font-semibold"
+                        >
+                            {t("downloadCV_WebDev")}
                         </a>
                     </div>
                 </div>
@@ -93,8 +115,9 @@ export default function AboutSection() {
                     <ul className="space-y-5 text-primary text-lg">
                         {contactItems.map((item, index) => (
                             <li key={index} className="flex items-center">
-                                <span className="w-16 h-10 flex items-center justify-center bg-secondary rounded-lg mr-4">
-                                    <item.icon className="w-6 h-6 text-primary" />
+                                <span
+                                    className="w-16 h-10 flex items-center justify-center bg-secondary rounded-lg mr-4">
+                                    <item.icon className="w-6 h-6 text-primary"/>
                                 </span>
                                 <div className="flex flex-col">
                                     <span className="font-medium">{t(item.label)}</span>

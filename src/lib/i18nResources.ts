@@ -23,7 +23,9 @@ const resources = {
             contactEmailValue: "ivo.urbanski@gmail.com",
             contactGithubLabel: "GitHub:",
             contactGithubValue: "github.com/frogalo",
-            downloadCV: "Download CV",
+            downloadCV_IT: "Download IT Administrator CV",
+            downloadCV_DevOps: "Download DevOps CV",
+            downloadCV_WebDev: "Download Web Developer CV",
 
             sendMeMessage: "Send me a message",
             name: "Name",
@@ -327,7 +329,9 @@ const resources = {
             contactEmailValue: "ivo.urbanski@gmail.com",
             contactGithubLabel: "GitHub:",
             contactGithubValue: "github.com/frogalo",
-            downloadCV: "Pobierz CV",
+            downloadCV_IT: "Pobierz CV (Administrator IT)",
+            downloadCV_DevOps: "Pobierz CV (DevOps)",
+            downloadCV_WebDev: "Pobierz CV (Web Developer)",
 
             sendMeMessage: "Wyślij wiadomość",
             name: "Imię",
