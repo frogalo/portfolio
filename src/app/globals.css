@@ -1,190 +1,257 @@
 @import "tailwindcss";
 
 :root {
-    --font-heading: 'Kodchasan', sans-serif;
-    --font-body: 'Kodchasan', sans-serif;
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
+  --font-heading: "Kodchasan", sans-serif;
+  --font-body: "Kodchasan", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
 
-    --font-size-sm: 0.750rem; /* 12px */
-    --font-size-base: 1rem; /* 16px */
-    --font-size-xl: 1.333rem; /* 21.33px */
-    --font-size-2xl: 1.777rem; /* 28.43px */
-    --font-size-3xl: 2.369rem; /* 37.9px */
-    --font-size-4xl: 3.158rem; /* 50.53px */
-    --font-size-5xl: 4.210rem; /* 67.36px */
-
-
-    /* Default (Dark) Theme */
-    --text: #e1eef4;
-    --background: #071013;
-    --primary: #98cde2; /* Existing Blue-ish text/borders */
-    --secondary: #216a87; /* Existing Dark Blue */
-    --accent: #36aad9; /* Existing Light Blue */
-    --cyan-accent: #77D4D4; /* A nice teal */
-    --gold-accent: #E2A55F; /* A soft, muted gold */
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-xl: 1.333rem; /* 21.33px */
+  --font-size-2xl: 1.777rem; /* 28.43px */
+  --font-size-3xl: 2.369rem; /* 37.9px */
+  --font-size-4xl: 3.158rem; /* 50.53px */
+  --font-size-5xl: 4.21rem; /* 67.36px */
+  
+  --nav-btn-color: #c879ff; /* Default fallback (Dark Mode color) */
 }
 
 /* Light Theme */
 :root[data-theme="light"] {
-    --text: #0b181e;
-    --background: #ecf5f8;
-    --background-lighter: #e1eef6;
-    --primary: #1d5267;
-    --secondary: #78c1de;
-    --accent: #269bc9;
-    --header-bg: #548fa6;
-    --header-txt: #ecf5f8;
-    --purple-accent: #995af1;
-    --gold-accent: #af2393;
+  --text-50: #f1e7fe;
+  --text-100: #e2cffc;
+  --text-200: #c69efa;
+  --text-300: #a96ef7;
+  --text-400: #8d3df5;
+  --text-500: #700df2;
+  --text-600: #5a0ac2;
+  --text-700: #430891;
+  --text-800: #2d0561;
+  --text-900: #160330;
+  --text-950: #0b0118;
+
+  --background-50: #f1e7fe;
+  --background-100: #e2cefd;
+  --background-200: #c69dfb;
+  --background-300: #a96cf9;
+  --background-400: #8c3bf7;
+  --background-500: #700af5;
+  --background-600: #5908c4;
+  --background-700: #430693;
+  --background-800: #2d0462;
+  --background-900: #160231;
+  --background-950: #0b0118;
+
+  --primary-50: #efe7fe;
+  --primary-100: #dfcffc;
+  --primary-200: #c09ff9;
+  --primary-300: #a06ef7;
+  --primary-400: #813ef4;
+  --primary-500: #610ef1; /* This is Purple/Blue-ish */
+  --primary-600: #4e0bc1;
+  --primary-700: #3a0891;
+  --primary-800: #270660;
+  --primary-900: #130330;
+  --primary-950: #0a0118;
+
+  --secondary-50: #fee7f7;
+  --secondary-100: #fccfef;
+  --secondary-200: #f99fde;
+  --secondary-300: #f76ece;
+  --secondary-400: #f43ebd;
+  --secondary-500: #f10ead;
+  --secondary-600: #c10b8a;
+  --secondary-700: #910868;
+  --secondary-800: #600645;
+  --secondary-900: #300323;
+  --secondary-950: #180111;
+
+  --accent-50: #fee7ef;
+  --accent-100: #fccfdf;
+  --accent-200: #f99fc0;
+  --accent-300: #f76ea0;
+  --accent-400: #f43e81;
+  --accent-500: #f10e61;
+  --accent-600: #c10b4e;
+  --accent-700: #91083a;
+  --accent-800: #600627;
+  --accent-900: #300313;
+  --accent-950: #18010a;
+
+  /* Mappings for legacy/component compatibility */
+  /* For Light theme: background should be light, text dark */
+  --text: var(--text-950); 
+  --background: var(--background-50);
+  --background-lighter: var(--background-100);
+  
+  --primary: var(--primary-600); 
+  --secondary: var(--secondary-600);
+  --accent: var(--accent-600);
+  
+  --header-bg: var(--background-200); 
+  --header-txt: var(--text-950);
+  --purple-accent: var(--primary-500); 
+  --gold-accent: var(--accent-300); 
+  /* --cyan-accent: #08FDD8;  */
+  
+  --nav-btn-color: #e91e63; /* Red for Light Mode */
 }
 
-
+/* Dark Theme */
 :root[data-theme="dark"] {
-    --text: #eef6fc;
-    --background: #071013;
-    --background-lighter: #0d2125;
-    --primary: #98cde2;
-    --secondary: #216a87;
-    --header-bg: #143544;
-    --header-txt: #ecf5f8;
-    --accent: #36aad9;
-    --purple-accent: #4d0ea4;
-    --gold-accent: #dd51c1;
+  --text-50: #0b0118;
+  --text-100: #160330;
+  --text-200: #2d0561;
+  --text-300: #430891;
+  --text-400: #5a0ac2;
+  --text-500: #700df2;
+  --text-600: #8d3df5;
+  --text-700: #a96ef7;
+  --text-800: #c69efa;
+  --text-900: #e2cffc;
+  --text-950: #f1e7fe;
+
+  --background-50: #0b0118;
+  --background-100: #160231;
+  --background-200: #2d0462;
+  --background-300: #430693;
+  --background-400: #5908c4;
+  --background-500: #700af5;
+  --background-600: #8c3bf7;
+  --background-700: #a96cf9;
+  --background-800: #c69dfb;
+  --background-900: #e2cefd;
+  --background-950: #f1e7fe;
+
+  --primary-50: #0a0118;
+  --primary-100: #130330;
+  --primary-200: #270660;
+  --primary-300: #3a0891;
+  --primary-400: #4e0bc1;
+  --primary-500: #610ef1;
+  --primary-600: #813ef4;
+  --primary-700: #a06ef7;
+  --primary-800: #c09ff9;
+  --primary-900: #dfcffc;
+  --primary-950: #efe7fe;
+
+  --secondary-50: #180111;
+  --secondary-100: #300323;
+  --secondary-200: #600645;
+  --secondary-300: #910868;
+  --secondary-400: #c10b8a;
+  --secondary-500: #f10ead;
+  --secondary-600: #f43ebd;
+  --secondary-700: #f76ece;
+  --secondary-800: #f99fde;
+  --secondary-900: #fccfef;
+  --secondary-950: #fee7f7;
+
+  --accent-50: #18010a;
+  --accent-100: #300313;
+  --accent-200: #600627;
+  --accent-300: #91083a;
+  --accent-400: #c10b4e;
+  --accent-500: #f10e61;
+  --accent-600: #f43e81;
+  --accent-700: #f76ea0;
+  --accent-800: #f99fc0;
+  --accent-900: #fccfdf;
+  --accent-950: #fee7ef;
+
+  /* Mappings for legacy/component compatibility */
+  /* For Dark theme: background should be dark (50), text light (950) */
+  --text: var(--text-950);
+  --background: var(--background-50);
+  --background-lighter: var(--background-100);
+  
+  --primary: var(--primary-700); 
+  --secondary: var(--secondary-500); 
+  --accent: var(--accent-500); 
+  
+  --header-bg: var(--background-100);
+  --header-txt: var(--text-950);
+  
+  --purple-accent: var(--primary-500);
+  --gold-accent: var(--accent-300);
+  
+  /* --cyan-accent: #08FDD8;  */
+  
+  --nav-btn-color: #c879ff; /* Purple for Dark Mode */
 }
 
 html {
-    font-family: var(--font-body), serif;
-    font-size: var(--font-size-base);
+  font-family: var(--font-body), serif;
+  font-size: var(--font-size-base);
 }
 
 body {
-    background: var(--background);
-    color: var(--text);
-    font-family: var(--font-body), serif;
-    font-weight: var(--font-weight-normal);
-    animation: fade-in 1s ease-in-out;
-    transition: background-color 1s ease, color 1s ease; /* Smooth transitions for theme changes */
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-body), serif;
+  font-weight: var(--font-weight-normal);
+  animation: fade-in 1s ease-in-out;
+  transition: background-color 1s ease, color 1s ease; /* Smooth transitions for theme changes */
 }
 
+/* Retaining Utility Classes for Compatibility */
 .bg-primary {
-    background-color: var(--background);
-    transition: background-color 1s ease; /* Enable smooth transitions */
+  background-color: var(--background);
+  transition: background-color 1s ease;
 }
 .bg-primary-lighter {
-    background-color: var(--background-lighter);
-    transition: background-color 1s ease; /* Enable smooth transitions */
+  background-color: var(--background-lighter);
+  transition: background-color 1s ease;
 }
 
 .text-primary {
-    color: var(--text);
-    transition: color 1s ease; /* Enable smooth transitions */
+  color: var(--primary); /* Now maps to Primary-700 (Lighter Purple) in Dark Mode */
+  transition: color 1s ease;
 }
 
 .bg-accent {
-    background-color: var(--accent);
-    transition: background-color 1s ease; /* Enable smooth transitions */
+  background-color: var(--accent);
+  transition: background-color 1s ease;
 }
 
 .bg-purple-accent {
-    background-color: var(--purple-accent);
-    transition: background-color 1s ease; /* Enable smooth transitions */
+  background-color: var(--purple-accent);
+  transition: background-color 1s ease;
 }
 
 .text-accent {
-    color: var(--accent);
-    transition: color 1s ease; /* Enable smooth transitions */
+  color: var(--accent);
+  transition: color 1s ease;
 }
 
 .bg-secondary {
-    background-color: var(--secondary);
-    transition: background-color 1s ease; /* Enable smooth transitions */
+  background-color: var(--secondary);
+  transition: background-color 1s ease;
 }
 
 .text-secondary {
-    color: var(--secondary);
-    transition: color 1s ease; /* Enable smooth transitions */
+  color: var(--secondary);
+  transition: color 1s ease;
 }
 
-.text-primary {
-    color: var(--primary);
-    transition: color 1s ease; /* Enable smooth transitions */
-}
-
+/* Animations */
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fade-in-letter {
-    from {
-        opacity: 0;
-        transform: translateY(20px); /* Slide in from below */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-
 .letter {
-    display: inline-block;
-    animation: fadeIn 0.5s ease-in-out forwards;
-    opacity: 0;
+  display: inline-block;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Add specific styles for dark mode toggle buttons if needed */
-.dark-mode-toggle-btn {
-    transition: all 0.3s ease;
-    border-width: 2px; /* Ensure border width is consistent */
-}
-
-.dark-mode-toggle-btn.active {
-    background-color: var(--accent);
-    color: var(--primary); /* Or --text depending on desired contrast */
-    border-color: var(--accent);
-}
-
-.dark-mode-toggle-btn:not(.active) {
-    background-color: transparent;
-    color: var(--primary);
-    border-color: var(--secondary);
-}
-
-.dark-mode-toggle-btn:not(.active):hover {
-    border-color: var(--accent);
-}
-
-/* Specific styles for language switcher buttons */
-.lang-btn {
-    transition: all 0.3s ease;
-    border-width: 2px;
-}
-
-.lang-btn.active {
-    background-color: var(--accent);
-    color: var(--primary); /* Or --text */
-    border-color: var(--accent);
-}
-
-.lang-btn:not(.active) {
-    background-color: var(--secondary);
-    color: var(--primary);
-    border-color: var(--secondary);
-}
-
-.lang-btn:not(.active):hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
+  to { opacity: 1; }
 }

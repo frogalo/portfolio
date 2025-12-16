@@ -25,8 +25,39 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={kodchasan.variable}>
-        <body> {/* No inline script in head anymore */}
+        <html lang="en" className={kodchasan.variable} suppressHydrationWarning>
+        <head>
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+              (function() {
+                try {
+                  var savedTheme = localStorage.getItem('theme');
+                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  var theme = savedTheme ? savedTheme : systemTheme;
+                  
+                  if (theme === 'system') {
+                    theme = systemTheme;
+                  }
+
+                  document.documentElement.setAttribute('data-theme', theme);
+                  
+                  // Forcefully set standard variables inline to prevent snap
+                  var navBtnColor = theme === 'dark' ? '#c879ff' : '#e91e63';
+                  document.documentElement.style.setProperty('--nav-btn-color', navBtnColor);
+
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+                }}
+            />
+        </head>
+        <body>
         <I18nProvider>
             {/* ThemeProvider will manage the data-theme attribute */}
             <ThemeProvider>{children}</ThemeProvider>

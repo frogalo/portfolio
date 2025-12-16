@@ -14,47 +14,35 @@ export default function ThemeSwitcher({
                                           onThemeChangeAction,
                                       }: ThemeSwitcherProps) {
 
-    // Helper to get Tailwind classes + CSS variable classes
-    const getButtonClasses = (themeType: Theme) => {
-        const baseClasses = `p-2 sm:p-3 rounded-full border-2 transition-colors duration-200 cursor-pointer flex items-center justify-center`;
-        const activeClasses = `bg-[var(--purple-accent)] text-[var(--text)] border-[var(--purple-accent)]`; // Using --cyan-accent for active
-        const inactiveClasses = `border-[var(--secondary)] text-[var(--secondary)] hover:border-[var(--purple-accent)] hover:bg-transparent`; // Using --gold-accent for hover
+    const cycleTheme = () => {
+        if (currentTheme === "light") onThemeChangeAction("dark");
+        else if (currentTheme === "dark") onThemeChangeAction("system");
+        else onThemeChangeAction("light");
+    };
 
-        if (currentTheme === themeType) {
-            return `${baseClasses} ${activeClasses}`;
-        } else {
-            return `${baseClasses} ${inactiveClasses}`;
+    const getIcon = () => {
+        switch (currentTheme) {
+            case "light": return <Sun size={20} strokeWidth={2.5} />;
+            case "dark": return <Moon size={20} strokeWidth={2.5} />;
+            case "system": return <Monitor size={20} strokeWidth={2.5} />;
         }
     };
 
     return (
-        <div className="flex items-center space-x-2">
-            {/* Light Mode Button */}
-            <button
-                onClick={() => onThemeChangeAction("light")}
-                className={getButtonClasses("light")}
-                aria-label="Switch to Light Mode"
-            >
-                <Sun size={16} />
-            </button>
-
-            {/* Dark Mode Button */}
-            <button
-                onClick={() => onThemeChangeAction("dark")}
-                className={getButtonClasses("dark")}
-                aria-label="Switch to Dark Mode"
-            >
-                <Moon size={16} />
-            </button>
-
-            {/* System Mode Button */}
-            <button
-                onClick={() => onThemeChangeAction("system")}
-                className={getButtonClasses("system")}
-                aria-label="Switch to System Mode"
-            >
-                <Monitor size={16} />
-            </button>
-        </div>
+        <button
+            onClick={cycleTheme}
+            className={`
+                p-2 sm:p-3 border-2 transition-all duration-300 ease-out cursor-pointer flex items-center justify-center relative overflow-hidden group
+                rounded-none
+                border-[var(--secondary)] text-[var(--secondary)]
+                hover:border-[var(--nav-btn-color)] hover:bg-[var(--nav-btn-color)] hover:text-[var(--text)] hover:shadow-[0_0_15px_var(--nav-btn-color)]
+                active:scale-95
+            `}
+            aria-label={`Current Theme: ${currentTheme}. Click to cycle.`}
+        >
+            <div className="transition-transform duration-300 group-hover:rotate-12 group-active:rotate-90">
+                {getIcon()}
+            </div>
+        </button>
     );
 }

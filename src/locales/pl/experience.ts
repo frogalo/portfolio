@@ -1,0 +1,60 @@
+export const experience = {
+    "Experience": "Doświadczenie",
+    "experience": "Doświadczenie",
+
+    // Grid Tags
+    gridExp: "EXP",
+    gridWork: "PRACA",
+
+    "Reikon Games": "Reikon Games",
+    "IT Manager": "Menedżer IT",
+    "Spearheading the development and maintenance of network infrastructure": "Prowadzenie rozwoju i utrzymania infrastruktury sieciowej",
+    "Leading the modernization and expansion of server infrastructure": "Kierowanie modernizacją i rozbudową infrastruktury serwerowej",
+    "Managing asset logistics, including the organization of equipment deliveries": "Zarządzanie logistyką aktywów, w tym organizacja dostaw sprzętu",
+    "Overseeing the monitoring and performance of the overall IT infrastructure": "Nadzorowanie monitorowania i wydajności całej infrastruktury IT",
+    "Supervising user account and access management (AD, Google, Slack, Access Control System)": "Nadzorowanie zarządzania kontami użytkowników i dostępami (AD, Google, Slack, system kontroli dostępu)",
+    "Directing the administration of various SaaS platforms": "Kierowanie administracją różnych platform SaaS",
+    "Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022": "Nadzorowanie administracji serwerami Linux (Debian, Ubuntu) i Windows Server 2022",
+    "Providing and managing second-line technical support (L2)": "Świadczenie i zarządzanie wsparciem technicznym drugiego poziomu (L2)",
+    "Ensuring the maintenance of comprehensive technical documentation": "Zapewnienie utrzymania kompleksowej dokumentacji technicznej",
+    "Collaborating in the creation and enforcement of IT policies and procedures": "Współpraca przy tworzeniu i egzekwowaniu zasad i procedur IT",
+    "Training and mentoring team members and users for enhanced operational efficiency": "Szkolenie i mentoring członków zespołu oraz użytkowników w celu zwiększenia efektywności operacyjnej",
+    "Managing licenses and subscriptions": "Zarządzanie licencjami i subskrypcjami",
+    "Agile Development, IT Project & Program Management, Linux, Windows Server, Networking, Cybersecurity, Cloud Computing, SaaS Management": "Rozwój Agile, Zarządzanie Projektami i Programami IT, Linux, Serwery Windows, Sieci, Cyberbezpieczeństwo, Chmura Obliczeniowa, Zarządzanie SaaS",
+
+    "IT Assistant": "Asystent IT",
+    "Organizing asset delivery and equipment preparation": "Organizacja dostaw aktywów i przygotowania sprzętu",
+    "Overseeing IT infrastructure monitoring": "Nadzorowanie monitorowania infrastruktury IT",
+    "Providing first-line technical support (L1)": "Świadczenie wsparcia technicznego pierwszego poziomu (L1)",
+    "Managing user accounts and access (AD, Google, Slack, Access Control System)": "Zarządzanie kontami użytkowników i dostępami (AD, Google, Slack, system kontroli dostępu)",
+    "Administering SaaS platforms": "Administrowanie platformami SaaS",
+    "Handling server administration on Linux (Debian, Ubuntu) and Windows Server 2022": "Obsługa administracji serwerami Linux (Debian, Ubuntu) i Windows Server 2022",
+    "Maintaining technical documentation": "Utrzymywanie dokumentacji technicznej",
+    "Assisting with IT policy and procedure development": "Wsparcie w rozwoju zasad i procedur IT",
+    "Contributing to server infrastructure setup": "Wkład w konfigurację infrastruktury serwerowej",
+    "Managed assets system": "System zarządzania sprzętem",
+    "Conducting technical onboarding for users": "Przeprowadzanie technicznego onboardingu dla użytkowników",
+    "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Serwer Windows, Sieci, Wsparcie IT, Help Desk, Active Directory, Google Workspace, Slack, Jira, Zarządzanie Sprzętem i Licencjami",
+
+    "CIE Center for Innovative Education": "CIE Centrum Innowacyjnej Edukacji",
+    "Dział planowania i analizy kosztów": "Dział planowania i analizy kosztów",
+    "Analyzing planning and cost data to identify areas for efficiency improvement.": "Analiza danych planowania i kosztów w celu identyfikacji obszarów do poprawy efektywności.",
+    "Assisting with budget preparation and financial reporting.": "Wsparcie w przygotowaniu budżetu i raportowaniu finansowym.",
+    "Developing tools for data visualization and performance tracking.": "Rozwój narzędzi do wizualizacji danych i śledzenia wydajności.",
+    "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management": "Adobe Photoshop, Adobe Premiere Pro, Analiza Danych, Zarządzanie Kosztami",
+
+    "Orange Polska": "Orange Polska",
+    "Praktykant": "Praktykant w dziale CEX",
+    "Participating in projects related to customer experience (CEX) analysis.": "Udział w projektach związanych z analizą doświadczeń klienta (CEX).",
+    "Assisting with user research and UX design processes.": "Wsparcie w badaniach użytkowników i procesach projektowania UX.",
+    "Contributing to mobile application testing and bug reporting.": "Współudział w testowaniu aplikacji mobilnych i raportowaniu błędów.",
+    "Adobe Photoshop, Doświadczenie Użytkownika (UX), Testowanie Aplikacji Mobilnych, Doświadczenie Klienta": "Adobe Photoshop, Doświadczenie Użytkownika (UX), Testowanie Aplikacji Mobilnych, Doświadczenie Klienta", // Fixed key matching EN one for safety if used directly
+
+    "European Parliament": "Parlament Europejski",
+    "Intern in the Warsaw office of Danuta Hübner": "Staże w biurze Danuty Hübner w Warszawie",
+    "Warsaw, Mazowieckie, Poland": "Warszawa, Mazowieckie, Polska",
+    "Assisting with research on European studies and civilization topics.": "Pomoc w badaniach nad zagadnieniami studiów europejskich i cywilizacji.",
+    "Preparing reports and presentations for internal use.": "Przygotowywanie raportów i prezentacji do użytku wewnętrznego.",
+    "Supporting general office administration tasks.": "Wspieranie ogólnych zadań administracji biurowej.",
+    "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support": "Adobe Photoshop, Adobe Premiere Pro, Badania, Wsparcie Administracyjne"
+};
