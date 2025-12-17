@@ -4,14 +4,13 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
 const socialLinks = [
-  { name: "DRIBBBLE", url: "#", delay: 0 },
   {
     name: "LINKEDIN",
-    url: "https://www.linkedin.com/in/jakub-urbanski-js/",
-    delay: 0.1,
+    url: "https://www.linkedin.com/in/jakub-urba%C5%84ski-9ab9a212b/",
+    delay: 0,
   },
-  { name: "EMAIL", url: "mailto:kubaurbanski09@gmail.com", delay: 0.2 },
-  ];
+  { name: "EMAIL", url: "mailto:ivo.urbanski@gmail.com", delay: 0.1 },
+];
 
 export default function BigFooter() {
   const { t } = useTranslation();
