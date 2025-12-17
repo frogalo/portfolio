@@ -1,7 +1,7 @@
 export const common = {
     // General
     allRightsReserved: "All rights reserved",
-    
+
     // Contact
     contact: "Contact Information",
     contactLocationLabel: "Location:",
@@ -31,6 +31,6 @@ export const common = {
     sendMessageError: "Failed to send message. Please try again.",
 
     // Footer
-    footerFollow: "Follow me and hit me up for future projects",
-    footerTalk: "or a simple talk."
+    footerFollow: "Message me up for future projects",
+    footerTalk: ""
 };

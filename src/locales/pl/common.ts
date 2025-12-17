@@ -31,6 +31,6 @@ export const common = {
     sendMessageError: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
 
     // Footer
-    footerFollow: "Obserwuj mnie i skontaktuj się w sprawie przyszłych projektów",
-    footerTalk: "lub po prostu porozmawiaj."
+    footerFollow: "Skontaktuj się w sprawie przyszłych projektów",
+    footerTalk: ""
 };
