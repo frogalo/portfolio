@@ -20,6 +20,8 @@ interface Project {
     description: string;
     category: string;
     websiteUrl: string | null;
+    year?: string;
+    tech: { name: string }[];
 }
 
 interface Role {
@@ -30,14 +32,19 @@ interface Role {
 interface CompanyExperience {
     type: "experience";
     company: string;
+    logo?: string;
     roles: Role[];
+    skills?: string;
 }
 
 interface EducationEntry {
     type: "education";
     university: string;
+    logo?: string;
     degree: string;
     period: string;
+    invertOnDark?: boolean;
+    skills?: string;
 }
 
 type ExperienceOrEducation = CompanyExperience | EducationEntry;
@@ -113,11 +120,12 @@ export default function HomePage() {
     const { projects, experience, education } = useMemo(() => {
         // Map Projects
         const mappedProjects = (projectsData as Project[]).map((p) => ({
-            year: t("gridWeb"),
+            year: p.year || t("gridWeb"),
             category: p.category.toUpperCase(),
             title: t(p.title),
             description: t(p.description),
             tag: p.websiteUrl ? t("gridLive") : t("gridProject"),
+            hoverTags: p.tech.map(t => t.name),
         }));
 
         // Map Experience
@@ -129,6 +137,8 @@ export default function HomePage() {
                 title: t(e.company),
                 description: t(e.roles[0]?.title),
                 tag: e.roles[0]?.period,
+                logo: e.logo,
+                hoverTags: e.roles[0]?.skills ? e.roles[0].skills.split(", ") : [],
             }));
 
         // Map Education
@@ -140,6 +150,9 @@ export default function HomePage() {
                 title: t(e.university),
                 description: t(e.degree),
                 tag: e.period,
+                logo: e.logo,
+                invertOnDark: e.university.includes("Warsaw University of Technology") || e.university.includes("University of Warsaw"),
+                hoverTags: e.skills ? e.skills.split(", ") : [],
             }));
 
         return { projects: mappedProjects, experience: mappedExperience, education: mappedEducation };

@@ -4,11 +4,19 @@ export const projects = {
     "web": "Web",
     "infrastructure": "Infrastructure",
     "automation": "Automation",
-    
+
     // Grid Tags
     gridWeb: "WEB",
     gridLive: "LIVE",
     gridProject: "PROJECT",
+
+    "Bilans 365": "Bilans 365",
+    "Bilans 365 Description": "A health awareness platform for self health checkup, medical articles and social awareness.",
+    "Bilans 365 Details": "Bilans 365 is a comprehensive health awareness platform designed to empower users with tools for self-health checkups. It provides access to a vast library of medical articles and fosters social awareness about various health issues. The project involved extensive UI/UX design in Figma, process modeling with BPMN, and rigorous project management to ensure a user-centric and impactful product.",
+
+    "InsightED": "InsightED",
+    "InsightED Description": "A platform that will promote educational online courses from IBM.",
+    "InsightED Details": "InsightED is an educational platform dedicated to promoting and facilitating access to online courses from IBM. Built with Next.js and PostgreSQL, it aims to provide a seamless learning experience for users looking to enhance their skills with industry-leading certifications and knowledge.",
 
     "Portfolio Website": "Portfolio Website",
     "Portfolio Description": "A portfolio website showcasing my skills and projects.",

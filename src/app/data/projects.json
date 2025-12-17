@@ -1,8 +1,51 @@
 [
   {
+    "id": "bilans-365",
+    "title": "Bilans 365",
+    "description": "Bilans 365 Description",
+    "year": "2025",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Figma"
+      },
+      {
+        "name": "UI/UX"
+      },
+      {
+        "name": "BPMN"
+      },
+      {
+        "name": "Project Management"
+      }
+    ],
+    "details": "Bilans 365 Details",
+    "images": [],
+    "websiteUrl": null
+  },
+  {
+    "id": "insighted",
+    "title": "InsightED",
+    "description": "InsightED Description",
+    "year": "2025",
+    "category": "web",
+    "tech": [
+      {
+        "name": "Next.js"
+      },
+      {
+        "name": "PostgreSQL"
+      }
+    ],
+    "details": "InsightED Details",
+    "images": [],
+    "websiteUrl": null
+  },
+  {
     "id": "portfolio",
     "title": "Portfolio Website",
     "description": "Portfolio Description",
+    "year": "2024",
     "category": "web",
     "tech": [
       {
@@ -37,6 +80,7 @@
     "id": "steam-reviews",
     "title": "Steam Reviews",
     "description": "Steam Reviews Description",
+    "year": "2024",
     "category": "web",
     "tech": [
       {
@@ -72,6 +116,7 @@
     "id": "server-migration",
     "title": "Server Room Relocation",
     "description": "Server Room Description",
+    "year": "2023",
     "category": "infrastructure",
     "tech": [
       {
@@ -103,6 +148,7 @@
     "id": "slack-automation",
     "title": "Slack Process Automation",
     "description": "Slack Process Description",
+    "year": "2023",
     "category": "automation",
     "tech": [
       {
@@ -126,6 +172,7 @@
     "id": "leaf-logger",
     "title": "Leaf Logger",
     "description": "Leaf Logger Description",
+    "year": "2024",
     "category": "automation",
     "tech": [
       {
@@ -142,13 +189,16 @@
       }
     ],
     "details": "Leaf Logger Details",
-    "images": ["/images/projects/logger-1.png"],
+    "images": [
+      "/images/projects/logger-1.png"
+    ],
     "websiteUrl": "https://www.npmjs.com/package/leaf-logger"
   },
   {
     "id": "habit-rythm",
     "title": "Habit Rythm",
     "description": "Habit Rythm Description",
+    "year": "2024",
     "category": "web",
     "tech": [
       {
@@ -176,6 +226,7 @@
     "id": "money-tracker",
     "title": "Money Tracker",
     "description": "Money Tracker Description",
+    "year": "2024",
     "category": "web",
     "tech": [
       {
@@ -203,6 +254,7 @@
     "id": "it-dashboard",
     "title": "IT Dashboard",
     "description": "IT Dashboard Description",
+    "year": "2023",
     "category": "web",
     "tech": [
       {
@@ -240,6 +292,7 @@
     "id": "vlan-configuration",
     "title": "VLAN Configuration",
     "description": "VLAN Description",
+    "year": "2022",
     "category": "infrastructure",
     "tech": [
       {
@@ -265,6 +318,7 @@
     "id": "tablemate",
     "title": "TableMate",
     "description": "TableMate description",
+    "year": "2024",
     "category": "web",
     "tech": [
       {
@@ -301,6 +355,7 @@
     "id": "gramatyk",
     "title": "Gramatyk",
     "description": "Gramatyk Description",
+    "year": "2024",
     "category": "web",
     "tech": [
       {
@@ -323,6 +378,7 @@
     "id": "discord-bot",
     "title": "Discord Integration Bot",
     "description": "Discord Integration Description",
+    "year": "2023",
     "category": "automation",
     "tech": [
       {
@@ -348,6 +404,7 @@
     "id": "scholarhub",
     "title": "ScholarHub",
     "description": "ScholarHub Description",
+    "year": "2022",
     "category": "web",
     "tech": [
       {
@@ -377,6 +434,7 @@
     "id": "minecraft-server",
     "title": "Minecraft Server",
     "description": "Minecraft Server Description",
+    "year": "2021",
     "category": "infrastructure",
     "tech": [
       {
@@ -410,6 +468,7 @@
     "id": "uber-analytics",
     "title": "Uber Analytics",
     "description": "Uber Analytics Description",
+    "year": "2023",
     "category": "web",
     "tech": [
       {

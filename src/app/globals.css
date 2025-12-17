@@ -1,20 +1,30 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 :root {
   --font-heading: "Kodchasan", sans-serif;
   --font-body: "Kodchasan", sans-serif;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
 
-  --font-size-sm: 0.75rem; /* 12px */
-  --font-size-base: 1rem; /* 16px */
-  --font-size-xl: 1.333rem; /* 21.33px */
-  --font-size-2xl: 1.777rem; /* 28.43px */
-  --font-size-3xl: 2.369rem; /* 37.9px */
-  --font-size-4xl: 3.158rem; /* 50.53px */
-  --font-size-5xl: 4.21rem; /* 67.36px */
-  
-  --nav-btn-color: #c879ff; /* Default fallback (Dark Mode color) */
+  --font-size-sm: 0.75rem;
+  /* 12px */
+  --font-size-base: 1rem;
+  /* 16px */
+  --font-size-xl: 1.333rem;
+  /* 21.33px */
+  --font-size-2xl: 1.777rem;
+  /* 28.43px */
+  --font-size-3xl: 2.369rem;
+  /* 37.9px */
+  --font-size-4xl: 3.158rem;
+  /* 50.53px */
+  --font-size-5xl: 4.21rem;
+  /* 67.36px */
+
+  --nav-btn-color: #c879ff;
+  /* Default fallback (Dark Mode color) */
 }
 
 /* Light Theme */
@@ -48,7 +58,8 @@
   --primary-200: #c09ff9;
   --primary-300: #a06ef7;
   --primary-400: #813ef4;
-  --primary-500: #610ef1; /* This is Purple/Blue-ish */
+  --primary-500: #610ef1;
+  /* This is Purple/Blue-ish */
   --primary-600: #4e0bc1;
   --primary-700: #3a0891;
   --primary-800: #270660;
@@ -81,21 +92,22 @@
 
   /* Mappings for legacy/component compatibility */
   /* For Light theme: background should be light, text dark */
-  --text: var(--text-950); 
+  --text: var(--text-950);
   --background: var(--background-50);
   --background-lighter: var(--background-100);
-  
-  --primary: var(--primary-600); 
+
+  --primary: var(--primary-600);
   --secondary: var(--secondary-600);
   --accent: var(--accent-600);
-  
-  --header-bg: var(--background-200); 
+
+  --header-bg: var(--background-200);
   --header-txt: var(--text-950);
-  --purple-accent: var(--primary-500); 
-  --gold-accent: var(--accent-300); 
+  --purple-accent: var(--primary-500);
+  --gold-accent: var(--accent-300);
   /* --cyan-accent: #08FDD8;  */
-  
-  --nav-btn-color: #e91e63; /* Red for Light Mode */
+
+  --nav-btn-color: #e91e63;
+  /* Red for Light Mode */
 }
 
 /* Dark Theme */
@@ -165,20 +177,21 @@
   --text: var(--text-950);
   --background: var(--background-50);
   --background-lighter: var(--background-100);
-  
-  --primary: var(--primary-700); 
-  --secondary: var(--secondary-500); 
-  --accent: var(--accent-500); 
-  
+
+  --primary: var(--primary-700);
+  --secondary: var(--secondary-500);
+  --accent: var(--accent-500);
+
   --header-bg: var(--background-100);
   --header-txt: var(--text-950);
-  
+
   --purple-accent: var(--primary-500);
   --gold-accent: var(--accent-300);
-  
+
   /* --cyan-accent: #08FDD8;  */
-  
-  --nav-btn-color: #c879ff; /* Purple for Dark Mode */
+
+  --nav-btn-color: #c879ff;
+  /* Purple for Dark Mode */
 }
 
 html {
@@ -192,7 +205,8 @@ body {
   font-family: var(--font-body), serif;
   font-weight: var(--font-weight-normal);
   animation: fade-in 1s ease-in-out;
-  transition: background-color 1s ease, color 1s ease; /* Smooth transitions for theme changes */
+  transition: background-color 1s ease, color 1s ease;
+  /* Smooth transitions for theme changes */
 }
 
 /* Retaining Utility Classes for Compatibility */
@@ -200,13 +214,15 @@ body {
   background-color: var(--background);
   transition: background-color 1s ease;
 }
+
 .bg-primary-lighter {
   background-color: var(--background-lighter);
   transition: background-color 1s ease;
 }
 
 .text-primary {
-  color: var(--primary); /* Now maps to Primary-700 (Lighter Purple) in Dark Mode */
+  color: var(--primary);
+  /* Now maps to Primary-700 (Lighter Purple) in Dark Mode */
   transition: color 1s ease;
 }
 
@@ -237,13 +253,25 @@ body {
 
 /* Animations */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in-letter {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .letter {
@@ -253,5 +281,26 @@ body {
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
 }

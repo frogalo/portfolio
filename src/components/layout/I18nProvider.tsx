@@ -1,9 +1,10 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
-import {initI18next} from "../../lib/i18n";
+import React, { useState, useEffect } from "react";
+import { initI18next } from "../../lib/i18n";
+import LoadingScreen from "../ui/LoadingScreen";
 
-export default function I18nProvider({children}: { children: React.ReactNode }) {
+export default function I18nProvider({ children }: { children: React.ReactNode }) {
     const [isInitialized, setIsInitialized] = useState(false);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ export default function I18nProvider({children}: { children: React.ReactNode }) 
     }, []);
 
     if (!isInitialized) {
-        return <div>Loading translations...</div>; // Show a loading state until i18next is ready
+        return <LoadingScreen />;
     }
 
     return <>{children}</>;

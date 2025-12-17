@@ -10,6 +10,14 @@ export const projects = {
     gridLive: "LIVE",
     gridProject: "PROJEKT",
 
+    "Bilans 365": "Bilans 365",
+    "Bilans 365 Description": "Platforma świadomości zdrowotnej do samokontroli zdrowia, artykułów medycznych i świadomości społecznej.",
+    "Bilans 365 Details": "Bilans 365 to kompleksowa platforma świadomości zdrowotnej zaprojektowana, aby wyposażyć użytkowników w narzędzia do samodzielnej kontroli zdrowia. Zapewnia dostęp do obszernej biblioteki artykułów medycznych i wspiera świadomość społeczną na temat różnych problemów zdrowotnych. Projekt obejmował szeroko zakrojone projektowanie UI/UX w Figma, modelowanie procesów za pomocą BPMN oraz rygorystyczne zarządzanie projektem, aby zapewnić produkt skoncentrowany na użytkowniku.",
+
+    "InsightED": "InsightED",
+    "InsightED Description": "Platforma promująca edukacyjne kursy online od IBM.",
+    "InsightED Details": "InsightED to platforma edukacyjna dedykowana promowaniu i ułatwianiu dostępu do kursów online od IBM. Zbudowana przy użyciu Next.js i PostgreSQL, ma na celu zapewnienie bezproblemowego doświadczenia edukacyjnego dla użytkowników chcących podnosić swoje kwalifikacje dzięki wiodącym w branży certyfikatom i wiedzy.",
+
     "Portfolio Website": "Strona Portfolio",
     "Portfolio Description": "Strona portfolio prezentująca moje umiejętności i projekty.",
     "Portfolio Details": "Ta strona jest moim osobistym portfolio, zbudowanym przy użyciu Next.js. Wykorzystuje internacjonalizację (i18n) dla wielu języków, dynamiczną zmianę motywów (jasny/ciemny) oraz responsywny design, aby skutecznie prezentować moje projekty i umiejętności.",
