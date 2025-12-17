@@ -27,6 +27,8 @@ interface Project {
 interface Role {
     title: string;
     period: string;
+    skills?: string;
+    responsibilities?: string[];
 }
 
 interface CompanyExperience {
