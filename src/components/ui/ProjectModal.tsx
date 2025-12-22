@@ -98,7 +98,7 @@ export default function ProjectModal({ isOpen, onClose, project, themeColor = "t
                         </button>
 
                         {/* Left Side: Images (Desktop) / Top (Mobile) */}
-                        <div className="w-full md:w-1/2 bg-current/5 p-4 flex flex-col gap-2 overflow-hidden h-full">
+                        <div className="w-full md:w-1/2 bg-current/5 p-4 hidden md:flex flex-col gap-2 overflow-hidden h-full order-last md:order-first">
                             {project.images && project.images.length > 0 ? (
                                 project.images.map((img, idx) => (
                                     <div key={idx} className="relative w-full rounded-lg overflow-hidden shadow-sm border border-current/10 flex-1 hover:flex-[10] transition-all duration-500 ease-in-out min-h-[60px] flex items-center justify-center bg-current/5 group">
