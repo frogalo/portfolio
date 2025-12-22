@@ -1,4 +1,3 @@
-
 // English Imports
 import { common as commonEn } from "../locales/en/common";
 import { hero as heroEn } from "../locales/en/hero";
@@ -7,6 +6,7 @@ import { skills as skillsEn } from "../locales/en/skills";
 import { projects as projectsEn } from "../locales/en/projects";
 import { experience as experienceEn } from "../locales/en/experience";
 import { education as educationEn } from "../locales/en/education";
+import { dates as datesEn } from "../locales/en/dates";
 
 // Polish Imports
 import { common as commonPl } from "../locales/pl/common";
@@ -16,6 +16,7 @@ import { skills as skillsPl } from "../locales/pl/skills";
 import { projects as projectsPl } from "../locales/pl/projects";
 import { experience as experiencePl } from "../locales/pl/experience";
 import { education as educationPl } from "../locales/pl/education";
+import { dates as datesPl } from "../locales/pl/dates";
 
 const resources = {
     en: {
@@ -26,7 +27,8 @@ const resources = {
             ...skillsEn,
             ...projectsEn,
             ...experienceEn,
-            ...educationEn
+            ...educationEn,
+            ...datesEn
         }
     },
     pl: {
@@ -37,7 +39,8 @@ const resources = {
             ...skillsPl,
             ...projectsPl,
             ...experiencePl,
-            ...educationPl
+            ...educationPl,
+            ...datesPl
         }
     }
 };

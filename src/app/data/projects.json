@@ -1,8 +1,8 @@
 [
   {
-    "id": "bilans-365",
-    "title": "Bilans 365",
-    "description": "Bilans 365 Description",
+    "id": "zdrowie-365",
+    "title": "Zdrowie 365",
+    "description": "Zdrowie 365 Description",
     "year": "2025",
     "category": "web",
     "tech": [
@@ -19,7 +19,7 @@
         "name": "Project Management"
       }
     ],
-    "details": "Bilans 365 Details",
+    "details": "Zdrowie 365 Details",
     "images": [],
     "websiteUrl": null
   },

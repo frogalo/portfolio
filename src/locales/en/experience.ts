@@ -1,59 +1,29 @@
 export const experience = {
     "Experience": "Experience",
-    
+
     // Grid Tags
     gridExp: "EXP",
     gridWork: "WORK",
 
+    // Titles (used in grid)
     "Reikon Games": "Reikon Games",
-    "IT Manager": "IT Manager",
-    "Spearheading the development and maintenance of network infrastructure": "Spearheading the development and maintenance of network infrastructure",
-    "Leading the modernization and expansion of server infrastructure": "Leading the modernization and expansion of server infrastructure",
-    "Managing asset logistics, including the organization of equipment deliveries": "Managing asset logistics, including the organization of equipment deliveries",
-    "Overseeing the monitoring and performance of the overall IT infrastructure": "Overseeing the monitoring and performance of the overall IT infrastructure",
-    "Supervising user account and access management (AD, Google, Slack, Access Control System)": "Supervising user account and access management (AD, Google, Slack, Access Control System)",
-    "Directing the administration of various SaaS platforms": "Directing the administration of various SaaS platforms",
-    "Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022": "Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022",
-    "Providing and managing second-line technical support (L2)": "Providing and managing second-line technical support (L2)",
-    "Ensuring the maintenance of comprehensive technical documentation": "Ensuring the maintenance of comprehensive technical documentation",
-    "Collaborating in the creation and enforcement of IT policies and procedures": "Collaborating in the creation and enforcement of IT policies and procedures",
-    "Training and mentoring team members and users for enhanced operational efficiency": "Training and mentoring team members and users for enhanced operational efficiency",
-    "Managing licenses and subscriptions": "Managing licenses and subscriptions",
-    "Agile Development, IT Project & Program Management, Linux, Windows Server, Networking, Cybersecurity, Cloud Computing, SaaS Management": "Agile Development, IT Project & Program Management, Linux, Windows Server, Networking, Cybersecurity, Cloud Computing, SaaS Management",
-
-    "IT Assistant": "IT Assistant",
-    "Organizing asset delivery and equipment preparation": "Organizing asset delivery and equipment preparation",
-    "Overseeing IT infrastructure monitoring": "Overseeing IT infrastructure monitoring",
-    "Providing first-line technical support (L1)": "Providing first-line technical support (L1)",
-    "Managing user accounts and access (AD, Google, Slack, Access Control System)": "Managing user accounts and access (AD, Google, Slack, Access Control System)",
-    "Administering SaaS platforms": "Administering SaaS platforms",
-    "Handling server administration on Linux (Debian, Ubuntu) and Windows Server 2022": "Handling server administration on Linux (Debian, Ubuntu) and Windows Server 2022",
-    "Maintaining technical documentation": "Maintaining technical documentation",
-    "Assisting with IT policy and procedure development": "Assisting with IT policy and procedure development",
-    "Contributing to server infrastructure setup": "Contributing to server infrastructure setup",
-    "Managed assets system": "Managed assets system",
-    "Conducting technical onboarding for users": "Conducting technical onboarding for users",
-    "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management": "Linux, Windows Server, Networking, IT Support, Help Desk, Active Directory, Google Workspace, Slack, Jira, Asset Management",
-
     "CIE Center for Innovative Education": "CIE Center for Innovative Education",
-    "Dział planowania i analizy kosztów": "Planning and Cost Analysis Department",
-    "Analyzing planning and cost data to identify areas for efficiency improvement.": "Analyzing planning and cost data to identify areas for efficiency improvement.",
-    "Assisting with budget preparation and financial reporting.": "Assisting with budget preparation and financial reporting.",
-    "Developing tools for data visualization and performance tracking.": "Developing tools for data visualization and performance tracking.",
-    "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management": "Adobe Photoshop, Adobe Premiere Pro, Data Analysis, Cost Management",
-
     "Orange Polska": "Orange Poland",
-    "Praktykant": "CEX Team Intern",
-    "Participating in projects related to customer experience (CEX) analysis.": "Participating in projects related to customer experience (CEX) analysis.",
-    "Assisting with user research and UX design processes.": "Assisting with user research and UX design processes.",
-    "Contributing to mobile application testing and bug reporting.": "Contributing to mobile application testing and bug reporting.",
-    "Adobe Photoshop, User Experience (UX), Mobile Application Testing, Customer Experience": "Adobe Photoshop, User Experience (UX), Mobile Application Testing, Customer Experience",
-
     "European Parliament": "European Parliament",
+
+    // Roles
+    "IT Manager": "IT Manager",
+    "IT Assistant": "IT Assistant",
+    "Dział planowania i analizy kosztów": "Cost Planning and Analysis Department",
+    "Praktykant": "CEX Team Intern",
     "Intern in the Warsaw office of Danuta Hübner": "Intern in the Warsaw office of Danuta Hübner",
-    "Warsaw, Mazowieckie, Poland": "Warsaw, Mazowieckie, Poland",
-    "Assisting with research on European studies and civilization topics.": "Assisting with research on European studies and civilization topics.",
-    "Preparing reports and presentations for internal use.": "Preparing reports and presentations for internal use.",
-    "Supporting general office administration tasks.": "Supporting general office administration tasks.",
-    "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support": "Adobe Photoshop, Adobe Premiere Pro, Research, Administrative Support"
+
+    // Detailed Responsibilities (Safe Keys)
+    "exp_reikon_details": "- Spearheading the development and maintenance of network infrastructure\n- Leading the modernization and expansion of server infrastructure\n- Managing asset logistics, including the organization of equipment deliveries\n- Overseeing the monitoring and performance of the overall IT infrastructure\n- Supervising user account and access management (AD, Google, Slack, Access Control System)\n- Directing the administration of various SaaS platforms\n- Overseeing server administration for Linux (Debian, Ubuntu) and Windows Server 2022\n- Providing and managing second-line technical support (L2)\n- Ensuring the maintenance of comprehensive technical documentation\n- Collaborating in the creation and enforcement of IT policies and procedures\n- Training and mentoring team members and users for enhanced operational efficiency\n- Managing licenses and subscriptions",
+
+    "exp_cie_details": "- Analyzing planning and cost data to identify areas for efficiency improvement\n- Assisting with budget preparation and financial reporting\n- Developing tools for data visualization and performance tracking",
+
+    "exp_orange_details": "- Participating in projects related to customer experience (CEX) analysis\n- Assisting with user research and UX design processes\n- Contributing to mobile application testing and bug reporting",
+
+    "exp_ep_details": "- Assisting with research on European studies and civilization topics\n- Preparing reports and presentations for internal use\n- Supporting general office administration tasks"
 };

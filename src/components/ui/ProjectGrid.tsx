@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import ProjectModal from "./ProjectModal";
 
 interface GridItemProps {
     index: number;
@@ -14,6 +15,11 @@ interface GridItemProps {
     logo?: string;
     invertOnDark?: boolean;
     hoverTags?: string[];
+    onClick?: () => void;
+    // Data fields to pass to Modal (optional here, but needed for identifying item)
+    details?: string;
+    images?: string[];
+    websiteUrl?: string | null;
 }
 
 const OrbitingTags = ({ tags }: { tags: string[] }) => {
@@ -119,13 +125,14 @@ const AutoScrollDescription = ({ text }: { text: string }) => {
     );
 };
 
-const GridItem = ({ index, year, category, title, description, tag, themeColor = "text-primary", logo, invertOnDark, hoverTags }: GridItemProps) => {
+const GridItem = ({ index, year, category, title, description, tag, themeColor = "text-primary", logo, invertOnDark, hoverTags, onClick }: GridItemProps) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, duration: 0.5 }}
+            onClick={onClick}
             className={`group relative flex flex-col justify-between p-6 border-b border-r border-current/20 min-h-[300px] hover:bg-current/5 transition-colors duration-300 ${themeColor} hover:z-50`}
         >
             {/* Orbiting Tags Overlay */}
@@ -180,6 +187,7 @@ interface ProjectGridProps {
     title?: string;
     themeColor?: string; // Tailwind text color class, e.g. "text-primary"
     items: {
+        id?: string; // Add id to items
         title: string;
         description: string;
         year?: string;
@@ -188,10 +196,14 @@ interface ProjectGridProps {
         logo?: string;
         invertOnDark?: boolean;
         hoverTags?: string[];
+        details?: string;
+        images?: string[];
+        websiteUrl?: string | null;
     }[];
+    onItemClick?: (item: any) => void;
 }
 
-export default function ProjectGrid({ id, title, themeColor = "text-primary", items }: ProjectGridProps) {
+export default function ProjectGrid({ id, title, themeColor = "text-primary", items, onItemClick }: ProjectGridProps) {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -271,7 +283,13 @@ export default function ProjectGrid({ id, title, themeColor = "text-primary", it
             <div className="w-full border-t border-l border-current/20">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     {visibleItems.map((item, idx) => (
-                        <GridItem key={idx} index={idx} themeColor={themeColor} {...item} />
+                        <GridItem
+                            key={idx}
+                            index={idx}
+                            themeColor={themeColor}
+                            {...item}
+                            onClick={() => onItemClick && onItemClick(item)}
+                        />
                     ))}
 
                     {/* Expand Card */}
@@ -291,6 +309,8 @@ export default function ProjectGrid({ id, title, themeColor = "text-primary", it
                     )}
                 </div>
             </div>
-        </div>
+
+
+        </div >
     );
 }

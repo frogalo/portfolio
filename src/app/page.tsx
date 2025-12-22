@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useMemo } from "react";
 import BigFooter from "../components/ui/BigFooter";
 import ProjectGrid from "../components/ui/ProjectGrid";
+import ProjectModal from "../components/ui/ProjectModal";
 import ThemeProvider, { useTheme } from "../components/layout/ThemeProvider";
 import ThemeSwitcher from "../components/icons/ThemeSwitcher";
 import LanguageSwitcher from "../components/icons/LanguageSwitcher";
@@ -22,6 +23,8 @@ interface Project {
     websiteUrl: string | null;
     year?: string;
     tech: { name: string }[];
+    details?: string;
+    images?: string[];
 }
 
 interface Role {
@@ -54,6 +57,9 @@ type ExperienceOrEducation = CompanyExperience | EducationEntry;
 export default function HomePage() {
     const { t } = useTranslation();
     const { theme, setTheme } = useTheme();
+
+    // Modal State
+    const [activeModalItem, setActiveModalItem] = useState<{ type: 'projects' | 'experience' | 'education', id: string } | null>(null);
 
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -120,52 +126,103 @@ export default function HomePage() {
 
     // Data Processing
     const { projects, experience, education } = useMemo(() => {
+        // Date formatting helper
+        const formatDate = (dateString: string) => {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            return dateString.split(' ').map(part => {
+                // Remove potential punctuation from part to check against month list
+                const cleanPart = part.replace(/[^a-zA-Z]/g, '');
+                if (months.includes(cleanPart)) {
+                    return t(cleanPart.toLowerCase());
+                }
+                if (part === 'Present') {
+                    return t('present');
+                }
+                return part;
+            }).join(' ');
+        };
+
         // Map Projects
         const mappedProjects = (projectsData as Project[]).map((p) => ({
+            id: p.id,
             year: p.year || t("gridWeb"),
             category: p.category.toUpperCase(),
             title: t(p.title),
             description: t(p.description),
             tag: p.websiteUrl ? t("gridLive") : t("gridProject"),
-            hoverTags: p.tech.map(t => t.name),
+            hoverTags: p.tech.map(t => t.name).map(name => t(name)),
+            details: p.details ? t(p.details) : "",
+            images: p.images,
+            websiteUrl: p.websiteUrl
         }));
 
         // Map Experience
         const mappedExperience = (experienceData as ExperienceOrEducation[])
             .filter((e): e is CompanyExperience => e.type === "experience")
             .map((e) => ({
+                id: e.company, // Use company name as ID for experience
                 year: e.roles[0]?.period.split(" ")[0] || t("gridExp"),
                 category: t("gridWork"),
                 title: t(e.company),
                 description: t(e.roles[0]?.title),
-                tag: e.roles[0]?.period,
+                tag: formatDate(e.roles[0]?.period),
                 logo: e.logo,
-                hoverTags: e.roles[0]?.skills ? e.roles[0].skills.split(", ") : [],
+                hoverTags: e.roles[0]?.skills ? e.roles[0].skills.split(", ").map(s => t(s.trim())) : [],
+                details: e.company.includes("Reikon") ? t('exp_reikon_details')
+                    : e.company.includes("CIE") ? t('exp_cie_details')
+                        : e.company.includes("Orange") ? t('exp_orange_details')
+                            : t('exp_ep_details'),
+                images: e.logo ? [e.logo] : [], // Use logo as image
+                websiteUrl: null
             }));
 
         // Map Education
         const mappedEducation = (experienceData as ExperienceOrEducation[])
             .filter((e): e is EducationEntry => e.type === "education")
             .map((e) => ({
+                id: e.university, // Use university name as ID for education
                 year: e.period.split(" ")[0] || t("gridEdu"),
                 category: t("gridDegree"),
                 title: t(e.university),
                 description: t(e.degree),
-                tag: e.period,
+                tag: formatDate(e.period),
                 logo: e.logo,
                 invertOnDark: e.university.includes("Warsaw University of Technology") || e.university.includes("University of Warsaw"),
-                hoverTags: e.skills ? e.skills.split(", ") : [],
+                hoverTags: e.skills ? e.skills.split(", ").map(s => t(s.trim())) : [],
+                details: e.university.includes("Technology") ? t('edu_wut_details')
+                    : e.university.includes("Japanese") ? t('edu_pjatk_details')
+                        : t('edu_uw_details'),
+                images: e.logo ? [e.logo] : [],
+                websiteUrl: null
             }));
 
         return { projects: mappedProjects, experience: mappedExperience, education: mappedEducation };
     }, [t]);
 
+    const selectedProject = useMemo(() => {
+        if (!activeModalItem) return null;
+        const category = activeModalItem.type === 'projects' ? projects :
+            activeModalItem.type === 'experience' ? experience :
+                activeModalItem.type === 'education' ? education : [];
+        return category.find(item => item.id === activeModalItem.id) || null;
+    }, [activeModalItem, projects, experience, education]);
+
+    // Header class based on modal state
+    const headerClass = activeModalItem
+        ? "flex-col items-end gap-2 fixed z-[110] right-4 top-20 w-auto"
+        : "flex justify-between items-center fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference pointer-events-none";
+
+    const headerContentClass = activeModalItem
+        ? "flex flex-col gap-4 pointer-events-auto mix-blend-normal"
+        : "flex items-center gap-4 pointer-events-auto mix-blend-normal";
+
     return (
         <div className="bg-background min-h-screen text-text selection:bg-accent selection:text-background font-sans overflow-x-hidden">
-            {/* Navbar - Minimalist with Toggles */}
-            <div className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 text-primary mix-blend-difference pointer-events-none">
-                <div></div>
-                <div className="flex items-center gap-4 pointer-events-auto mix-blend-normal">
+            {/* Navbar - Dynamic Positioning */}
+            <div className={`transition-all duration-300 ${headerClass}`}>
+                {!activeModalItem && <div></div>}
+                <div className={headerContentClass}>
                     <LanguageSwitcher />
                     <ThemeSwitcher currentTheme={theme} onThemeChangeAction={setTheme} />
                 </div>
@@ -173,7 +230,7 @@ export default function HomePage() {
 
 
             {/* HERO SECTION */}
-            <section ref={targetRef} className="relative min-h-screen flex flex-col justify-center px-4 md:px-8 pt-20">
+            <section ref={targetRef} className="relative min-h-screen flex flex-col justify-start px-4 md:px-8 pt-[40px]">
                 <motion.div style={{ opacity: opacityHero, scale: scaleHero }} className="w-full max-w-[1920px] mx-auto z-10">
                     <div className="flex flex-col uppercase leading-[0.85] tracking-tighter">
                         <motion.h1
@@ -263,6 +320,7 @@ export default function HomePage() {
                     title={t("projects")}
                     themeColor="text-primary"
                     items={projects}
+                    onItemClick={(item) => setActiveModalItem({ type: 'projects', id: item.id! })}
                 />
 
                 <ProjectGrid
@@ -270,6 +328,7 @@ export default function HomePage() {
                     title={t("Experience")}
                     themeColor="text-secondary"
                     items={experience}
+                    onItemClick={(item) => setActiveModalItem({ type: 'experience', id: item.id! })}
                 />
 
                 <ProjectGrid
@@ -277,8 +336,21 @@ export default function HomePage() {
                     title={t("Education")}
                     themeColor="text-accent"
                     items={education}
+                    onItemClick={(item) => setActiveModalItem({ type: 'education', id: item.id! })}
                 />
+
             </section>
+
+            {/* Modal - Rendered at root to keep state */}
+            <ProjectModal
+                isOpen={!!activeModalItem}
+                onClose={() => setActiveModalItem(null)}
+                project={selectedProject}
+                themeColor={
+                    activeModalItem?.type === 'projects' ? 'text-primary' :
+                        activeModalItem?.type === 'experience' ? 'text-secondary' : 'text-accent'
+                }
+            />
 
             {/* BIG FOOTER */}
             <BigFooter />
