@@ -4,10 +4,11 @@ import path from 'path';
 
 export async function GET(
   request: Request,
-  { params }: { params: { file: string[] } }
+  { params }: { params: Promise<{ file: string[] }> }
 ) {
   try {
-    const filename = params.file.join('/');
+    const { file } = await params;
+    const filename = file.join('/');
     // Support UPLOAD_DIR for custom external paths, fallback to public/uploads
     const uploadsDir = process.env.UPLOAD_DIR || path.join(process.cwd(), "public", "uploads");
     const filePath = path.join(uploadsDir, filename);

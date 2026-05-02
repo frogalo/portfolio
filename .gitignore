@@ -47,3 +47,5 @@ next-env.d.ts
 DEPLOYMENT.md
 db.md
 data_dump.json
+src/app/data/experience.json
+
