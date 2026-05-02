@@ -12,3 +12,5 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3002
+    volumes:
+      - ./public/uploads:/app/public/uploads

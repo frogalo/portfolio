@@ -1,5 +1,77 @@
 @import "tailwindcss";
 
+@theme {
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-surface: var(--on-surface);
+  --color-tertiary: var(--tertiary);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-error: var(--error);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-variant: var(--surface-variant);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-error: var(--on-error);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-surface-tint: var(--surface-tint);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-error-container: var(--error-container);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+  --color-outline-variant: var(--outline-variant);
+  --color-on-primary: var(--on-primary);
+  --color-on-secondary: var(--on-secondary);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-surface-container: var(--surface-container);
+  --color-surface: var(--surface-surface);
+  --color-on-error-container: var(--on-error-container);
+  --color-on-background: var(--on-background);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-outline: var(--outline);
+  --color-primary-container: var(--primary-container);
+
+  /* Map the main functional colors to our dynamic variables */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-text: var(--text);
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+  
+  --radius-default: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.tonal-shift-grid {
+  background-image: radial-gradient(circle at 2px 2px, rgba(211,187,255,0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
@@ -23,12 +95,9 @@
   --font-size-5xl: 4.21rem;
   /* 67.36px */
 
-  --nav-btn-color: #c879ff;
-  /* Default fallback (Dark Mode color) */
-}
+  /* ── Light theme defaults (prevents unstyled flash before JS runs) ── */
+  --nav-btn-color: #e91e63;
 
-/* Light Theme */
-:root[data-theme="light"] {
   --text-50: #f1e7fe;
   --text-100: #e2cffc;
   --text-200: #c69efa;
@@ -59,7 +128,6 @@
   --primary-300: #a06ef7;
   --primary-400: #813ef4;
   --primary-500: #610ef1;
-  /* This is Purple/Blue-ish */
   --primary-600: #4e0bc1;
   --primary-700: #3a0891;
   --primary-800: #270660;
@@ -90,28 +158,89 @@
   --accent-900: #300313;
   --accent-950: #18010a;
 
-  /* Mappings for legacy/component compatibility */
-  /* For Light theme: background should be light, text dark */
+  /* Semantic tokens — light mode */
   --text: var(--text-950);
   --background: var(--background-50);
   --background-lighter: var(--background-100);
-
   --primary: var(--primary-600);
   --secondary: var(--secondary-600);
   --accent: var(--accent-600);
-
   --header-bg: var(--background-200);
   --header-txt: var(--text-950);
   --purple-accent: var(--primary-500);
   --gold-accent: var(--accent-300);
-  /* --cyan-accent: #08FDD8;  */
+  --footer-bg: var(--background-100);
+  --footer-text: var(--text-950);
 
+  /* Material Design tokens — light mode defaults */
+  --on-secondary-fixed: #400014;
+  --secondary-container: #d70357;
+  --on-surface: #1a1a1a;
+  --tertiary: #4a4456;
+  --on-surface-variant: #4a4455;
+  --secondary-fixed: #ffd9de;
+  --error: #ba1a1a;
+  --surface-container-low: #f5f0ff;
+  --surface-bright: #ffffff;
+  --surface-container-lowest: #ffffff;
+  --inverse-on-surface: #f5f0ff;
+  --surface-dim: #e0d7f0;
+  --surface-variant: #ede4ff;
+  --on-tertiary: #ffffff;
+  --primary-fixed-dim: #7a3ef4;
+  --on-error: #ffffff;
+  --on-primary-container: #250059;
+  --tertiary-container: #ede4ff;
+  --inverse-surface: #303030;
+  --on-primary-fixed: #250059;
+  --surface-tint: #6d28d9;
+  --secondary-fixed-dim: #f43ebd;
+  --error-container: #ffdad6;
+  --tertiary-fixed: #e9def5;
+  --tertiary-fixed-dim: #cdc2d9;
+  --on-tertiary-fixed-variant: #4a4456;
+  --primary-fixed: #ebddff;
+  --inverse-primary: #d3bbff;
+  --on-tertiary-container: #1e1929;
+  --on-primary-fixed-variant: #5b00c5;
+  --outline-variant: #ccc3d7;
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-secondary-fixed-variant: #900038;
+  --on-tertiary-fixed: #1e1929;
+  --surface-container: #ede4ff;
+  --surface-surface: #f5f0ff;
+  --on-error-container: #410002;
+  --on-background: #1a1a1a;
+  --surface-container-highest: #ddd4ee;
+  --on-secondary-container: #3e001f;
+  --surface-container-high: #e8dffa;
+  --outline: #6e6479;
+  --primary-container: #ebddff;
+}
+
+/* Light Theme — same palette as :root defaults, kept explicit for clarity */
+:root[data-theme="light"] {
   --nav-btn-color: #e91e63;
-  /* Red for Light Mode */
+  --text: var(--text-950);
+  --background: var(--background-50);
+  --background-lighter: var(--background-100);
+  --primary: var(--primary-600);
+  --secondary: var(--secondary-600);
+  --accent: var(--accent-600);
+  --header-bg: var(--background-200);
+  --header-txt: var(--text-950);
+  --purple-accent: var(--primary-500);
+  --gold-accent: var(--accent-300);
+  --footer-bg: var(--background-100);
+  --footer-text: var(--text-950);
 }
 
 /* Dark Theme */
 :root[data-theme="dark"] {
+  --nav-btn-color: #c879ff;
+
+  /* Flip palette to dark scale */
   --text-50: #0b0118;
   --text-100: #160330;
   --text-200: #2d0561;
@@ -172,12 +301,10 @@
   --accent-900: #fccfdf;
   --accent-950: #fee7ef;
 
-  /* Mappings for legacy/component compatibility */
-  /* For Dark theme: background should be dark (50), text light (950) */
+  /* Semantic tokens */
   --text: var(--text-950);
   --background: var(--background-50);
   --background-lighter: var(--background-100);
-
   --primary: var(--primary-700);
   --secondary: var(--secondary-500);
   --accent: var(--accent-500);
@@ -187,11 +314,59 @@
 
   --purple-accent: var(--primary-500);
   --gold-accent: var(--accent-300);
+  --footer-bg: var(--background-100);
+  --footer-text: var(--text-950);
 
   /* --cyan-accent: #08FDD8;  */
 
   --nav-btn-color: #c879ff;
   /* Purple for Dark Mode */
+
+  /* Material Design tokens — dark mode overrides */
+  --on-secondary-fixed: #ffb2be;
+  --secondary-container: #900038;
+  --on-surface: #e6e0e9;
+  --tertiary: #ccc2d9;
+  --on-surface-variant: #ccc3d7;
+  --secondary-fixed: #400014;
+  --error: #ffb4ab;
+  --surface-container-low: #1c1b1f;
+  --surface-bright: #3b383e;
+  --surface-container-lowest: #0f0d13;
+  --inverse-on-surface: #1c1b1f;
+  --surface-dim: #141218;
+  --surface-variant: #49454f;
+  --on-tertiary: #381e72;
+  --primary-fixed-dim: #d3bbff;
+  --on-error: #690005;
+  --on-primary-container: #eaddff;
+  --tertiary-container: #49454f;
+  --inverse-surface: #e6e1e5;
+  --on-primary-fixed: #21005d;
+  --surface-tint: #d0bcff;
+  --secondary-fixed-dim: #ffb2be;
+  --error-container: #93000a;
+  --tertiary-fixed: #eaddff;
+  --tertiary-fixed-dim: #ccc2d9;
+  --on-tertiary-fixed-variant: #ccc3d7;
+  --primary-fixed: #eaddff;
+  --inverse-primary: #6750a4;
+  --on-tertiary-container: #eaddff;
+  --on-primary-fixed-variant: #eaddff;
+  --outline-variant: #49454f;
+  --on-primary: #381e72;
+  --on-secondary: #690005;
+  --on-secondary-fixed-variant: #ffb2be;
+  --on-tertiary-fixed: #eaddff;
+  --surface-container: #211f26;
+  --surface-surface: #1c1b1f;
+  --on-error-container: #ffdad6;
+  --on-background: #e6e1e5;
+  --surface-container-highest: #36343b;
+  --on-secondary-container: #ffdad6;
+  --surface-container-high: #2b2930;
+  --outline: #938f99;
+  --primary-container: #4f378b;
 }
 
 html {
