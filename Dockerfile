@@ -8,6 +8,7 @@ WORKDIR /app
 
 # Copy package.json and lock files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* ./
+COPY prisma.config.ts ./
 COPY prisma ./prisma/
 
 # Install dependencies (will also trigger prisma generate if in postinstall/build)
@@ -35,6 +36,7 @@ RUN apk add --no-cache openssl
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
 
