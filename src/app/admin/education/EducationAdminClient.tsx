@@ -39,7 +39,7 @@ export default function EducationAdminClient({ initialEntries, dbOnline, dbError
                 Academy Archive
               </h1>
               <p className="text-on-surface-variant font-mono text-sm">
-                {selectedEntry ? `Refining credentials: ${selectedEntry.university}` : "Archiving new academic milestone..."}
+                {selectedEntry ? `Refining credentials: ${selectedEntry.universityEn}` : "Archiving new academic milestone..."}
               </p>
             </div>
             <div className="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 shadow-2xl relative overflow-hidden transition-colors duration-500">
@@ -78,14 +78,14 @@ export default function EducationAdminClient({ initialEntries, dbOnline, dbError
                 >
                   <div className="w-16 h-16 bg-surface-container-lowest rounded-lg overflow-hidden flex-shrink-0 border border-outline-variant/20 flex items-center justify-center p-2">
                     {entry.logo ? (
-                      <img src={entry.logo} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" alt={entry.university} />
+                      <img src={entry.logo} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" alt={entry.universityEn} />
                     ) : (
                       <span className="material-symbols-outlined text-accent opacity-30">school</span>
                     )}
                   </div>
                   <div className="flex-1">
                     <h3 className={`text-xl font-headline font-bold transition-colors ${isSelected ? 'text-accent' : 'text-on-surface'}`}>
-                      {entry.university}
+                      {entry.universityEn}
                     </h3>
                     <div className="mt-1">
                       <p className="text-sm font-mono text-on-surface-variant">{entry.degreeEn}</p>

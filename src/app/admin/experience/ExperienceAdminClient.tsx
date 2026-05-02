@@ -39,7 +39,7 @@ export default function ExperienceAdminClient({ initialEntries, dbOnline, dbErro
                 Career Terminal
               </h1>
               <p className="text-on-surface-variant font-mono text-sm">
-                {selectedEntry ? `Modifying history: ${selectedEntry.company}` : "Recording new professional timeline..."}
+                {selectedEntry ? `Modifying history: ${selectedEntry.companyEn}` : "Recording new professional timeline..."}
               </p>
             </div>
             <div className="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 shadow-2xl relative overflow-hidden transition-colors duration-500">
@@ -79,14 +79,14 @@ export default function ExperienceAdminClient({ initialEntries, dbOnline, dbErro
                 >
                   <div className="w-16 h-16 bg-surface-container-lowest rounded-lg overflow-hidden flex-shrink-0 border border-outline-variant/20 flex items-center justify-center p-2">
                     {entry.logo ? (
-                      <img src={entry.logo} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" alt={entry.company} />
+                      <img src={entry.logo} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" alt={entry.companyEn} />
                     ) : (
                       <span className="material-symbols-outlined text-secondary opacity-30">business</span>
                     )}
                   </div>
                   <div className="flex-1">
                     <h3 className={`text-xl font-headline font-bold transition-colors ${isSelected ? 'text-secondary' : 'text-on-surface'}`}>
-                      {entry.company}
+                      {entry.companyEn}
                     </h3>
                     <div className="space-y-1 mt-1">
                       {rolesEn.map((role: any, idx: number) => (

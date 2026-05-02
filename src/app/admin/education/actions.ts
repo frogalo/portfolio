@@ -5,7 +5,8 @@ import { revalidatePath } from "next/cache";
 
 export async function saveEducation(formData: FormData) {
     const id = formData.get('id') as string;
-    const university = formData.get('university') as string;
+    const universityEn = formData.get('universityEn') as string;
+    const universityPl = formData.get('universityPl') as string;
     const degreeEn = formData.get('degreeEn') as string;
     const degreePl = formData.get('degreePl') as string;
     const period = formData.get('period') as string;
@@ -18,7 +19,8 @@ export async function saveEducation(formData: FormData) {
     const skillsPl = formData.get('skillsPl') as string;
 
     const data = {
-        university,
+        universityEn,
+        universityPl,
         degreeEn,
         degreePl,
         period,

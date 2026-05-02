@@ -56,7 +56,9 @@ export default async function Page() {
             }));
             return {
                 type: "experience" as const,
-                company: e.company,
+                id: e.id,
+                companyEn: e.companyEn,
+                companyPl: e.companyPl,
                 logo: e.logo || undefined,
                 roles,
                 skills: e.skills || undefined
@@ -65,7 +67,9 @@ export default async function Page() {
 
         education = dbEducation.map((e) => ({
             type: "education" as const,
-            university: e.university,
+            id: e.id,
+            universityEn: e.universityEn,
+            universityPl: e.universityPl,
             logo: e.logo || undefined,
             degree: { en: e.degreeEn, pl: e.degreePl, isBilingual: true },
             period: e.period,

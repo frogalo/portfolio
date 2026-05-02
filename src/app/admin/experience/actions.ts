@@ -5,7 +5,8 @@ import { revalidatePath } from "next/cache";
 
 export async function saveExperience(formData: FormData) {
     const id = formData.get('id') as string;
-    const company = formData.get('company') as string;
+    const companyEn = formData.get('companyEn') as string;
+    const companyPl = formData.get('companyPl') as string;
     const logoRaw = formData.get('logo') as string;
     
     // ImageUploader sends a JSON array; extract first path as logo
@@ -40,7 +41,8 @@ export async function saveExperience(formData: FormData) {
     }];
 
     const data = {
-        company,
+        companyEn,
+        companyPl,
         logo,
         skills,
         rolesEn: JSON.stringify(rolesEn),

@@ -46,18 +46,33 @@ export default function ExperienceForm({ disabled, initialData, onClearAction }:
       <div className="space-y-6">
         {/* Common Fields */}
         <div className="space-y-4">
-          <div className="group">
-            <label className="block text-[10px] font-mono text-secondary uppercase tracking-widest mb-1 ml-1">
-              Company_Name
-            </label>
-            <input
-              name="company"
-              defaultValue={initialData?.company || ""}
-              className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-on-surface py-3 px-4 transition-all placeholder:text-on-surface-variant/30 font-headline text-lg"
-              placeholder="Nexus Systems"
-              type="text"
-              required
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="group">
+              <label className="block text-[10px] font-mono text-secondary uppercase tracking-widest mb-1 ml-1">
+                Company_Name_EN
+              </label>
+              <input
+                name="companyEn"
+                defaultValue={initialData?.companyEn || ""}
+                className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-on-surface py-3 px-4 transition-all placeholder:text-on-surface-variant/30 font-headline text-lg"
+                placeholder="Nexus Systems"
+                type="text"
+                required
+              />
+            </div>
+            <div className="group">
+              <label className="block text-[10px] font-mono text-secondary uppercase tracking-widest mb-1 ml-1">
+                Company_Name_PL
+              </label>
+              <input
+                name="companyPl"
+                defaultValue={initialData?.companyPl || ""}
+                className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-on-surface py-3 px-4 transition-all placeholder:text-on-surface-variant/30 font-headline text-lg"
+                placeholder="Systemy Nexus"
+                type="text"
+                required
+              />
+            </div>
           </div>
           <div className="group">
             <label className="block text-[10px] font-mono text-secondary uppercase tracking-widest mb-1 ml-1">

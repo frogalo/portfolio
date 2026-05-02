@@ -43,18 +43,33 @@ export default function EducationForm({ disabled, initialData, onClearAction }: 
       <div className="space-y-6">
         {/* Common Fields */}
         <div className="space-y-4">
-          <div className="group">
-            <label className="block text-[10px] font-mono text-accent uppercase tracking-widest mb-1 ml-1">
-              University_Node
-            </label>
-            <input
-              name="university"
-              defaultValue={initialData?.university || ""}
-              className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-accent focus:ring-0 text-on-surface py-3 px-4 transition-all placeholder:text-on-surface-variant/30 font-headline text-lg"
-              placeholder="Politechnika Warszawska"
-              type="text"
-              required
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="group">
+              <label className="block text-[10px] font-mono text-accent uppercase tracking-widest mb-1 ml-1">
+                University_Node_EN
+              </label>
+              <input
+                name="universityEn"
+                defaultValue={initialData?.universityEn || ""}
+                className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-accent focus:ring-0 text-on-surface py-3 px-4 transition-all placeholder:text-on-surface-variant/30 font-headline text-lg"
+                placeholder="Warsaw University of Technology"
+                type="text"
+                required
+              />
+            </div>
+            <div className="group">
+              <label className="block text-[10px] font-mono text-accent uppercase tracking-widest mb-1 ml-1">
+                University_Node_PL
+              </label>
+              <input
+                name="universityPl"
+                defaultValue={initialData?.universityPl || ""}
+                className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-accent focus:ring-0 text-on-surface py-3 px-4 transition-all placeholder:text-on-surface-variant/30 font-headline text-lg"
+                placeholder="Politechnika Warszawska"
+                type="text"
+                required
+              />
+            </div>
           </div>
           <div className="group">
             <label className="block text-[10px] font-mono text-accent uppercase tracking-widest mb-1 ml-1">

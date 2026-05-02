@@ -29,7 +29,8 @@ model Project {
 
 model Experience {
   id          String   @id @default(uuid())
-  company     String
+  companyEn   String
+  companyPl   String
   logo        String?
   skills      String?
   rolesEn     String   @default("[]") // JSON string array of { title, period, skills, responsibilities }
@@ -40,7 +41,8 @@ model Experience {
 
 model Education {
   id           String   @id @default(uuid())
-  university   String
+  universityEn String
+  universityPl String
   logo         String?
   degreeEn     String
   degreePl     String
