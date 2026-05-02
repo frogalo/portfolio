@@ -17,14 +17,16 @@ interface Role {
 
 interface CompanyExperience {
     type: "experience";
-    company: string;
+    companyEn: string;
+    companyPl: string;
     logo?: string;
     roles: Role[];
 }
 
 interface EducationEntry {
     type: "education";
-    university: string;
+    universityEn: string;
+    universityPl: string;
     logo?: string;
     degree: string;
     period: string;
@@ -35,7 +37,7 @@ interface EducationEntry {
 type ExperienceOrEducation = CompanyExperience | EducationEntry;
 
 export default function ExperienceSection() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     // Filter data directly from the imported JSON
     const experience: CompanyExperience[] = (experienceData as ExperienceOrEducation[]).filter(
@@ -64,14 +66,16 @@ export default function ExperienceSection() {
                             {companyExp.logo && (
                                 <Image
                                     src={companyExp.logo}
-                                    alt={`${companyExp.company} logo`}
+                                    alt={`${i18n.language === 'pl' ? companyExp.companyPl : companyExp.companyEn} logo`}
                                     width={48}
                                     height={48}
                                     className="object-contain" // Changed to object-contain, removed rounded-full
                                 />
                             )}
                             <div>
-                                <h3 className="text-2xl font-bold text-primary">{t(companyExp.company)}</h3>
+                                <h3 className="text-2xl font-bold text-primary">
+                                    {i18n.language === 'pl' ? companyExp.companyPl : companyExp.companyEn}
+                                </h3>
                             </div>
                         </div>
 
@@ -132,14 +136,16 @@ export default function ExperienceSection() {
                             {edu.logo && (
                                 <Image
                                     src={edu.logo}
-                                    alt={`${edu.university} logo`}
+                                    alt={`${i18n.language === 'pl' ? edu.universityPl : edu.universityEn} logo`}
                                     width={48}
                                     height={48}
                                     className="object-contain" // Changed to object-contain, removed rounded-full
                                 />
                             )}
                             <div>
-                                <h3 className="text-2xl font-bold text-primary">{t(edu.university)}</h3>
+                                <h3 className="text-2xl font-bold text-primary">
+                                    {i18n.language === 'pl' ? edu.universityPl : edu.universityEn}
+                                </h3>
                                 <p className="text-accent text-lg">{t(edu.degree)}</p>
                                 <p className="text-sm text-text/70">{edu.period}</p>
                             </div>
