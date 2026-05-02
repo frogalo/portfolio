@@ -154,9 +154,9 @@ export default async function Page() {
 
     try {
         // 1. Fetch from Database
-        const dbProjects = await prisma.project.findMany({ orderBy: { createdAt: 'desc' } });
-        const dbExperience = await prisma.experience.findMany({ orderBy: { createdAt: 'desc' } });
-        const dbEducation = await prisma.education.findMany({ orderBy: { createdAt: 'desc' } });
+        const dbProjects = await prisma.project.findMany({ where: { visible: true }, orderBy: { createdAt: 'desc' } });
+        const dbExperience = await prisma.experience.findMany({ where: { visible: true }, orderBy: { createdAt: 'desc' } });
+        const dbEducation = await prisma.education.findMany({ where: { visible: true }, orderBy: { createdAt: 'desc' } });
 
         // 2. Map DB entries to the expected format
         projects = dbProjects.map((p) => ({

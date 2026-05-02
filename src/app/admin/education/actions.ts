@@ -11,6 +11,7 @@ export async function saveEducation(formData: FormData) {
     const degreePl = formData.get('degreePl') as string;
     const period = formData.get('period') as string;
     const logoRaw = formData.get('logo') as string;
+    const visible = formData.get('visible') === 'on';
     
     let logo: string | null = null;
     try { const arr = JSON.parse(logoRaw); logo = arr[0] ?? null; } catch { logo = logoRaw || null; }
@@ -27,6 +28,7 @@ export async function saveEducation(formData: FormData) {
         logo,
         skillsEn,
         skillsPl,
+        visible,
     };
 
     if (id) {
@@ -47,6 +49,16 @@ export async function saveEducation(formData: FormData) {
 export async function deleteEducation(id: string) {
     await prisma.education.delete({
         where: { id },
+    });
+
+    revalidatePath('/admin/education');
+    revalidatePath('/');
+}
+
+export async function toggleEducationVisibility(id: string, visible: boolean) {
+    await prisma.education.update({
+        where: { id },
+        data: { visible },
     });
 
     revalidatePath('/admin/education');

@@ -17,6 +17,7 @@ export async function saveProject(formData: FormData) {
     const detailsPl = formData.get('detailsPl') as string;
     const techRaw = formData.get('tech') as string;
     const imagesRaw = formData.get('images') as string;
+    const visible = formData.get('visible') === 'on';
     
     let images = [];
     try { images = JSON.parse(imagesRaw); } catch { images = imagesRaw ? [imagesRaw] : []; }
@@ -40,6 +41,7 @@ export async function saveProject(formData: FormData) {
         detailsPl,
         tech,
         images: JSON.stringify(images),
+        visible,
     };
 
     if (id) {
@@ -60,6 +62,16 @@ export async function saveProject(formData: FormData) {
 export async function deleteProject(id: string) {
     await prisma.project.delete({
         where: { id },
+    });
+
+    revalidatePath('/admin/projects');
+    revalidatePath('/');
+}
+
+export async function toggleProjectVisibility(id: string, visible: boolean) {
+    await prisma.project.update({
+        where: { id },
+        data: { visible },
     });
 
     revalidatePath('/admin/projects');

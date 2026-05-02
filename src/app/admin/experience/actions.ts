@@ -8,6 +8,7 @@ export async function saveExperience(formData: FormData) {
     const companyEn = formData.get('companyEn') as string;
     const companyPl = formData.get('companyPl') as string;
     const logoRaw = formData.get('logo') as string;
+    const visible = formData.get('visible') === 'on';
     
     // ImageUploader sends a JSON array; extract first path as logo
     let logo: string | null = null;
@@ -47,6 +48,7 @@ export async function saveExperience(formData: FormData) {
         skills,
         rolesEn: JSON.stringify(rolesEn),
         rolesPl: JSON.stringify(rolesPl),
+        visible,
     };
 
     if (id) {
@@ -67,6 +69,16 @@ export async function saveExperience(formData: FormData) {
 export async function deleteExperience(id: string) {
     await prisma.experience.delete({
         where: { id },
+    });
+
+    revalidatePath('/admin/experience');
+    revalidatePath('/');
+}
+
+export async function toggleExperienceVisibility(id: string, visible: boolean) {
+    await prisma.experience.update({
+        where: { id },
+        data: { visible },
     });
 
     revalidatePath('/admin/experience');

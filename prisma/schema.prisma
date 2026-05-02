@@ -23,6 +23,7 @@ model Project {
   detailsPl     String?
   images        String   @default("[]") // JSON string array
   tech          String   @default("[]") // JSON string array of { name: string }
+  visible       Boolean  @default(true)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
@@ -35,6 +36,7 @@ model Experience {
   skills      String?
   rolesEn     String   @default("[]") // JSON string array of { title, period, skills, responsibilities }
   rolesPl     String   @default("[]") // JSON string array of { title, period, skills, responsibilities }
+  visible     Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -49,6 +51,7 @@ model Education {
   period       String
   skillsEn     String?
   skillsPl     String?
+  visible      Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

@@ -77,6 +77,22 @@ export default function ExperienceForm({ disabled, initialData, onClearAction }:
           sectionKey="experience"
           onApply={applyImportedValues}
         />
+        <label className="flex items-center justify-between gap-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest/50 px-4 py-3">
+          <div>
+            <p className="text-[10px] font-mono text-secondary uppercase tracking-widest">
+              Visibility_State
+            </p>
+            <p className="text-sm text-on-surface-variant">
+              Show this experience entry on the public page.
+            </p>
+          </div>
+          <input
+            name="visible"
+            type="checkbox"
+            defaultChecked={initialData?.visible ?? true}
+            className="h-4 w-4 accent-[var(--secondary)]"
+          />
+        </label>
         {/* Common Fields */}
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
