@@ -44,3 +44,5 @@ next-env.d.ts
 /.idea/vcs.xml
 
 /src/generated/prisma
+DEPLOYMENT.md
+db.md
