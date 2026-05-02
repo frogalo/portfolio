@@ -30,9 +30,6 @@ export default function BigFooter() {
           {t("footerFollow")}
           <br />
           {t("footerTalk")}
-          <div className="mt-2 text-xs opacity-70">
-            Message me up for future projects
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

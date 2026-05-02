@@ -2,12 +2,28 @@
 
 import { useRef, useState, useTransition, useEffect } from "react";
 import ImageUploader from "@/components/admin/ImageUploader";
+import FormJsonImporter, { normalizeJsonValue } from "@/components/admin/FormJsonImporter";
+import { setFormFieldValue } from "@/components/admin/formFields";
 import { saveProject } from "./actions";
 
 interface ProjectFormProps {
   disabled?: boolean;
   initialData?: any;
   onClearAction?: () => void;
+}
+
+interface ProjectImportEntry {
+  titleEn?: unknown;
+  titlePl?: unknown;
+  descriptionEn?: unknown;
+  descriptionPl?: unknown;
+  categoryEn?: unknown;
+  categoryPl?: unknown;
+  year?: unknown;
+  detailsEn?: unknown;
+  detailsPl?: unknown;
+  tech?: unknown;
+  websiteUrl?: unknown;
 }
 
 export default function ProjectForm({ disabled, initialData, onClearAction }: ProjectFormProps) {
@@ -44,6 +60,24 @@ export default function ProjectForm({ disabled, initialData, onClearAction }: Pr
         : initialData.tech.map((t: any) => t.name).join(', '))
     : "";
 
+  const applyImportedValues = (entry: ProjectImportEntry) => {
+    if (!formRef.current) {
+      return;
+    }
+
+    setFormFieldValue(formRef.current, "titleEn", normalizeJsonValue(entry.titleEn));
+    setFormFieldValue(formRef.current, "titlePl", normalizeJsonValue(entry.titlePl));
+    setFormFieldValue(formRef.current, "descriptionEn", normalizeJsonValue(entry.descriptionEn));
+    setFormFieldValue(formRef.current, "descriptionPl", normalizeJsonValue(entry.descriptionPl));
+    setFormFieldValue(formRef.current, "categoryEn", normalizeJsonValue(entry.categoryEn));
+    setFormFieldValue(formRef.current, "categoryPl", normalizeJsonValue(entry.categoryPl));
+    setFormFieldValue(formRef.current, "year", normalizeJsonValue(entry.year));
+    setFormFieldValue(formRef.current, "detailsEn", normalizeJsonValue(entry.detailsEn));
+    setFormFieldValue(formRef.current, "detailsPl", normalizeJsonValue(entry.detailsPl));
+    setFormFieldValue(formRef.current, "tech", normalizeJsonValue(entry.tech));
+    setFormFieldValue(formRef.current, "websiteUrl", normalizeJsonValue(entry.websiteUrl));
+  };
+
   return (
     <form 
       key={initialData?.id || "new"} 
@@ -54,6 +88,11 @@ export default function ProjectForm({ disabled, initialData, onClearAction }: Pr
       {initialData?.id && <input type="hidden" name="id" value={initialData.id} />}
 
       <div className="space-y-6">
+        <FormJsonImporter<ProjectImportEntry>
+          accent="primary"
+          sectionKey="projects"
+          onApply={applyImportedValues}
+        />
         
         {/* Common Fields */}
         <div className="grid grid-cols-2 gap-4">

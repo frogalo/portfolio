@@ -2,12 +2,24 @@
 
 import { useRef, useState, useTransition, useEffect } from "react";
 import ImageUploader from "@/components/admin/ImageUploader";
+import FormJsonImporter, { normalizeJsonValue } from "@/components/admin/FormJsonImporter";
+import { setFormFieldValue } from "@/components/admin/formFields";
 import { saveEducation } from "./actions";
 
 interface EducationFormProps {
   disabled?: boolean;
   initialData?: any;
   onClearAction?: () => void;
+}
+
+interface EducationImportEntry {
+  universityEn?: unknown;
+  universityPl?: unknown;
+  degreeEn?: unknown;
+  degreePl?: unknown;
+  period?: unknown;
+  skillsEn?: unknown;
+  skillsPl?: unknown;
 }
 
 export default function EducationForm({ disabled, initialData, onClearAction }: EducationFormProps) {
@@ -31,6 +43,20 @@ export default function EducationForm({ disabled, initialData, onClearAction }: 
     });
   };
 
+  const applyImportedValues = (entry: EducationImportEntry) => {
+    if (!formRef.current) {
+      return;
+    }
+
+    setFormFieldValue(formRef.current, "universityEn", normalizeJsonValue(entry.universityEn));
+    setFormFieldValue(formRef.current, "universityPl", normalizeJsonValue(entry.universityPl));
+    setFormFieldValue(formRef.current, "degreeEn", normalizeJsonValue(entry.degreeEn));
+    setFormFieldValue(formRef.current, "degreePl", normalizeJsonValue(entry.degreePl));
+    setFormFieldValue(formRef.current, "period", normalizeJsonValue(entry.period));
+    setFormFieldValue(formRef.current, "skillsEn", normalizeJsonValue(entry.skillsEn));
+    setFormFieldValue(formRef.current, "skillsPl", normalizeJsonValue(entry.skillsPl));
+  };
+
   return (
     <form 
       key={initialData?.id || "new"}
@@ -41,6 +67,11 @@ export default function EducationForm({ disabled, initialData, onClearAction }: 
       {initialData?.id && <input type="hidden" name="id" value={initialData.id} />}
 
       <div className="space-y-6">
+        <FormJsonImporter<EducationImportEntry>
+          accent="tertiary"
+          sectionKey="education"
+          onApply={applyImportedValues}
+        />
         {/* Common Fields */}
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

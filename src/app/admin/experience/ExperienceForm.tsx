@@ -2,12 +2,25 @@
 
 import { useRef, useState, useTransition, useEffect } from "react";
 import ImageUploader from "@/components/admin/ImageUploader";
+import FormJsonImporter, { normalizeJsonValue } from "@/components/admin/FormJsonImporter";
+import { setFormFieldValue } from "@/components/admin/formFields";
 import { saveExperience } from "./actions";
 
 interface ExperienceFormProps {
   disabled?: boolean;
   initialData?: any;
   onClearAction?: () => void;
+}
+
+interface ExperienceImportEntry {
+  companyEn?: unknown;
+  companyPl?: unknown;
+  roleTitleEn?: unknown;
+  roleTitlePl?: unknown;
+  rolePeriod?: unknown;
+  skills?: unknown;
+  responsibilitiesEn?: unknown;
+  responsibilitiesPl?: unknown;
 }
 
 export default function ExperienceForm({ disabled, initialData, onClearAction }: ExperienceFormProps) {
@@ -34,6 +47,21 @@ export default function ExperienceForm({ disabled, initialData, onClearAction }:
   const roleEn = initialData?.rolesEn ? (typeof initialData.rolesEn === 'string' ? JSON.parse(initialData.rolesEn)[0] : initialData.rolesEn[0]) : null;
   const rolePl = initialData?.rolesPl ? (typeof initialData.rolesPl === 'string' ? JSON.parse(initialData.rolesPl)[0] : initialData.rolesPl[0]) : null;
 
+  const applyImportedValues = (entry: ExperienceImportEntry) => {
+    if (!formRef.current) {
+      return;
+    }
+
+    setFormFieldValue(formRef.current, "companyEn", normalizeJsonValue(entry.companyEn));
+    setFormFieldValue(formRef.current, "companyPl", normalizeJsonValue(entry.companyPl));
+    setFormFieldValue(formRef.current, "roleTitleEn", normalizeJsonValue(entry.roleTitleEn));
+    setFormFieldValue(formRef.current, "roleTitlePl", normalizeJsonValue(entry.roleTitlePl));
+    setFormFieldValue(formRef.current, "rolePeriod", normalizeJsonValue(entry.rolePeriod));
+    setFormFieldValue(formRef.current, "skills", normalizeJsonValue(entry.skills));
+    setFormFieldValue(formRef.current, "responsibilitiesEn", normalizeJsonValue(entry.responsibilitiesEn));
+    setFormFieldValue(formRef.current, "responsibilitiesPl", normalizeJsonValue(entry.responsibilitiesPl));
+  };
+
   return (
     <form 
       key={initialData?.id || "new"}
@@ -44,6 +72,11 @@ export default function ExperienceForm({ disabled, initialData, onClearAction }:
       {initialData?.id && <input type="hidden" name="id" value={initialData.id} />}
       
       <div className="space-y-6">
+        <FormJsonImporter<ExperienceImportEntry>
+          accent="secondary"
+          sectionKey="experience"
+          onApply={applyImportedValues}
+        />
         {/* Common Fields */}
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

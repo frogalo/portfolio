@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 
 interface ImageUploaderProps {
   /** Hidden input name that will carry the JSON array of paths */
@@ -31,8 +31,16 @@ export default function ImageUploader({
     tertiary: { border: "border-tertiary", text: "text-tertiary", bg: "bg-tertiary/5" },
   }[accent];
 
+  useEffect(() => {
+    setPaths(initialPaths);
+  }, [initialPaths]);
+
   const uploadFiles = useCallback(async (files: FileList | File[]) => {
     const fileArray = Array.from(files);
+    if (!fileArray.length) {
+      return;
+    }
+
     if (!multiple && fileArray.length > 1) {
       setError("Only one image allowed.");
       return;
@@ -73,22 +81,42 @@ export default function ImageUploader({
   );
 
   const onPaste = useCallback(
-    (e: React.ClipboardEvent) => {
-      const items = e.clipboardData.items;
+    (clipboardData: DataTransfer | null) => {
+      if (!clipboardData) {
+        return false;
+      }
+
       const imageFiles: File[] = [];
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf("image") !== -1) {
-          const file = items[i].getAsFile();
-          if (file) imageFiles.push(file);
+      for (let i = 0; i < clipboardData.items.length; i++) {
+        const item = clipboardData.items[i];
+        if (item.type.startsWith("image/")) {
+          const file = item.getAsFile();
+          if (file) {
+            imageFiles.push(file);
+          }
         }
       }
-      if (imageFiles.length > 0) {
-        e.preventDefault();
-        uploadFiles(imageFiles);
+
+      if (!imageFiles.length) {
+        return false;
       }
+
+      uploadFiles(imageFiles);
+      return true;
     },
     [uploadFiles]
   );
+
+  useEffect(() => {
+    const handleWindowPaste = (event: ClipboardEvent) => {
+      if (onPaste(event.clipboardData)) {
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener("paste", handleWindowPaste);
+    return () => window.removeEventListener("paste", handleWindowPaste);
+  }, [onPaste]);
 
   const removePath = (idx: number) => {
     setPaths((prev) => prev.filter((_, i) => i !== idx));
@@ -110,7 +138,11 @@ export default function ImageUploader({
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
           onDrop={onDrop}
-          onPaste={onPaste}
+          onPaste={(event) => {
+            if (onPaste(event.clipboardData)) {
+              event.preventDefault();
+            }
+          }}
         >
           <input
             ref={inputRef}
