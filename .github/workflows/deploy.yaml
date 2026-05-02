@@ -32,18 +32,19 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/portfolio-app:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Deploy to Kubernetes
-        uses: steebchen/kubectl@v2.0.0
-        with:
-          config: ${{ secrets.KUBE_CONFIG_DATA }}
-          command: set image deployment/portfolio-app-deployment portfolio-app=${{ secrets.DOCKER_USERNAME }}/portfolio-app:${{ github.sha }} --record
-
-      - name: Verify Deployment (Optional)
-        uses: steebchen/kubectl@v2.0.0
-        with:
-          config: ${{ secrets.KUBE_CONFIG_DATA }}
-          command: rollout status deployment/portfolio-app-deployment
+      # Deployment to VPS via SSH can be added here if needed
+      # - name: Deploy to VPS
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.VPS_HOST }}
+      #     username: ${{ secrets.VPS_USER }}
+      #     key: ${{ secrets.VPS_SSH_KEY }}
+      #     script: |
+      #       cd ~/portfolio
+      #       git pull origin main
+      #       docker-compose up --build -d
+      #       docker-compose exec -T portfolio-app npx prisma db push

@@ -14,3 +14,8 @@ services:
       - PORT=3002
     volumes:
       - ./public/uploads:/app/public/uploads
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
