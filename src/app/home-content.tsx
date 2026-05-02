@@ -177,16 +177,16 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                 id: e.id,
                 year: e.roles[0]?.period.split(" ")[0] || t("gridExp"),
                 category: t("gridWork"),
-                title: i18n.language === 'pl' ? e.companyPl : e.companyEn,
+                title: i18n.language === 'pl' ? (e.companyPl || e.companyEn || "") : (e.companyEn || ""),
                 description: resolveI18n(e.roles[0]?.title),
                 tag: formatDate(e.roles[0]?.period),
                 logo: e.logo,
                 hoverTags: e.roles[0]?.skills ? e.roles[0].skills.split(", ").map(s => t(s.trim())) : [],
                 details: e.roles[0]?.responsibilities && e.roles[0].responsibilities.length > 0 
                     ? e.roles[0].responsibilities.join('\n')
-                    : (e.companyEn.includes("Reikon") ? t('exp_reikon_details')
-                        : e.companyEn.includes("CIE") ? t('exp_cie_details')
-                            : e.companyEn.includes("Orange") ? t('exp_orange_details')
+                    : ((e.companyEn || "").includes("Reikon") ? t('exp_reikon_details')
+                        : (e.companyEn || "").includes("CIE") ? t('exp_cie_details')
+                            : (e.companyEn || "").includes("Orange") ? t('exp_orange_details')
                                 : t('exp_ep_details')),
                 images: e.logo ? [e.logo] : [],
                 websiteUrl: null
@@ -198,15 +198,15 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                 id: e.id,
                 year: e.period.split(" ")[0] || t("gridEdu"),
                 category: t("gridDegree"),
-                title: i18n.language === 'pl' ? e.universityPl : e.universityEn,
+                title: i18n.language === 'pl' ? (e.universityPl || e.universityEn || "") : (e.universityEn || ""),
                 description: resolveI18n(e.degree),
                 tag: formatDate(e.period),
                 logo: e.logo,
-                invertOnDark: e.universityEn.includes("Warsaw University of Technology") || e.universityEn.includes("University of Warsaw"),
+                invertOnDark: (e.universityEn || "").includes("Warsaw University of Technology") || (e.universityEn || "").includes("University of Warsaw"),
                 hoverTags: e.skills ? (typeof e.skills === 'string' ? e.skills : resolveI18n(e.skills)).split(", ").map(s => t(s.trim())) : [],
                 details: e.details ? resolveI18n(e.details) : (
-                    e.universityEn.includes("Technology") ? t('edu_wut_details')
-                        : e.universityEn.includes("Japanese") ? t('edu_pjatk_details')
+                    (e.universityEn || "").includes("Technology") ? t('edu_wut_details')
+                        : (e.universityEn || "").includes("Japanese") ? t('edu_pjatk_details')
                             : t('edu_uw_details')
                 ),
                 images: e.logo ? [e.logo] : [],

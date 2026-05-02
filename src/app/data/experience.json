@@ -1,7 +1,8 @@
 [
   {
     "type": "experience",
-    "company": "Reikon Games",
+    "companyEn": "Reikon Games",
+    "companyPl": "Reikon Games",
     "logo": "/images/company-logos/reikongames.png",
     "roles": [
       {
@@ -45,7 +46,8 @@
   },
   {
     "type": "experience",
-    "company": "CIE Center for Innovative Education",
+    "companyEn": "CIE Center for Innovative Education",
+    "companyPl": "CIE Centrum Innowacyjnej Edukacji",
     "logo": "/images/company-logos/cie-logo.png",
     "roles": [
       {
@@ -62,7 +64,8 @@
   },
   {
     "type": "experience",
-    "company": "Orange Polska",
+    "companyEn": "Orange Polska",
+    "companyPl": "Orange Polska",
     "logo": "/images/company-logos/orange.png",
     "roles": [
       {
@@ -79,7 +82,8 @@
   },
   {
     "type": "experience",
-    "company": "European Parliament",
+    "companyEn": "European Parliament",
+    "companyPl": "Parlament Europejski",
     "logo": "/images/company-logos/european-parliament.png",
     "roles": [
       {
@@ -97,7 +101,8 @@
   },
   {
     "type": "education",
-    "university": "Warsaw University of Technology",
+    "universityEn": "Warsaw University of Technology",
+    "universityPl": "Politechnika Warszawska",
     "logo": "/images/university-logos/politechnika.png",
     "degree": "Master's degree, Computer Science",
     "period": "Oct 2024 – May 2026",
@@ -105,7 +110,8 @@
   },
   {
     "type": "education",
-    "university": "Polish-Japanese Academy of Information Technology",
+    "universityEn": "Polish-Japanese Academy of Information Technology",
+    "universityPl": "Polsko-Japońska Akademia Technik Komputerowych",
     "logo": "/images/university-logos/pjatk.png",
     "degree": "Informatyka",
     "period": "Oct 2020 – Jan 2024",
@@ -113,7 +119,8 @@
   },
   {
     "type": "education",
-    "university": "University of Warsaw",
+    "universityEn": "University of Warsaw",
+    "universityPl": "Uniwersytet Warszawski",
     "logo": "/images/university-logos/uw.png",
     "degree": "European Studies/Civilization",
     "period": "2016 – 2020",
