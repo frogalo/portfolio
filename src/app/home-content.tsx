@@ -4,12 +4,13 @@ import { useTranslation } from "react-i18next";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useMemo } from "react";
 import BigFooter from "../components/ui/BigFooter";
-import ProjectGrid from "../components/ui/ProjectGrid";
+import ProjectCards from "../components/ui/ProjectCards";
+import WorkList from "../components/ui/WorkList";
 import ProjectModal from "../components/ui/ProjectModal";
 import ThemeProvider, { useTheme } from "../components/layout/ThemeProvider";
-import ThemeSwitcher from "../components/icons/ThemeSwitcher";
-import LanguageSwitcher from "../components/icons/LanguageSwitcher";
+import Header from "../components/layout/Header";
 import { trackContentClick, usePageViewTracker } from "../lib/analytics";
+import ShaderBackground from "../components/ui/ShaderBackground";
 
 // Type definitions for data
 interface BilingualString {
@@ -243,43 +244,37 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
         lastTrackedModalRef.current = trackingKey;
     }, [activeModalItem, selectedProject]);
 
-    const headerClass = activeModalItem
-        ? "flex-col items-end gap-2 fixed z-[110] right-4 top-20 w-auto"
-        : "flex justify-between items-center fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference pointer-events-none";
-
-    const headerContentClass = activeModalItem
-        ? "flex flex-col gap-4 pointer-events-auto mix-blend-normal"
-        : "flex items-center gap-4 pointer-events-auto mix-blend-normal";
-
     return (
         <div className="bg-background min-h-screen text-text selection:bg-accent selection:text-background font-sans overflow-x-hidden">
-            <div className={`transition-all duration-300 ${headerClass}`}>
-                {!activeModalItem && <div></div>}
-                <div className={headerContentClass}>
-                    <LanguageSwitcher />
-                    <ThemeSwitcher currentTheme={theme} onThemeChangeAction={setTheme} />
-                </div>
-            </div>
+            <Header currentTheme={theme} onThemeChangeAction={setTheme} />
 
-            <section ref={targetRef} className="relative min-h-screen flex flex-col justify-start px-4 md:px-8 pt-[40px]">
-                <motion.div style={{ opacity: opacityHero, scale: scaleHero }} className="w-full max-w-[1920px] mx-auto z-10">
-                    <div className="flex flex-col uppercase leading-[0.85] tracking-tighter">
-                        <motion.h1
-                            initial={{ y: 100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text mb-6 pb-0"
-                        >
-                            JAKUB
-                        </motion.h1>
-                        <motion.h1
-                            initial={{ y: 100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text mb-12 pb-0"
-                        >
-                            URBAŃSKI
-                        </motion.h1>
+            <main>
+                <h1 className="sr-only">
+                    {t("seo_h1_title", "Jakub Urbański | IT Specialist & Web Developer")}
+                </h1>
+
+                <section ref={targetRef} className="relative min-h-screen flex flex-col justify-between px-6 md:px-12 pt-[120px] pb-16">
+                    <ShaderBackground />
+                    <motion.div style={{ opacity: opacityHero, scale: scaleHero }} className="w-full max-w-[1920px] mx-auto z-10 flex-grow flex flex-col justify-center">
+                        <div className="flex flex-col uppercase leading-[0.85] tracking-tighter mb-12">
+                            <motion.div
+                                initial={{ y: 100, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text mb-6 pb-0 hero-reflection"
+                                data-text="JAKUB"
+                            >
+                                JAKUB
+                            </motion.div>
+                            <motion.div
+                                initial={{ y: 100, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text mb-12 pb-0 hero-reflection"
+                                data-text="URBAŃSKI"
+                            >
+                                URBAŃSKI
+                            </motion.div>
 
                         <div className="flex flex-col md:flex-row items-end md:items-start min-h-[min(11vw,15vh)] lg:min-h-[8vw] relative">
                             <AnimatePresence mode="wait">
@@ -289,7 +284,8 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                                     animate={{ y: 0, opacity: 1 }}
                                     exit={{ y: -100, opacity: 0 }}
                                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                    className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold z-20 absolute md:static left-0 whitespace-nowrap ${getHeroColorClass(heroState)}`}
+                                    className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold z-20 absolute md:static left-0 whitespace-nowrap hero-reflection ${heroText.color}`}
+                                    data-text={heroText.line1}
                                 >
                                     {heroText.line1}
                                 </motion.h2>
@@ -306,7 +302,8 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ y: -100, opacity: 0 }}
                                         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                        className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text inline-block whitespace-nowrap"
+                                        className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
+                                        data-text={heroText.line2}
                                     >
                                         {heroText.line2}
                                     </motion.h2>
@@ -323,7 +320,8 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ y: -100, opacity: 0 }}
                                         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                        className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text inline-block whitespace-nowrap"
+                                        className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
+                                        data-text={heroText.line3}
                                     >
                                         {heroText.line3}
                                     </motion.h2>
@@ -332,31 +330,77 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                         )}
                     </div>
                 </motion.div>
+
+                {/* Highlights / Spec Sheet (mimics Karol's spec sheet) */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-text/10 pt-10 mt-12 max-w-[1920px] w-full z-10 mx-auto"
+                >
+                    <div className="flex flex-col gap-3">
+                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-systems">
+                            {t("hero_systems_label", "01 / Systems")}
+                        </span>
+                        <p 
+                            className="text-sm text-text/90 leading-relaxed font-normal"
+                            dangerouslySetInnerHTML={{ __html: t("hero_systems", "Linux and Windows <strong class='highlight-systems font-bold'>systems administration</strong>, <strong class='highlight-systems font-bold'>virtualization</strong> platforms, and infrastructure <strong class='highlight-systems font-bold'>backups</strong>.") }}
+                        />
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-dev">
+                            {t("hero_dev_label", "02 / Development")}
+                        </span>
+                        <p 
+                            className="text-sm text-text/90 leading-relaxed font-normal"
+                            dangerouslySetInnerHTML={{ __html: t("hero_dev", "<strong class='highlight-dev font-bold'>Full-stack</strong> web application development, <strong class='highlight-dev font-bold'>responsive design</strong>, and database schema integration.") }}
+                        />
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-network">
+                            {t("hero_network_label", "03 / Infrastructure")}
+                        </span>
+                        <p 
+                            className="text-sm text-text/90 leading-relaxed font-normal"
+                            dangerouslySetInnerHTML={{ __html: t("hero_network", "<strong class='highlight-network font-bold'>Network security</strong> engineering, switching, <strong class='highlight-network font-bold'>routing</strong>, firewalls, and <strong class='highlight-network font-bold'>Active Directory</strong> services.") }}
+                        />
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-academic">
+                            {t("hero_academic_label", "04 / Background")}
+                        </span>
+                        <p 
+                            className="text-sm text-text/90 leading-relaxed font-normal"
+                            dangerouslySetInnerHTML={{ __html: t("hero_academic", "Academic foundation in <strong class='highlight-academic font-bold'>Computer Science</strong>, continuous self-improvement, and <strong class='highlight-academic font-bold'>technical certifications</strong>.") }}
+                        />
+                    </div>
+                </motion.div>
             </section>
 
-            <section className="relative w-full max-w-[1920px] mx-auto z-20 bg-background pb-20">
-                <ProjectGrid
+            <section className="relative w-full max-w-[1920px] mx-auto z-20 bg-background pb-20 flex flex-col gap-12">
+                <ProjectCards
                     id="projects"
-                    title={t("projects")}
+                    title={t("projects", "Work / Projects")}
                     themeColor="text-primary"
-                    items={projects}
+                    items={projects as any}
                     onItemClick={(item) => setActiveModalItem({ type: 'projects', id: item.id! })}
                 />
-                <ProjectGrid
+                <WorkList
                     id="experience"
-                    title={t("Experience")}
+                    title={t("Experience", "Experience")}
                     themeColor="text-secondary"
-                    items={experience}
+                    items={experience as any}
                     onItemClick={(item) => setActiveModalItem({ type: 'experience', id: item.id! })}
                 />
-                <ProjectGrid
+                <WorkList
                     id="education"
-                    title={t("Education")}
+                    title={t("Education", "Education")}
                     themeColor="text-accent"
-                    items={education}
+                    items={education as any}
                     onItemClick={(item) => setActiveModalItem({ type: 'education', id: item.id! })}
                 />
             </section>
+            </main>
 
             <ProjectModal
                 isOpen={!!activeModalItem}

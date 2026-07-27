@@ -32,5 +32,16 @@ export const common = {
 
     // Footer
     footerFollow: "Message me up for future projects",
-    footerTalk: ""
+    footerTalkTitle: "LET'S TALK.",
+    footerTalkDesc: "Have an infrastructure bottleneck, virtualization setup, or a web application project in mind? Let's connect and build a solution.",
+    footerSendEmail: "Send Email",
+    footerLinkedin: "LinkedIn",
+    footerDirectMsg: "Prefer direct messaging? I'll respond within 24 hours.",
+    footerBrandDesc: "IT Specialist & Web Developer. Managing systems, virtualization, and building scalable web applications.",
+    footerPagesLabel: "Pages",
+    footerPageWork: "Work",
+    footerPageExperience: "Experience",
+    footerPageEducation: "Education",
+    footerContactLabel: "Contact / Code",
+    seo_h1_title: "Jakub Urbański | IT Specialist & Web Developer",
 };

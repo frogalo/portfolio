@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { initI18next } from "../../lib/i18n";
+import i18n, { initI18next } from "../../lib/i18n";
 import LoadingScreen from "../ui/LoadingScreen";
 
 export default function I18nProvider({ children }: { children: React.ReactNode }) {
@@ -14,10 +14,22 @@ export default function I18nProvider({ children }: { children: React.ReactNode }
         };
 
         initializeI18next().then(() => {
-            // console.log("i18next has been initialized successfully.");
+            if (i18n.language) {
+                document.documentElement.lang = i18n.language.split("-")[0];
+            }
         }).catch((error) => {
             console.error("Error initializing i18next:", error);
         });
+
+        const handleLanguageChange = (lng: string) => {
+            document.documentElement.lang = lng.split("-")[0];
+        };
+
+        i18n.on("languageChanged", handleLanguageChange);
+
+        return () => {
+            i18n.off("languageChanged", handleLanguageChange);
+        };
     }, []);
 
     if (!isInitialized) {

@@ -1,79 +1,97 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeSwitcher from "../../components/icons/ThemeSwitcher";
 import LanguageSwitcher from "../../components/icons/LanguageSwitcher";
+import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
-    activeSection: string;
-    setActiveSectionAction: (section: string) => void;
     currentTheme: "light" | "dark" | "system";
     onThemeChangeAction: (theme: "light" | "dark" | "system") => void;
 }
 
 export default function Header({
-                                   activeSection,
-                                   setActiveSectionAction,
                                    currentTheme,
                                    onThemeChangeAction,
                                }: HeaderProps) {
     const { t } = useTranslation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
-    const navItems = ["about", "skills", "projects", "experience"];
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
-    // Function to handle navigation clicks
-    const handleNavClick = (section: string) => {
-        setActiveSectionAction(section);
-        setIsMenuOpen(false); // Close mobile menu if open
-    };
+    const navItems = [
+        { label: t("projects", "Work"), href: "#projects" },
+        { label: t("Experience", "Experience"), href: "#experience" },
+        { label: t("Education", "Education"), href: "#education" },
+        { label: t("Contact", "Contact"), href: "#contact" },
+    ];
 
-    // Helper to generate dynamic classes for navigation buttons
-    const getNavItemClasses = (item: string) => {
-        const baseClasses =
-            "capitalize transition-colors duration-200 cursor-pointer py-2 px-3 rounded-md";
-        const activeClasses = "font-bold text-[var(--text)]"; // Using --accent for active text
-        const inactiveClasses =
-            "text-[var(--header-txt)] hover:text-[var(--primary)]"; // Using --header-txt and --primary for inactive/hover
-
-        if (activeSection === item) {
-            return `${baseClasses} ${activeClasses}`;
-        } else {
-            return `${baseClasses} ${inactiveClasses}`;
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        const element = document.querySelector(href);
+        if (element) {
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
         }
     };
 
     return (
-        // Apply header-specific background and text colors
-        <header className="fixed top-0 w-full bg-[var(--header-bg)] text-[var(--header-txt)] backdrop-blur-sm z-10 shadow-sm">
-            <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                {/* Left side: Logo/Name - Make it clickable to go to 'about' */}
-                <button
-                    onClick={() => handleNavClick("about")}
-                    className="text-xl font-bold cursor-pointer" // Ensure it's visible with header-txt
-                    aria-label="Go to About section"
+        <header 
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+                isScrolled || isMenuOpen
+                    ? "bg-background/90 backdrop-blur-md border-b border-text/10 py-4 shadow-sm"
+                    : "bg-transparent py-6 border-b border-transparent"
+            }`}
+        >
+            <div className="max-w-[1920px] mx-auto px-6 md:px-12 flex justify-between items-center">
+                {/* Left side: Logo */}
+                <a
+                    href="#"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="text-sm font-mono font-bold tracking-[0.25em] uppercase hover:text-[var(--primary)] transition-colors duration-300 flex items-center gap-2"
                 >
-                    Jakub Urbański
-                </button>
+                    <span className="px-2 py-0.5 border border-text text-xs rounded-none font-bold">JU</span>
+                    <span className="hidden sm:inline">Jakub Urbański</span>
+                </a>
 
                 {/* Center: Desktop Navigation */}
-                <nav className="hidden md:flex space-x-6">
+                <nav className="hidden md:flex items-center space-x-8 font-mono text-xs uppercase tracking-wider">
                     {navItems.map((item) => (
-                        <button
-                            key={item}
-                            onClick={() => handleNavClick(item)}
-                            className={getNavItemClasses(item)}
+                        <a
+                            key={item.href}
+                            href={item.href}
+                            onClick={(e) => handleNavClick(e, item.href)}
+                            className="text-text/70 hover:text-text hover:underline underline-offset-4 transition-all duration-200"
                         >
-                            {t(item)}
-                        </button>
+                            {item.label}
+                        </a>
                     ))}
                 </nav>
 
-                {/* Right side: Switchers & Mobile Menu Toggle */}
-                <div className="flex items-center space-x-2">
-                    {/* Switchers displayed only on desktop */}
-                    <div className="hidden md:flex items-center space-x-2">
+                {/* Right side: Switchers & Mobile Toggle */}
+                <div className="flex items-center space-x-4">
+                    <div className="hidden sm:flex items-center space-x-2">
                         <LanguageSwitcher />
                         <ThemeSwitcher
                             currentTheme={currentTheme}
@@ -83,58 +101,41 @@ export default function Header({
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden p-2 rounded-md text-[var(--header-txt)] cursor-pointer" // Use header-txt for icon color
+                        className="md:hidden p-2 text-text/80 hover:text-text cursor-pointer"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle mobile menu"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
+                        {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Navigation Menu (appears when isMenuOpen is true) */}
+            {/* Mobile Navigation Menu */}
             {isMenuOpen && (
-                <div className="md:hidden bg-[var(--header-bg)] text-[var(--header-txt)] border-t border-primary">
-                    {" "}
-                    {/* Use header vars here too */}
-                    <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                        {/* Mobile Navigation Items */}
+                <div className="md:hidden bg-background border-t border-text/10 absolute top-full left-0 w-full shadow-lg py-6 px-6 flex flex-col gap-6 font-mono text-xs uppercase tracking-wider">
+                    <div className="flex flex-col gap-4">
                         {navItems.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => handleNavClick(item)}
-                                className={`capitalize py-2 text-left ${
-                                    activeSection === item
-                                        ? "text-[var(--text)] font-bold" // Active state in mobile menu
-                                        : "text-[var(--header-txt)]" // Inactive state in mobile menu
-                                } cursor-pointer`}
+                            <a
+                                key={item.href}
+                                href={item.href}
+                                onClick={(e) => handleNavClick(e, item.href)}
+                                className="py-2 text-text/80 hover:text-text transition-colors border-b border-text/5"
                             >
-                                {t(item)}
-                            </button>
+                                {item.label}
+                            </a>
                         ))}
                     </div>
-                    {/* Switchers moved inside the mobile menu */}
-                    <div className="container mx-auto px-4 py-3 border-t border-[var(--primary)] flex justify-center items-center space-x-4">
-                        {" "}
-                        {/* Use primary for border */}
-                        <LanguageSwitcher />
-                        <ThemeSwitcher
-                            currentTheme={currentTheme}
-                            onThemeChangeAction={onThemeChangeAction}
-                        />
+
+                    {/* Switchers in Mobile Menu */}
+                    <div className="flex items-center justify-between pt-4 border-t border-text/10">
+                        <span className="text-text/40">Preferences</span>
+                        <div className="flex items-center gap-3">
+                            <LanguageSwitcher />
+                            <ThemeSwitcher
+                                currentTheme={currentTheme}
+                                onThemeChangeAction={onThemeChangeAction}
+                            />
+                        </div>
                     </div>
                 </div>
             )}

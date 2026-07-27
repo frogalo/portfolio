@@ -16,4 +16,16 @@ export const hero = {
     heroRole4Line1: "CLOUD",
     heroRole4Line2: "& DEVOPS",
     heroRole4Line3: "ENGINEER",
+
+    // Highlights Labels
+    hero_systems_label: "01 / Systems",
+    hero_dev_label: "02 / Development",
+    hero_network_label: "03 / Infrastructure",
+    hero_academic_label: "04 / Background",
+
+    // Highlights Content
+    hero_systems: "Linux and Windows <strong class='text-primary font-bold'>systems administration</strong>, <strong class='text-primary font-bold'>virtualization</strong> platforms, and infrastructure <strong class='text-primary font-bold'>backups</strong>.",
+    hero_dev: "<strong class='text-secondary font-bold'>Full-stack</strong> web application development, <strong class='text-secondary font-bold'>responsive design</strong>, and database schema integration.",
+    hero_network: "<strong class='text-accent font-bold'>Network security</strong> engineering, switching, <strong class='text-accent font-bold'>routing</strong>, firewalls, and <strong class='text-accent font-bold'>Active Directory</strong> services.",
+    hero_academic: "Academic foundation in <strong class='text-text font-bold'>Computer Science</strong>, continuous self-improvement, and <strong class='text-text font-bold'>technical certifications</strong>.",
 };

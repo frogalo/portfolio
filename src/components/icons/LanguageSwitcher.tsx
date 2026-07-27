@@ -34,10 +34,10 @@ export default function LanguageSwitcher() {
             aria-label={`Current Language: ${currentLng.toUpperCase()}. Click to switch.`}
         >
             <span className="block sm:hidden transition-transform duration-300 group-hover:scale-110">
-                {currentLng.startsWith('en') ? 'EN' : 'PL'}
+                {currentLng.startsWith('en') ? 'PL' : 'EN'}
             </span>
             <span className="hidden sm:block transition-transform duration-300 group-hover:scale-105">
-                {currentLng.startsWith('en') ? 'ENGLISH' : 'POLSKI'}
+                {currentLng.startsWith('en') ? 'POLSKI' : 'ENGLISH'}
             </span>
         </button>
     );

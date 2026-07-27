@@ -32,5 +32,16 @@ export const common = {
 
     // Footer
     footerFollow: "Skontaktuj się w sprawie przyszłych projektów",
-    footerTalk: ""
+    footerTalkTitle: "POROZMAWIAJMY.",
+    footerTalkDesc: "Masz problem z wąskim gardłem w infrastrukturze, konfiguracją wirtualizacji lub projektem aplikacji internetowej? Skontaktujmy się i stwórzmy rozwiązanie.",
+    footerSendEmail: "Wyślij Email",
+    footerLinkedin: "LinkedIn",
+    footerDirectMsg: "Wolisz bezpośrednią wiadomość? Odpowiem w ciągu 24 godzin.",
+    footerBrandDesc: "Specjalista IT & Web Developer. Zarządzanie systemami, wirtualizacją oraz budowanie skalowalnych aplikacji internetowych.",
+    footerPagesLabel: "Strony",
+    footerPageWork: "Projekty",
+    footerPageExperience: "Doświadczenie",
+    footerPageEducation: "Wykształcenie",
+    footerContactLabel: "Kontakt / Kod",
+    seo_h1_title: "Jakub Urbański | Specjalista IT & Web Developer",
 };
