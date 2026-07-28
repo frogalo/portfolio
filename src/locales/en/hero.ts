@@ -18,14 +18,14 @@ export const hero = {
     heroRole4Line3: "ENGINEER",
 
     // Highlights Labels
-    hero_systems_label: "01 / Systems",
-    hero_dev_label: "02 / Development",
-    hero_network_label: "03 / Infrastructure",
-    hero_academic_label: "04 / Background",
+    hero_systems_label: "QUALITY",
+    hero_dev_label: "EFFICIENCY",
+    hero_network_label: "EXPERIENCE",
+    hero_academic_label: "SOLUTIONS",
 
     // Highlights Content
-    hero_systems: "Linux and Windows <strong class='text-primary font-bold'>systems administration</strong>, <strong class='text-primary font-bold'>virtualization</strong> platforms, and infrastructure <strong class='text-primary font-bold'>backups</strong>.",
-    hero_dev: "<strong class='text-secondary font-bold'>Full-stack</strong> web application development, <strong class='text-secondary font-bold'>responsive design</strong>, and database schema integration.",
-    hero_network: "<strong class='text-accent font-bold'>Network security</strong> engineering, switching, <strong class='text-accent font-bold'>routing</strong>, firewalls, and <strong class='text-accent font-bold'>Active Directory</strong> services.",
-    hero_academic: "Academic foundation in <strong class='text-text font-bold'>Computer Science</strong>, continuous self-improvement, and <strong class='text-text font-bold'>technical certifications</strong>.",
+    hero_systems: "Precision systems engineered to <strong class='text-[#2196f3] font-semibold'>perform and scale</strong>.",
+    hero_dev: "Redundant tasks automated. Delivered <strong class='text-(--nav-btn-color) font-semibold'>always on time</strong>.",
+    hero_network: "Deep technical intuition for <strong class='text-[#e91e63] font-semibold'>critical challenges</strong>.",
+    hero_academic: "<strong class='text-[#4caf50] font-semibold'>Bespoke digital systems</strong> aligned with your goals.",
 };

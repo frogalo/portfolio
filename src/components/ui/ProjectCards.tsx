@@ -15,6 +15,8 @@ interface ProjectItem {
     details?: string;
     images?: string[];
     websiteUrl?: string | null;
+    disableUrl?: boolean;
+    isMobile?: boolean;
 }
 
 interface ProjectCardsProps {
@@ -67,12 +69,16 @@ function ProjectCardItem({
             {/* Top Line accent */}
             <div className="absolute top-0 left-0 w-full h-[1px] bg-current opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
 
-            {/* Image/Visual Area - Accordion Layout (No Hover Blur Overlay) */}
+            {/* Image/Visual Area - Accordion Layout (Subtle Hover Focus) */}
             <div className="relative w-full aspect-video bg-text/5 overflow-hidden border-b border-text/10 flex">
                 {displayImages.map((img, imgIdx) => {
                     let widthVal = "33.333%";
                     if (hoveredColumn !== null) {
-                        widthVal = hoveredColumn === imgIdx ? "55%" : "22.5%";
+                        if (item.isMobile) {
+                            widthVal = hoveredColumn === imgIdx ? "40%" : "30%";
+                        } else {
+                            widthVal = hoveredColumn === imgIdx ? "60%" : "20%";
+                        }
                     }
 
                     return (
@@ -92,7 +98,7 @@ function ProjectCardItem({
                             {/* Subtle overlay to dim unhovered columns */}
                             <div
                                 className={`absolute inset-0 bg-background transition-opacity duration-300 pointer-events-none ${
-                                    hoveredColumn !== null && hoveredColumn !== imgIdx ? "opacity-35" : "opacity-0"
+                                    hoveredColumn !== null && hoveredColumn !== imgIdx ? "opacity-25" : "opacity-0"
                                 }`}
                             />
                         </motion.div>
@@ -100,8 +106,8 @@ function ProjectCardItem({
                 })}
             </div>
 
-            {/* Compact Text Area (approx. 1:16 height ratio, just Title and Description) */}
-            <div className="px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 bg-text/[0.01]">
+            {/* Compact Text Area (Equal height stretch, just Title and Description) */}
+            <div className="px-6 py-4 flex-1 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 bg-text/[0.01]">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-text">
                     {item.title}
                 </h3>

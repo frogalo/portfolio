@@ -31,6 +31,8 @@ interface ProjectEntry {
     tech: { name: string }[];
     details?: I18nString;
     images?: string[];
+    disableUrl?: boolean;
+    isMobile?: boolean;
 }
 
 interface CompanyExperience {
@@ -168,7 +170,9 @@ export default async function Page() {
             year: p.year || undefined,
             tech: JSON.parse(p.tech) as { name: string }[],
             details: p.detailsEn ? toBilingualString(p.detailsEn, p.detailsPl) : undefined,
-            images: JSON.parse(p.images) as string[]
+            images: JSON.parse(p.images) as string[],
+            disableUrl: p.disableUrl,
+            isMobile: p.isMobile
         }));
 
         experience = dbExperience.map((e) => {

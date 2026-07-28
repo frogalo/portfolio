@@ -22,7 +22,7 @@ export default function BigFooter() {
   };
 
   return (
-    <footer id="contact" className="w-full bg-text/[0.01] text-text py-24 px-6 md:px-12 mt-24 border-t border-text/10 font-sans relative overflow-hidden">
+    <footer id="contact" className="w-full bg-background text-text py-24 px-6 md:px-12 mt-24 border-t border-text/10 font-sans relative z-20 overflow-hidden">
       {/* Background Subtle Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none" />
 

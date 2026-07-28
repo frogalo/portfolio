@@ -103,7 +103,7 @@ export default function ProjectAdminClient({ initialProjects, dbOnline, dbError 
                         <p className="text-xs text-on-surface-variant uppercase font-mono opacity-60">
                           {project.categoryEn} | {project.year}
                         </p>
-                        <div className="mt-2">
+                        <div className="mt-2 flex flex-wrap gap-2">
                           <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-mono uppercase tracking-widest ${
                             project.visible
                               ? "border-primary/30 bg-primary/10 text-primary"
@@ -111,6 +111,16 @@ export default function ProjectAdminClient({ initialProjects, dbOnline, dbError 
                           }`}>
                             {project.visible ? "Visible" : "Hidden"}
                           </span>
+                          {project.disableUrl && (
+                            <span className="inline-flex items-center rounded-full border border-error/30 bg-error/10 text-error px-2 py-0.5 text-[10px] font-mono uppercase tracking-widest">
+                              URL Disabled
+                            </span>
+                          )}
+                          {project.isMobile && (
+                            <span className="inline-flex items-center rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/10 text-[var(--primary)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-widest">
+                              Mobile
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>

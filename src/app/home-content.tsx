@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from "framer-motion";
 import { useRef, useState, useEffect, useMemo } from "react";
 import BigFooter from "../components/ui/BigFooter";
 import ProjectCards from "../components/ui/ProjectCards";
@@ -11,6 +11,7 @@ import ThemeProvider, { useTheme } from "../components/layout/ThemeProvider";
 import Header from "../components/layout/Header";
 import { trackContentClick, usePageViewTracker } from "../lib/analytics";
 import ShaderBackground from "../components/ui/ShaderBackground";
+import { Shield, Zap, Award, Cpu } from "lucide-react";
 
 // Type definitions for data
 interface BilingualString {
@@ -31,6 +32,8 @@ interface Project {
     tech: { name: string }[];
     details?: I18nString;
     images?: string[];
+    disableUrl?: boolean;
+    isMobile?: boolean;
 }
 
 interface Role {
@@ -91,8 +94,18 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
         offset: ["start start", "end start"],
     });
 
-    const opacityHero = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-    const scaleHero = useTransform(scrollYProgress, [0, 0.3], [1, 0.9]);
+    const opacityScrollContainer = useTransform(scrollYProgress, [0.15, 0.6], [1, 0]);
+    const opacityName = useTransform(scrollYProgress, [0.8, 1.0], [1, 0]);
+
+    const [showLogo, setShowLogo] = useState(false);
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        if (latest >= 1) {
+            setShowLogo(true);
+        } else {
+            setShowLogo(false);
+        }
+    });
 
 
     // Hero Animation State
@@ -165,11 +178,13 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
             category: resolveI18n(p.category).toUpperCase(),
             title: resolveI18n(p.title),
             description: resolveI18n(p.description),
-            tag: p.websiteUrl ? t("gridLive") : t("gridProject"),
+            tag: (p.websiteUrl && !p.disableUrl) ? t("gridLive") : t("gridProject"),
             hoverTags: p.tech.map(t => t.name).map(name => t(name)),
             details: p.details ? resolveI18n(p.details) : "",
             images: p.images,
-            websiteUrl: p.websiteUrl
+            websiteUrl: p.websiteUrl,
+            disableUrl: p.disableUrl,
+            isMobile: p.isMobile
         }));
 
         const mappedExperience = initialExperience
@@ -246,22 +261,26 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
 
     return (
         <div className="bg-background min-h-screen text-text selection:bg-accent selection:text-background font-sans overflow-x-hidden">
-            <Header currentTheme={theme} onThemeChangeAction={setTheme} />
+            <Header currentTheme={theme} onThemeChangeAction={setTheme} showLogo={showLogo} />
 
             <main>
                 <h1 className="sr-only">
                     {t("seo_h1_title", "Jakub Urbański | IT Specialist & Web Developer")}
                 </h1>
-
-                <section ref={targetRef} className="relative min-h-screen flex flex-col justify-between px-6 md:px-12 pt-[120px] pb-16">
+                <section ref={targetRef} className="relative h-screen px-6 md:px-12 pt-[120px] pb-16">
                     <ShaderBackground />
-                    <motion.div style={{ opacity: opacityHero, scale: scaleHero }} className="w-full max-w-[1920px] mx-auto z-10 flex-grow flex flex-col justify-center">
-                        <div className="flex flex-col uppercase leading-[0.85] tracking-tighter mb-12">
+
+                    {/* Fixed Name Container */}
+                    <motion.div 
+                        style={{ opacity: opacityName }}
+                        className="fixed top-[18vh] left-0 right-0 z-10 w-full max-w-[1920px] mx-auto pointer-events-none select-none px-6 md:px-12"
+                    >
+                        <div className="flex flex-col uppercase leading-[0.85] tracking-tighter">
                             <motion.div
                                 initial={{ y: 100, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text mb-6 pb-0 hero-reflection"
+                                className="text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold text-text mb-6 pb-0 hero-reflection"
                                 data-text="JAKUB"
                             >
                                 JAKUB
@@ -270,115 +289,182 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                                 initial={{ y: 100, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[min(11vw,15vh)] lg:text-[8vw] font-bold text-text mb-12 pb-0 hero-reflection"
+                                className="text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold text-text mb-12 pb-0 hero-reflection"
                                 data-text="URBAŃSKI"
                             >
                                 URBAŃSKI
                             </motion.div>
-
-                        <div className="flex flex-col md:flex-row items-end md:items-start min-h-[min(11vw,15vh)] lg:min-h-[8vw] relative">
-                            <AnimatePresence mode="wait">
-                                <motion.h2
-                                    key={heroText.line1}
-                                    initial={{ y: 100, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: -100, opacity: 0 }}
-                                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                    className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold z-20 absolute md:static left-0 whitespace-nowrap hero-reflection ${heroText.color}`}
-                                    data-text={heroText.line1}
-                                >
-                                    {heroText.line1}
-                                </motion.h2>
-                            </AnimatePresence>
                         </div>
+                    </motion.div>
 
-                        <div className="flex flex-col md:flex-row min-h-[min(11vw,15vh)] lg:min-h-[8vw]">
-                            <div className="hidden md:block w-1/4"></div>
-                            <div className="w-full text-right md:text-left relative">
+                    {/* Scrolling Roles Container */}
+                    <motion.div 
+                        style={{ opacity: opacityScrollContainer }}
+                        className="relative z-20 w-full max-w-[1920px] mx-auto flex flex-col mt-[42vh] mix-blend-difference"
+                    >
+                        <div className="flex flex-col uppercase leading-[0.85] tracking-tighter mb-12">
+                            <div className="flex flex-col md:flex-row items-end md:items-start min-h-[min(11vw,15vh)] lg:min-h-[min(8vw,12vh)] relative">
                                 <AnimatePresence mode="wait">
                                     <motion.h2
-                                        key={heroText.line2}
+                                        key={heroText.line1}
                                         initial={{ y: 100, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ y: -100, opacity: 0 }}
-                                        transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                        className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
-                                        data-text={heroText.line2}
+                                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                        className={`text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold z-20 absolute md:static left-0 whitespace-nowrap hero-reflection ${heroText.color}`}
+                                        data-text={heroText.line1}
                                     >
-                                        {heroText.line2}
+                                        {heroText.line1}
                                     </motion.h2>
                                 </AnimatePresence>
                             </div>
+
+                            <div className="flex flex-col md:flex-row min-h-[min(11vw,15vh)] lg:min-h-[min(8vw,12vh)]">
+                                <div className="hidden md:block w-1/4"></div>
+                                <div className="w-full text-right md:text-left relative">
+                                    <AnimatePresence mode="wait">
+                                        <motion.h2
+                                            key={heroText.line2}
+                                            initial={{ y: 100, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            exit={{ y: -100, opacity: 0 }}
+                                            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                            className={`text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
+                                            data-text={heroText.line2}
+                                        >
+                                            {heroText.line2}
+                                        </motion.h2>
+                                    </AnimatePresence>
+                                </div>
+                            </div>
+
+                            {heroText.line3 && (
+                                <div className="min-h-[min(11vw,15vh)] lg:min-h-[min(8vw,12vh)] text-right">
+                                    <AnimatePresence mode="wait">
+                                        <motion.h2
+                                            key={heroText.line3}
+                                            initial={{ y: 100, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            exit={{ y: -100, opacity: 0 }}
+                                            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                            className={`text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
+                                            data-text={heroText.line3}
+                                        >
+                                            {heroText.line3}
+                                        </motion.h2>
+                                    </AnimatePresence>
+                                </div>
+                            )}
                         </div>
+                    </motion.div>
+                </section>
 
-                        {heroText.line3 && (
-                            <div className="min-h-[min(11vw,15vh)] lg:min-h-[8vw] text-right">
-                                <AnimatePresence mode="wait">
-                                    <motion.h2
-                                        key={heroText.line3}
-                                        initial={{ y: 100, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        exit={{ y: -100, opacity: 0 }}
-                                        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                        className={`text-[min(11vw,15vh)] lg:text-[8vw] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
-                                        data-text={heroText.line3}
-                                    >
-                                        {heroText.line3}
-                                    </motion.h2>
-                                </AnimatePresence>
+                <section className="relative w-full max-w-[1920px] mx-auto z-20 bg-background pb-20 flex flex-col gap-12">
+                    {/* Highlights / Spec Sheet (moved here!) */}
+                    <div className="px-6 md:px-12 w-full mt-24">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 1 }}
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1920px] w-full z-10 mx-auto"
+                        >
+                            {/* Card 1: Quality */}
+                            <div className="group relative bg-text/1 border border-text/5 p-6 flex flex-col justify-between min-h-40 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-text/3 hover:border-text/15 overflow-hidden rounded-none">
+                                <div className="absolute top-0 left-0 w-full h-0.5 bg-[#2196f3]/20 group-hover:bg-[#2196f3] transition-colors duration-500 shadow-[0_0_10px_transparent] group-hover:shadow-[0_0_15px_rgba(33,150,243,0.5)]" />
+                                <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-[#2196f3]/5 blur-2xl group-hover:bg-[#2196f3]/10 group-hover:scale-150 transition-all duration-500 pointer-events-none" />
+                                <div className="flex flex-col gap-3 relative z-10">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-sm font-mono text-[#2196f3] font-bold">01 /</span>
+                                        <h3 className="text-xl md:text-2xl font-bold font-headline uppercase tracking-tight text-text">
+                                            {t("hero_systems_label")}
+                                        </h3>
+                                    </div>
+                                    <p 
+                                        className="text-xs text-text/80 leading-relaxed font-normal font-body group-hover:text-text transition-colors duration-300"
+                                        dangerouslySetInnerHTML={{ __html: t("hero_systems") }}
+                                    />
+                                </div>
+                                <Shield 
+                                    size={140} 
+                                    strokeWidth={0.5} 
+                                    className="absolute -bottom-8 -right-8 text-text opacity-[0.03] pointer-events-none z-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+                                />
                             </div>
-                        )}
-                    </div>
-                </motion.div>
 
-                {/* Highlights / Spec Sheet (mimics Karol's spec sheet) */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-text/10 pt-10 mt-12 max-w-[1920px] w-full z-10 mx-auto"
-                >
-                    <div className="flex flex-col gap-3">
-                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-systems">
-                            {t("hero_systems_label", "01 / Systems")}
-                        </span>
-                        <p 
-                            className="text-sm text-text/90 leading-relaxed font-normal"
-                            dangerouslySetInnerHTML={{ __html: t("hero_systems", "Linux and Windows <strong class='highlight-systems font-bold'>systems administration</strong>, <strong class='highlight-systems font-bold'>virtualization</strong> platforms, and infrastructure <strong class='highlight-systems font-bold'>backups</strong>.") }}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-3">
-                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-dev">
-                            {t("hero_dev_label", "02 / Development")}
-                        </span>
-                        <p 
-                            className="text-sm text-text/90 leading-relaxed font-normal"
-                            dangerouslySetInnerHTML={{ __html: t("hero_dev", "<strong class='highlight-dev font-bold'>Full-stack</strong> web application development, <strong class='highlight-dev font-bold'>responsive design</strong>, and database schema integration.") }}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-3">
-                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-network">
-                            {t("hero_network_label", "03 / Infrastructure")}
-                        </span>
-                        <p 
-                            className="text-sm text-text/90 leading-relaxed font-normal"
-                            dangerouslySetInnerHTML={{ __html: t("hero_network", "<strong class='highlight-network font-bold'>Network security</strong> engineering, switching, <strong class='highlight-network font-bold'>routing</strong>, firewalls, and <strong class='highlight-network font-bold'>Active Directory</strong> services.") }}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-3">
-                        <span className="text-[11px] font-mono uppercase tracking-[0.2em] opacity-80 font-bold highlight-academic">
-                            {t("hero_academic_label", "04 / Background")}
-                        </span>
-                        <p 
-                            className="text-sm text-text/90 leading-relaxed font-normal"
-                            dangerouslySetInnerHTML={{ __html: t("hero_academic", "Academic foundation in <strong class='highlight-academic font-bold'>Computer Science</strong>, continuous self-improvement, and <strong class='highlight-academic font-bold'>technical certifications</strong>.") }}
-                        />
-                    </div>
-                </motion.div>
-            </section>
+                            {/* Card 2: Efficiency */}
+                            <div className="group relative bg-text/1 border border-text/5 p-6 flex flex-col justify-between min-h-40 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-text/3 hover:border-text/15 overflow-hidden rounded-none">
+                                <div className="absolute top-0 left-0 w-full h-0.5 bg-(--nav-btn-color)/20 group-hover:bg-(--nav-btn-color) transition-colors duration-500 shadow-[0_0_10px_transparent] group-hover:shadow-[0_0_15px_rgba(233,30,99,0.5)]" />
+                                <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-(--nav-btn-color)/5 blur-2xl group-hover:bg-(--nav-btn-color)/10 group-hover:scale-150 transition-all duration-500 pointer-events-none" />
+                                <div className="flex flex-col gap-3 relative z-10">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-sm font-mono text-(--nav-btn-color) font-bold">02 /</span>
+                                        <h3 className="text-xl md:text-2xl font-bold font-headline uppercase tracking-tight text-text">
+                                            {t("hero_dev_label")}
+                                        </h3>
+                                    </div>
+                                    <p 
+                                        className="text-xs text-text/80 leading-relaxed font-normal font-body group-hover:text-text transition-colors duration-300"
+                                        dangerouslySetInnerHTML={{ __html: t("hero_dev") }}
+                                    />
+                                </div>
+                                <Zap 
+                                    size={140} 
+                                    strokeWidth={0.5} 
+                                    className="absolute -bottom-8 -right-8 text-text opacity-[0.03] pointer-events-none z-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+                                />
+                            </div>
 
-            <section className="relative w-full max-w-[1920px] mx-auto z-20 bg-background pb-20 flex flex-col gap-12">
-                <ProjectCards
+                            {/* Card 3: Experience */}
+                            <div className="group relative bg-text/1 border border-text/5 p-6 flex flex-col justify-between min-h-40 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-text/3 hover:border-text/15 overflow-hidden rounded-none">
+                                <div className="absolute top-0 left-0 w-full h-0.5 bg-[#e91e63]/20 group-hover:bg-[#e91e63] transition-colors duration-500 shadow-[0_0_10px_transparent] group-hover:shadow-[0_0_15px_rgba(233,30,99,0.5)]" />
+                                <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-[#e91e63]/5 blur-2xl group-hover:bg-[#e91e63]/10 group-hover:scale-150 transition-all duration-500 pointer-events-none" />
+                                <div className="flex flex-col gap-3 relative z-10">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-sm font-mono text-[#e91e63] font-bold">03 /</span>
+                                        <h3 className="text-xl md:text-2xl font-bold font-headline uppercase tracking-tight text-text">
+                                            {t("hero_network_label")}
+                                        </h3>
+                                    </div>
+                                    <p 
+                                        className="text-xs text-text/80 leading-relaxed font-normal font-body group-hover:text-text transition-colors duration-300"
+                                        dangerouslySetInnerHTML={{ __html: t("hero_network") }}
+                                    />
+                                </div>
+                                <Award 
+                                    size={140} 
+                                    strokeWidth={0.5} 
+                                    className="absolute -bottom-8 -right-8 text-text opacity-[0.03] pointer-events-none z-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+                                />
+                            </div>
+
+                            {/* Card 4: Solutions */}
+                            <div className="group relative bg-text/1 border border-text/5 p-6 flex flex-col justify-between min-h-40 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-text/3 hover:border-text/15 overflow-hidden rounded-none">
+                                <div className="absolute top-0 left-0 w-full h-0.5 bg-[#4caf50]/20 group-hover:bg-[#4caf50] transition-colors duration-500 shadow-[0_0_10px_transparent] group-hover:shadow-[0_0_15px_rgba(76,175,80,0.5)]" />
+                                <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-[#4caf50]/5 blur-2xl group-hover:bg-[#4caf50]/10 group-hover:scale-150 transition-all duration-500 pointer-events-none" />
+                                <div className="flex flex-col gap-3 relative z-10">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-sm font-mono text-[#4caf50] font-bold">04 /</span>
+                                        <h3 className="text-xl md:text-2xl font-bold font-headline uppercase tracking-tight text-text">
+                                            {t("hero_academic_label")}
+                                        </h3>
+                                    </div>
+                                    <p 
+                                        className="text-xs text-text/80 leading-relaxed font-normal font-body group-hover:text-text transition-colors duration-300"
+                                        dangerouslySetInnerHTML={{ __html: t("hero_academic") }}
+                                    />
+                                </div>
+                                <Cpu 
+                                    size={140} 
+                                    strokeWidth={0.5} 
+                                    className="absolute -bottom-8 -right-8 text-text opacity-[0.03] pointer-events-none z-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+                                />
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
+                <section className="relative w-full max-w-[1920px] mx-auto z-20 bg-background pb-20 flex flex-col gap-12">
+                    <ProjectCards
                     id="projects"
                     title={t("projects", "Work / Projects")}
                     themeColor="text-primary"

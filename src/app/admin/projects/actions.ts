@@ -18,6 +18,8 @@ export async function saveProject(formData: FormData) {
     const techRaw = formData.get('tech') as string;
     const imagesRaw = formData.get('images') as string;
     const visible = formData.get('visible') === 'on';
+    const disableUrl = formData.get('disableUrl') === 'on';
+    const isMobile = formData.get('isMobile') === 'on';
     
     let images = [];
     try { images = JSON.parse(imagesRaw); } catch { images = imagesRaw ? [imagesRaw] : []; }
@@ -42,6 +44,8 @@ export async function saveProject(formData: FormData) {
         tech,
         images: JSON.stringify(images),
         visible,
+        disableUrl,
+        isMobile,
     };
 
     if (id) {

@@ -25,10 +25,10 @@ export default function LanguageSwitcher() {
         <button
             onClick={toggleLanguage}
             className={`
-                px-3 py-2 border-2 transition-all duration-300 ease-out cursor-pointer flex items-center justify-center font-bold tracking-wider relative overflow-hidden group
+                px-3 py-2 transition-all duration-300 ease-out cursor-pointer flex items-center justify-center font-bold tracking-wider relative overflow-hidden group
                 rounded-none
-                border-[var(--secondary)] text-[var(--secondary)]
-                hover:border-[var(--nav-btn-color)] hover:bg-[var(--nav-btn-color)] hover:text-[var(--text)] hover:shadow-[0_0_15px_var(--nav-btn-color)]
+                text-[var(--secondary)]
+                hover:bg-[var(--nav-btn-color)] hover:text-[var(--text)] hover:shadow-[0_0_15px_var(--nav-btn-color)]
                 active:scale-95
             `}
             aria-label={`Current Language: ${currentLng.toUpperCase()}. Click to switch.`}

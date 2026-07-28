@@ -110,6 +110,40 @@ export default function ProjectForm({ disabled, initialData, onClearAction }: Pr
             className="h-4 w-4 accent-[var(--primary)]"
           />
         </label>
+
+        <label className="flex items-center justify-between gap-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest/50 px-4 py-3">
+          <div>
+            <p className="text-[10px] font-mono text-primary uppercase tracking-widest opacity-70">
+              Disable_URL
+            </p>
+            <p className="text-sm text-on-surface-variant">
+              Hide the "Visit Live Site" button on the public page.
+            </p>
+          </div>
+          <input
+            name="disableUrl"
+            type="checkbox"
+            defaultChecked={initialData?.disableUrl ?? false}
+            className="h-4 w-4 accent-[var(--primary)]"
+          />
+        </label>
+
+        <label className="flex items-center justify-between gap-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest/50 px-4 py-3">
+          <div>
+            <p className="text-[10px] font-mono text-primary uppercase tracking-widest opacity-70">
+              Mobile_Format
+            </p>
+            <p className="text-sm text-on-surface-variant">
+              Render project screenshots in narrow portrait format (mobile app).
+            </p>
+          </div>
+          <input
+            name="isMobile"
+            type="checkbox"
+            defaultChecked={initialData?.isMobile ?? false}
+            className="h-4 w-4 accent-[var(--primary)]"
+          />
+        </label>
         
         {/* Common Fields */}
         <div className="grid grid-cols-2 gap-4">

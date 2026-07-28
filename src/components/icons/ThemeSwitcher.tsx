@@ -32,10 +32,10 @@ export default function ThemeSwitcher({
         <button
             onClick={cycleTheme}
             className={`
-                p-2 sm:p-3 border-2 transition-all duration-300 ease-out cursor-pointer flex items-center justify-center relative overflow-hidden group
+                p-2 sm:p-3 transition-all duration-300 ease-out cursor-pointer flex items-center justify-center relative overflow-hidden group
                 rounded-none
-                border-[var(--secondary)] text-[var(--secondary)]
-                hover:border-[var(--nav-btn-color)] hover:bg-[var(--nav-btn-color)] hover:text-[var(--text)] hover:shadow-[0_0_15px_var(--nav-btn-color)]
+                text-[var(--secondary)]
+                hover:bg-[var(--nav-btn-color)] hover:text-[var(--text)] hover:shadow-[0_0_15px_var(--nav-btn-color)]
                 active:scale-95
             `}
             aria-label={`Current Theme: ${currentTheme}. Click to cycle.`}

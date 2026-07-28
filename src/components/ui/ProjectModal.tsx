@@ -19,6 +19,8 @@ interface ProjectModalProps {
         images?: string[]; // Array of image paths
         websiteUrl?: string | null;
         hoverTags?: string[]; // Tech stack
+        disableUrl?: boolean;
+        isMobile?: boolean;
     } | null;
     themeColor?: string;
 }
@@ -117,27 +119,46 @@ export default function ProjectModal({ isOpen, onClose, project, themeColor = "t
                             </button>
 
                             {/* Left Side: Images (Desktop) / Top (Mobile) */}
-                            <div className="w-full md:w-1/2 bg-current/5 p-4 hidden md:flex flex-col gap-2 overflow-hidden h-full order-last md:order-first">
+                            <div className={`w-full md:w-1/2 bg-current/5 p-6 hidden md:flex gap-4 overflow-y-auto h-full order-last md:order-first ${project.isMobile ? 'flex-row flex-wrap justify-center items-center' : 'flex-col'}`}>
                                 {project.images && project.images.length > 0 ? (
                                     project.images.map((img, idx) => (
-                                        <div 
-                                            key={idx} 
-                                            onClick={() => setActiveImageIndex(idx)}
-                                            className="relative w-full border border-current/10 flex-1 hover:flex-[10] transition-all duration-500 ease-in-out min-h-[60px] flex items-center justify-center bg-current/5 group cursor-zoom-in"
-                                        >
-                                            {loadingImages[idx] !== false && (
-                                                <div className="absolute inset-0 flex items-center justify-center z-10">
-                                                    <Loader2 className="animate-spin opacity-50" size={32} />
-                                                </div>
-                                            )}
-
-                                            <img
-                                                src={img}
-                                                alt={`${project.title} screenshot ${idx + 1}`}
-                                                className={`w-full h-full object-cover transition-opacity duration-300 ${loadingImages[idx] !== false ? 'opacity-0' : 'opacity-100'}`}
-                                                onLoad={() => handleImageLoad(idx)}
-                                            />
-                                        </div>
+                                        project.isMobile ? (
+                                            <div 
+                                                key={idx} 
+                                                onClick={() => setActiveImageIndex(idx)}
+                                                className="relative w-[180px] aspect-[9/16] border border-current/15 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.015] transition-all duration-300 flex items-center justify-center bg-current/5 overflow-hidden group cursor-zoom-in"
+                                            >
+                                                {loadingImages[idx] !== false && (
+                                                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                                                        <Loader2 className="animate-spin opacity-50" size={24} />
+                                                    </div>
+                                                )}
+                                                <img
+                                                    src={img}
+                                                    alt={`${project.title} screenshot ${idx + 1}`}
+                                                    className={`w-full h-full object-cover transition-opacity duration-300 ${loadingImages[idx] !== false ? 'opacity-0' : 'opacity-100'}`}
+                                                    onLoad={() => handleImageLoad(idx)}
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div 
+                                                 key={idx} 
+                                                 onClick={() => setActiveImageIndex(idx)}
+                                                 className="relative w-full border border-current/10 aspect-video shrink-0 flex items-center justify-center bg-current/5 group cursor-zoom-in transition-transform duration-300 hover:scale-[1.01]"
+                                             >
+                                                {loadingImages[idx] !== false && (
+                                                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                                                        <Loader2 className="animate-spin opacity-50" size={32} />
+                                                    </div>
+                                                )}
+                                                <img
+                                                    src={img}
+                                                    alt={`${project.title} screenshot ${idx + 1}`}
+                                                    className={`w-full h-full object-cover transition-opacity duration-300 ${loadingImages[idx] !== false ? 'opacity-0' : 'opacity-100'}`}
+                                                    onLoad={() => handleImageLoad(idx)}
+                                                />
+                                            </div>
+                                        )
                                     ))
                                 ) : (
                                     // Fallback placeholder if no images
@@ -165,7 +186,7 @@ export default function ProjectModal({ isOpen, onClose, project, themeColor = "t
                                             <div
                                                 key={idx}
                                                 onClick={() => setActiveImageIndex(idx)}
-                                                className="relative w-20 h-14 border border-current/20 flex-shrink-0 bg-current/5 cursor-zoom-in"
+                                                className={`relative border border-current/20 flex-shrink-0 bg-current/5 cursor-zoom-in ${project.isMobile ? 'w-12 h-20 rounded-md' : 'w-20 h-14'}`}
                                             >
                                                 <img
                                                     src={img}
@@ -237,7 +258,7 @@ export default function ProjectModal({ isOpen, onClose, project, themeColor = "t
 
                                 {/* Footer / Actions */}
                                 <div className="mt-auto pt-8 border-t border-current/10 flex items-center justify-between">
-                                    {project.websiteUrl ? (
+                                    {project.websiteUrl && !project.disableUrl ? (
                                         <a
                                             href={project.websiteUrl}
                                             target="_blank"

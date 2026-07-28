@@ -9,11 +9,13 @@ import { Menu, X } from "lucide-react";
 interface HeaderProps {
     currentTheme: "light" | "dark" | "system";
     onThemeChangeAction: (theme: "light" | "dark" | "system") => void;
+    showLogo?: boolean;
 }
 
 export default function Header({
                                    currentTheme,
                                    onThemeChangeAction,
+                                   showLogo = true,
                                }: HeaderProps) {
     const { t } = useTranslation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,10 +34,10 @@ export default function Header({
     }, []);
 
     const navItems = [
-        { label: t("projects", "Work"), href: "#projects" },
-        { label: t("Experience", "Experience"), href: "#experience" },
-        { label: t("Education", "Education"), href: "#education" },
-        { label: t("Contact", "Contact"), href: "#contact" },
+        { label: t("footerPageWork", "Work"), href: "#projects" },
+        { label: t("footerPageExperience", "Experience"), href: "#experience" },
+        { label: t("footerPageEducation", "Education"), href: "#education" },
+        { label: t("navContact", "Contact"), href: "#contact" },
     ];
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -69,10 +71,16 @@ export default function Header({
                         e.preventDefault();
                         window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="text-sm font-mono font-bold tracking-[0.25em] uppercase hover:text-[var(--primary)] transition-colors duration-300 flex items-center gap-2"
+                    className="text-sm font-mono font-bold tracking-[0.25em] uppercase hover:text-[var(--primary)] transition-colors duration-300 flex items-center gap-2 w-10 sm:w-55 md:w-65 shrink-0"
                 >
                     <span className="px-2 py-0.5 border border-text text-xs rounded-none font-bold">JU</span>
-                    <span className="hidden sm:inline">Jakub Urbański</span>
+                    <span className={`hidden sm:inline-block transition-all duration-500 ease-out overflow-hidden whitespace-nowrap ${
+                        showLogo 
+                            ? "opacity-100 translate-x-0 max-w-50 pointer-events-auto" 
+                            : "opacity-0 -translate-x-2 max-w-0 pointer-events-none"
+                    }`}>
+                        Jakub Urbański
+                    </span>
                 </a>
 
                 {/* Center: Desktop Navigation */}

@@ -20,6 +20,8 @@ interface GridItemProps {
     details?: string;
     images?: string[];
     websiteUrl?: string | null;
+    disableUrl?: boolean;
+    isMobile?: boolean;
 }
 
 const OrbitingTags = ({ tags }: { tags: string[] }) => {
@@ -199,6 +201,8 @@ interface ProjectGridProps {
         details?: string;
         images?: string[];
         websiteUrl?: string | null;
+        disableUrl?: boolean;
+        isMobile?: boolean;
     }[];
     onItemClick?: (item: any) => void;
 }

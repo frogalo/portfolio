@@ -4,6 +4,7 @@ export const common = {
 
     // Contact
     contact: "Dane kontaktowe",
+    navContact: "Kontakt",
     contactLocationLabel: "Lokalizacja:",
     contactLocationValue: "Warszawa, Polska",
     contactPhoneLabel: "Telefon:",
