@@ -109,11 +109,11 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
 
 
     // Hero Animation State
-    const [heroState, setHeroState] = useState<0 | 1 | 2 | 3>(0);
+    const [heroState, setHeroState] = useState<0 | 1 | 2>(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setHeroState((prev) => (prev + 1) % 4 as 0 | 1 | 2 | 3);
+            setHeroState((prev) => (prev + 1) % 3 as 0 | 1 | 2);
         }, 4000);
         return () => clearInterval(interval);
     }, []);
@@ -125,28 +125,21 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                     line1: t("heroRole1Line1"),
                     line2: t("heroRole1Line2"),
                     line3: t("heroRole1Line3"),
-                    color: "text-[#2196f3]" // Blue for IT Project Manager
+                    color: "text-[#2196f3]" // Blue for Software Engineer
                 };
             case 1:
                 return {
                     line1: t("heroRole2Line1"),
                     line2: t("heroRole2Line2"),
                     line3: t("heroRole2Line3"),
-                    color: "text-[var(--nav-btn-color)]" // Creative - Primary (Purple)
+                    color: "text-[#b55fe6]" // Purple for IT Project Manager
                 };
             case 2:
                 return {
                     line1: t("heroRole3Line1"),
                     line2: t("heroRole3Line2"),
                     line3: t("heroRole3Line3"),
-                    color: "text-[#e91e63]" // Network - Pink
-                };
-            case 3:
-                return {
-                    line1: t("heroRole4Line1"),
-                    line2: t("heroRole4Line2"),
-                    line3: t("heroRole4Line3"),
-                    color: "text-[#4caf50]" // Cloud - Green
+                    color: "text-[#e91e63]" // Pink for Full Stack Developer
                 };
         }
     }, [heroState, t]);
@@ -154,9 +147,8 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
     const getHeroColorClass = (state: number) => {
         switch (state) {
             case 0: return "text-[#2196f3]";
-            case 1: return "text-[var(--primary)]";
-            case 2: return "text-[var(--accent)]";
-            case 3: return "text-[#4caf50]";
+            case 1: return "text-[#b55fe6]";
+            case 2: return "text-[#e91e63]";
         }
     };
 
@@ -319,24 +311,26 @@ export default function HomeContent({ initialProjects, initialExperience }: Home
                                 </AnimatePresence>
                             </div>
 
-                            <div className="flex flex-col md:flex-row min-h-[min(11vw,15vh)] lg:min-h-[min(8vw,12vh)]">
-                                <div className="hidden md:block w-1/4"></div>
-                                <div className="w-full text-right md:text-left relative">
-                                    <AnimatePresence mode="wait">
-                                        <motion.h2
-                                            key={heroText.line2}
-                                            initial={{ y: 100, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                            exit={{ y: -100, opacity: 0 }}
-                                            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                            className={`text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
-                                            data-text={heroText.line2}
-                                        >
-                                            {heroText.line2}
-                                        </motion.h2>
-                                    </AnimatePresence>
+                            {heroText.line2 && (
+                                <div className="flex flex-col md:flex-row min-h-[min(11vw,15vh)] lg:min-h-[min(8vw,12vh)]">
+                                    <div className="hidden md:block w-1/4"></div>
+                                    <div className="w-full text-right md:text-left relative">
+                                        <AnimatePresence mode="wait">
+                                            <motion.h2
+                                                key={heroText.line2}
+                                                initial={{ y: 100, opacity: 0 }}
+                                                animate={{ y: 0, opacity: 1 }}
+                                                exit={{ y: -100, opacity: 0 }}
+                                                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                                className={`text-[min(11vw,15vh)] lg:text-[min(8vw,12vh)] font-bold inline-block whitespace-nowrap hero-reflection ${heroText.color}`}
+                                                data-text={heroText.line2}
+                                            >
+                                                {heroText.line2}
+                                            </motion.h2>
+                                        </AnimatePresence>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {heroText.line3 && (
                                 <div className="min-h-[min(11vw,15vh)] lg:min-h-[min(8vw,12vh)] text-right">
